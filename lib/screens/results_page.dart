@@ -89,6 +89,8 @@ class ResultsPage extends StatelessWidget {
                       Container(
                         width: SizeConfig.blockSizeHorizontal * 50,
                         child: FlatButton(
+                          hoverColor: Colors.yellow,
+                          splashColor: Colors.lightBlueAccent,
                           child: Text(
                             'SAVE RESULT',
                             style: TextStyle(

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1047466522719-dr1686c9ahr0o1q2felv4m37jk62m7mk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1047466522719-dr1686c9ahr0o1q2felv4m37jk62m7mk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCcmtE839wTYVvK_b_L47bGOlzpbzu5-Fo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1047466522719</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>nl.dutchappfactory.bmiCalculatorApp</string>
+	<key>PROJECT_ID</key>
+	<string>bmi-calculator-app-637b3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bmi-calculator-app-637b3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1047466522719:ios:25b54e790055527f0ac3ea</string>
+	<key>DATABASE_URL</key>
+	<string>https://bmi-calculator-app-637b3.firebaseio.com</string>
+</dict>
+</plist>
