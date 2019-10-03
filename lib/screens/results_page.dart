@@ -1,15 +1,15 @@
-//import 'package:bmi_calculator/screens/history_page.dart';
+import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants/constants.dart';
 import '../components/cards/reusable_card.dart';
 
-//import 'bmi_weight_status.dart';
+import 'bmi_weight_status.dart';
 import '../models/size_config.dart';
 
-//import 'login_page.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ResultsPage extends StatelessWidget {
   ResultsPage(
@@ -19,8 +19,8 @@ class ResultsPage extends StatelessWidget {
   final String bmiResultText;
   final String bmiInterpretation;
 
-//  final _auth = FirebaseAuth.instance;
-//  FirebaseUser loggedInUser;
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
 
   @override
   Widget build(BuildContext context) {
@@ -105,24 +105,24 @@ class ResultsPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           onPressed: () async {
-//                            final user = await _auth.currentUser();
-//                            try {
-//                              final user = await _auth.currentUser();
-//                              if (user != null) {
-//                                loggedInUser = user;
-//                                Navigator.push(
-//                                    context,
-//                                    MaterialPageRoute(
-//                                        builder: (context) => HistoryPage()));
-//                              } else {
-//                                Navigator.push(
-//                                    context,
-//                                    MaterialPageRoute(
-//                                        builder: (context) => LoginPage()));
-//                              }
-//                            } catch (e) {
-//                              print(e);
-//                            }
+                            final user = await _auth.currentUser();
+                            try {
+                              final user = await _auth.currentUser();
+                              if (user != null) {
+                                loggedInUser = user;
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HistoryPage()));
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()));
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
                           },
                         ),
                       ),

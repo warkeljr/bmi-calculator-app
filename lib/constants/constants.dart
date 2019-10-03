@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
 
 
 // Font sizes
+// Font sizes are configured by the size_config model
 const kFontSizeXXS = 12.0;
 const kFontSizeXS = 16.0;
+// Size 20 -> size_config 2.2
 const kFontSizeM = 20.0;
 const kFontSizeML = 30.0;
 const kFontSizeL = 50.0;
