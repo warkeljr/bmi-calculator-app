@@ -111,7 +111,7 @@ const kBottomContainerHeight = 80.0;
 BoxDecoration kMyBoxDecoration() {
   return BoxDecoration(
     border: Border.all(
-      width: 5.0,
+      //width: 5.0,
       color: kWhiteColor,
     ),
     shape: BoxShape.circle,

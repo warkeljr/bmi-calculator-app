@@ -2,25 +2,32 @@ import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../constants/constants.dart';
-import '../components/cards/reusable_card.dart';
-
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'bmi_weight_status.dart';
-import '../models/size_config.dart';
-
+import 'package:bmi_calculator_app/models/size_config.dart';
 import 'login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ResultsPage extends StatelessWidget {
   ResultsPage(
       {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation});
 
-  final String bmiResult;
   final String bmiResultText;
+  final String bmiResult;
   final String bmiInterpretation;
 
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
+
+  final _firestore = Firestore.instance;
+  
+  //GET UID
+  Future<String> getCurrentUID() async {
+    return (await _auth.currentUser()).uid;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +117,8 @@ class ResultsPage extends StatelessWidget {
                               final user = await _auth.currentUser();
                               if (user != null) {
                                 loggedInUser = user;
+                                final uid = await getCurrentUID();
+                                await _firestore.collection('users').document(uid).collection('bmiHistory').add({'flutter':'awesome'});
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -146,7 +155,6 @@ class ResultsPage extends StatelessWidget {
                           icon: Icon(FontAwesomeIcons.info),
                           tooltip: 'BMI weight status',
                           onPressed: () {
-                            print('Icon button was pressed');
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

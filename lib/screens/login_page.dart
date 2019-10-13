@@ -17,6 +17,8 @@ class _LoginPageState extends State<LoginPage> {
   String email;
   String password;
 
+  bool _hasInputError = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -99,12 +101,17 @@ class _LoginPageState extends State<LoginPage> {
                           obscureText: true,
                           onChanged: (value) {
                             password = value;
+//                            _hasInputError = value.length < 6;
+//                            setState(() {
+//
+//                            });
                           },
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Password',
                             hintStyle: TextStyle(letterSpacing: 1.5),
+                            //errorText: _hasInputError ? "Password is to small" : null,
                             icon: Icon(Icons.lock),
                           ),
                           style: TextStyle(
@@ -145,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           } catch (e) {
                             print(e);
-                            print('Nothing in the fields is filled in');
+                            //print('Nothing in the fields is filled in');
                           }
                         },
                       ),
