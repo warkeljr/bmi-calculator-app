@@ -31,12 +31,14 @@ const kLabelTextStyleM = TextStyle(
   color: kWhiteColor,
   fontWeight: FontWeight.w900,
 );
-
+// CUSTOM FONT FAMILY-----------------------------
 const kLabelTextStyleL = TextStyle(
   fontSize: kFontSizeL,
   color: kWhiteColor,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
+  fontFamily: 'Rubik',
 );
+//--------------------------------------------------
 
 const kLabelTextStyleXL = TextStyle(
   fontSize: kFontSizeXL,

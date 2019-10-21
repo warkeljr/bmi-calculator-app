@@ -20,6 +20,7 @@ class InputPage extends StatefulWidget {
   _InputPageState createState() => _InputPageState();
 }
 
+
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
 
@@ -125,7 +126,8 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: TextStyle(
                           fontSize: SizeConfig.blockSizeVertical * 8,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
+                          //fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(
@@ -292,7 +294,7 @@ class _InputPageState extends State<InputPage> {
                   text:['CALCULATE YOUR BMI'],
                   textStyle: TextStyle(
                     fontSize: kFontSizeM,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

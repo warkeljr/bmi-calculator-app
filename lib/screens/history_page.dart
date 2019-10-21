@@ -20,12 +20,10 @@ class _HistoryPageState extends State<HistoryPage> {
 
   final _firestore = Firestore.instance;
 
-
   @override
   void initState() {
     super.initState();
     getCurrentUser();
-    bmiResultsStream();
   }
 
   void getCurrentUser() async {
@@ -41,67 +39,59 @@ class _HistoryPageState extends State<HistoryPage> {
     }
   }
 
-  void bmiResultsStream() async {
-    await for (var snapshot in _firestore.collection('bmiResults').snapshots()) {
-      for (var bmiResult in snapshot.documents) {
-        print(bmiResult.data);
-      }
-    }
-  }
+  final items = List<String>.generate(100, (i) => 'Item $i');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          IconButton(icon: Icon(FontAwesomeIcons.signOutAlt), onPressed: () {
-            _auth.signOut();
-            Navigator.push(context, MaterialPageRoute(builder: (context) => InputPage()));
-          })
+          IconButton(
+              icon: Icon(FontAwesomeIcons.signOutAlt),
+              onPressed: () {
+                _auth.signOut();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => InputPage()));
+              })
         ],
         title: Text('Your BMI History'),
       ),
-      body: Center(
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                 SizedBox(
-                    height: SizeConfig.blockSizeVertical * 5,
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Welcome',
-                          style: kLabelTextStyleL,
-                        ),
-                        Text(
-                          'Back',
-                          style: kLabelTextStyleL,
-                        ),
-                      ],
-                    ),
-                  ),
-                FutureBuilder(
-                  future: FirebaseAuth.instance.currentUser(),
-                  builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(snapshot.data.uid);
-                    }
-                    else {
-                      return Text('Not logged in');
-                    }
-                  },
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              //leading: FlutterLogo(size: 72.0),
+              title: Text(
+                '${items[index]}',
+                style: TextStyle(
+                  color: kSoftGreenColor,
+                  fontSize: kFontSizeML,
                 ),
-              ],
+              ),
+              subtitle: Text(
+                '12-10-2019',
+                style: TextStyle(
+                  fontSize: kFontSizeM,
+                ),
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 }
+
+//FutureBuilder(
+//future: FirebaseAuth.instance.currentUser(),
+//builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+//if (snapshot.hasData) {
+//return Text(snapshot.data.uid);
+//}
+//else {
+//return Text('Not logged in');
+//}
+//},
+//),
