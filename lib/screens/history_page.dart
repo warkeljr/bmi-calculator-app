@@ -1,12 +1,9 @@
-import 'package:bmi_calculator_app/components/buttons/buttons.dart';
-import 'package:bmi_calculator_app/screens/results_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -18,7 +15,7 @@ class _HistoryPageState extends State<HistoryPage> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
 
-  final _firestore = Firestore.instance;
+  //final _firestore = Firestore.instance;
 
   @override
   void initState() {
@@ -32,7 +29,6 @@ class _HistoryPageState extends State<HistoryPage> {
       final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
       }
     } catch (e) {
       print(e);
@@ -84,14 +80,3 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 }
 
-//FutureBuilder(
-//future: FirebaseAuth.instance.currentUser(),
-//builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
-//if (snapshot.hasData) {
-//return Text(snapshot.data.uid);
-//}
-//else {
-//return Text('Not logged in');
-//}
-//},
-//),

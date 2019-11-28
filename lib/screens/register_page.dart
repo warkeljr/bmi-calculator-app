@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:bmi_calculator_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,7 @@ import '../constants/constants.dart';
 import '../models/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'history_page.dart';
+import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -20,10 +19,12 @@ class _RegisterPageState extends State<RegisterPage> {
   String email;
   String password;
 
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -140,17 +141,19 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           onPressed: () async {
                             try {
+                              setState(() => loading = true);
                               final newUser =
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                               if (newUser != null) {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => HistoryPage()));
                               }
                             } catch (e) {
                               print(e);
+                              loading = false;
                             }
                           },
                         ),

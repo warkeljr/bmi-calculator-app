@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_app/screens/splash_screen1.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/cards/reusable_card.dart';
@@ -45,22 +46,31 @@ class _InputPageState extends State<InputPage> {
   }
 
   // Timestamp for using into the listview
-  int day = DateTime.now().day;
-  int month = DateTime.now().month;
-  int year = DateTime.now().year;
-  int hour = DateTime.now().hour;
-  int minute = DateTime.now().minute;
-  int seconds = DateTime.now().millisecond;
+  // int day = DateTime.now().day;
+  // int month = DateTime.now().month;
+  // int year = DateTime.now().year;
+  // int hour = DateTime.now().hour;
+  // int minute = DateTime.now().minute;
+  // int seconds = DateTime.now().millisecond;
 
-  void timeStampForSavedValues() {
-    print('Calculation date: $day-$month-$year at $hour:$minute:$seconds');
-  }
+
+  // void timeStampForSavedValues() {
+  //   print('Calculation date: $day-$month-$year at $hour:$minute:$seconds');
+  // }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.print),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen1()));
+            },
+          ),
+        ],
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
@@ -281,7 +291,7 @@ class _InputPageState extends State<InputPage> {
                         bmiResultText: calc.getResult(),
                         bmiInterpretation: calc.interpretation(),
                       )));
-              timeStampForSavedValues();
+              //timeStampForSavedValues();
             },
             child: Container(
               color: kPinkColor,

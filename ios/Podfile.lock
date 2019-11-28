@@ -168,10 +168,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  cloud_firestore: c9493dd01ad88934d926e18cc5a92a0129bf2c32
+  cloud_firestore: 187530401afa261d255791ea75580591e345fa7b
   Firebase: 2d750c54cda57d5a6ae31212cfe5cc813c6be7e4
-  firebase_auth: 1e3b7bdd37b9fbd4ef75ba1d985b00be09e02d3d
-  firebase_core: ae55ea92448ec8675d325da4db22cf3b4d58a54d
+  firebase_auth: d99b993c1405096e66c58211b1cd956c23eed1c5
+  firebase_core: ebf6a934345d646bf7820a6685427bb3741f01ed
   FirebaseAnalytics: 5d9ccbf46ed25d3ec9304d263f85bddf1e93e2d2
   FirebaseAuth: e7f86c2dfc57281cd01f7da5e4b40e01e4510a4a
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc

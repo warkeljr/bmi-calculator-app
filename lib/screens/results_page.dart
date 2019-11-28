@@ -7,7 +7,6 @@ import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'bmi_weight_status.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'login_page.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -112,13 +111,18 @@ class ResultsPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           onPressed: () async {
-                            final user = await _auth.currentUser();
                             try {
                               final user = await _auth.currentUser();
                               if (user != null) {
                                 loggedInUser = user;
                                 final uid = await getCurrentUID();
-                                await _firestore.collection('users').document(uid).collection('bmiHistory').add({'flutter':'awesome'});
+                                _firestore.collection('userData').document(uid).collection('bmiResults').add({
+                                  'result': bmiResult,
+                                  'result_text': bmiResultText,
+                                  'user_email': loggedInUser.email,
+                                  'date': Timestamp.now(),
+                                  'interpretation': bmiInterpretation,
+                                });
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

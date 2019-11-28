@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
-import 'package:bmi_calculator_app/screens/results_page.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -14,27 +13,28 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-//  FirebaseUser loggedInUser;
+  final _auth = FirebaseAuth.instance;
+  
+ FirebaseUser loggedInUser;
 
   @override
   void initState() {
     super.initState();
-    //getCurrentUser();
+    getCurrentUser();
   }
 
-//  void getCurrentUser() async {
-//    final user = await _auth.currentUser();
-//    try {
-//      final user = await _auth.currentUser();
-//      if (user != null) {
-//        loggedInUser = user;
-//        print(loggedInUser.email);
-//      }
-//    } catch (e) {
-//      print(e);
-//    }
-//  }
+ void getCurrentUser() async {
+   final user = await _auth.currentUser();
+   try {
+     final user = await _auth.currentUser();
+     if (user != null) {
+       loggedInUser = user;
+       print(loggedInUser.email);
+     }
+   } catch (e) {
+     print(e);
+   }
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _SideMenuState extends State<SideMenu> {
                           future: FirebaseAuth.instance.currentUser(),
                         builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
                             if (snapshot.hasData) {
-                              return Text(snapshot.data.uid);
+                              return Text('Welcome....');
                             }
                             else {
                               return Text('Not logged in');

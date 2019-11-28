@@ -11,12 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^0.1.2
-  font_awesome_flutter: ^8.4.0
+  font_awesome_flutter: ^8.5.0
   firebase_core: ^0.4.0+9
-  firebase_auth: ^0.14.0+5
-  cloud_firestore: ^0.12.9+4
+  firebase_auth: ^0.14.0+9
+  cloud_firestore: ^0.12.10
+  flutter_spinkit: ^4.0.0
+  rflutter_alert: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -36,5 +37,9 @@ flutter:
         - asset: assets/fonts/Rubik-Light.ttf
         - asset: assets/fonts/Rubik-Medium.ttf
         - asset: assets/fonts/Rubik-Regular.ttf
+    - family: SF Pro Display
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
+          weight: 700 # Bold
 
 

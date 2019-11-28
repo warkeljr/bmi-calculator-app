@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator_app/models/size_config.dart';
 
 
 // Font sizes
@@ -24,6 +23,7 @@ const kLabelTextStyleXXS = TextStyle(
 const kLabelTextStyleXS = TextStyle(
   fontSize: kFontSizeXS,
   color: kLightGreyColor,
+  fontFamily: "SF Pro Display",
 );
 
 const kLabelTextStyleM = TextStyle(
