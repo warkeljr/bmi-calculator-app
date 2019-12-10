@@ -18,7 +18,6 @@ class Auth {
     return User(uid: user.uid);
   }
 
-
 // Getting the current user
   Future<User> currentUser() async{
     final user = await _firebaseAuth.currentUser();

@@ -1,5 +1,6 @@
 import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
+import 'package:bmi_calculator_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
@@ -131,7 +132,7 @@ class ResultsPage extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
+                                        builder: (context) => RegisterPage()));
                               }
                             } catch (e) {
                               print(e);
