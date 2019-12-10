@@ -23,16 +23,22 @@ class Auth {
     final user = await _firebaseAuth.currentUser();
     return _userFromFirebase(user);
   }
-// Signin methods
+// Signin methods with email and password
   Future<User> signinWithEmailAndPassword(String email, String password) async {
     final authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
     return _userFromFirebase(authResult.user);
   }
-  
+// Create method with email and password  
   Future<User> createWithEmailAndPassword(String email, String password) async {
     final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     return _userFromFirebase(authResult.user);
   }
+
+// Signin method with anonymous
+
+// Signin method with Google signin
+
+// Signin method with Facebook signin
 
 // Signout method
   Future<void> signOut() async {
