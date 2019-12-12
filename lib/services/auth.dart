@@ -19,7 +19,7 @@ class Auth {
   }
 
 // Getting the current user
-  Future<User> currentUser() async{
+  Future<User> currentUser() async {
     final user = await _firebaseAuth.currentUser();
     return _userFromFirebase(user);
   }
@@ -35,10 +35,14 @@ class Auth {
   }
 
 // Signin method with anonymous
+  Future<User> signInAnonymously() async {
+    final authResult = await _firebaseAuth.signInAnonymously();
+    return _userFromFirebase(authResult.user);
+}
 
 // Signin method with Google signin
 
-// Signin method with Facebook signin
+// Signin method with Facebook signin 
 
 // Signout method
   Future<void> signOut() async {
