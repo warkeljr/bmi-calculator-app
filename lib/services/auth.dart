@@ -1,10 +1,23 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 // Creating the user
 class User {
   User({@required this.uid});
   final String uid;
+}
+
+abstract class AuthBase {
+  Future<User> currentUser();
+  Future<User> signinWithEmailAndPassword();
+  Future<User> createWithEmailAndPassword();
+  Future<User> signInAnonymously();
+
+//Future<User> singInWithGoogle();
+
+  Future<void> signOut();
+
 }
 
 class Auth {
@@ -34,13 +47,16 @@ class Auth {
     return _userFromFirebase(authResult.user);
   }
 
-// Signin method with anonymous
+// Signin method with anonymously
   Future<User> signInAnonymously() async {
     final authResult = await _firebaseAuth.signInAnonymously();
     return _userFromFirebase(authResult.user);
 }
 
 // Signin method with Google signin
+  Future<User> singInWithGoogle() async {
+    
+  }
 
 // Signin method with Facebook signin 
 

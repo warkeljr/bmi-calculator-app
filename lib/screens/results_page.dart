@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
-import 'bmi_weight_status.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
-import 'login_page.dart';
+import 'bmi_weight_status.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'login_page.dart';
+
 
 class ResultsPage extends StatelessWidget {
   ResultsPage(
