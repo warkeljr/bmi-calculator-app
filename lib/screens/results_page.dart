@@ -1,14 +1,13 @@
 import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
-import 'package:bmi_calculator_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'bmi_weight_status.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'login_page.dart';
 
@@ -134,7 +133,7 @@ class ResultsPage extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => RegisterPage()));
+                                        builder: (context) => LoginPage()));
                               }
                             } catch (e) {
                               print(e);

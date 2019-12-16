@@ -6,16 +6,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+
 import '../constants/constants.dart';
 import '../models/size_config.dart';
 
 
 class LoginPage extends StatefulWidget {
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   final _auth = FirebaseAuth.instance;
 
   String email;
@@ -31,6 +34,8 @@ class _LoginPageState extends State<LoginPage> {
     overlayColor: Colors.black87,
     animationType: AnimationType.grow
   );
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -166,8 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                                 try {
                                   setState(() => loading = true);
                                   final user =
-                                      await _auth.signInWithEmailAndPassword(
-                                          email: email, password: password);
+                                      await _auth.signInWithEmailAndPassword(email: email, password: password);
                                   if (user != null) {
                                     Navigator.pushReplacement(
                                         context,

@@ -10,16 +10,10 @@ class User {
 
 abstract class AuthBase {
   Future<User> currentUser();
-
-  // Future<User> signinWithEmailAndPassword();
-  // Future<User> createWithEmailAndPassword();
-  
   Future<User> signInAnonymously();
-
-  //Future<User> singInWithGoogle();
-
+  Future<User> signInWithEmailAndPassword(String email, String password);
+  Future<User> createUserWithEmailAndPassword(String email, String password);
   Future<void> signOut();
-
 }
 
 class Auth implements AuthBase {
@@ -39,25 +33,26 @@ class Auth implements AuthBase {
     final user = await _firebaseAuth.currentUser();
     return _userFromFirebase(user);
   }
-// Signin methods with email and password
-//   @override
-//   Future<User> signinWithEmailAndPassword(String email, String password) async {
-//     final authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-//     return _userFromFirebase(authResult.user);
-//   }
-// // Create method with email and password  
-//   @override
-//   Future<User> createWithEmailAndPassword(String email, String password) async {
-//     final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
-//     return _userFromFirebase(authResult.user);
-//   }
 
-// Signin method with anonymously
+  // Signin method with anonymously
   @override
   Future<User> signInAnonymously() async {
     final authResult = await _firebaseAuth.signInAnonymously();
     return _userFromFirebase(authResult.user);
-}
+  }
+// Signin methods with email and password
+  @override
+  Future<User> signInWithEmailAndPassword(String email, String password) async {
+    final authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    return _userFromFirebase(authResult.user);
+  }
+
+// Create method with email and password  
+  @override
+  Future<User> createUserWithEmailAndPassword(String email, String password) async {
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    return _userFromFirebase(authResult.user);
+  }
 
 // Signin method with Google signin
   //Future<User> singInWithGoogle() async {}
