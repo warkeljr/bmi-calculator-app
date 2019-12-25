@@ -100,7 +100,7 @@ class _SideMenuState extends State<SideMenu> {
               style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
             ),
             onTap: () {
-              Navigator.push(context,
+              Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => HistoryPage()));
             },
           ),
