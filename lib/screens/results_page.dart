@@ -188,7 +188,7 @@ class ResultsPage extends StatelessWidget {
                   'RE-CALCULATE',
                   style: TextStyle(
                     fontSize: kFontSizeM,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

@@ -27,7 +27,7 @@ class BmiReferenceCard extends StatelessWidget {
           Text(
             indicator,
             style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 5.0,
+                fontSize: SizeConfig.blockSizeVertical * 4.0,
                 fontWeight: FontWeight.w900),
           ),
           SizedBox(

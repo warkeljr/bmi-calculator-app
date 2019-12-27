@@ -71,7 +71,7 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Container(
                     width: SizeConfig.blockSizeHorizontal * 50,
-                    height: SizeConfig.blockSizeVertical * 30,
+                    height: SizeConfig.blockSizeVertical * 25,
                     child: ReusableCard(
                       onPress: () {
                         setState(() {
@@ -89,7 +89,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   Container(
                     width: SizeConfig.blockSizeHorizontal * 50,
-                    height: SizeConfig.blockSizeVertical * 40,
+                    height: SizeConfig.blockSizeVertical * 25,
                     child: ReusableCard(
                       onPress: () {
                         setState(() {
@@ -126,7 +126,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: TextStyle(
                           fontSize: SizeConfig.blockSizeVertical * 8,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.bold,
                           //fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -294,7 +294,7 @@ class _InputPageState extends State<InputPage> {
                   text:['CALCULATE YOUR BMI'],
                   textStyle: TextStyle(
                     fontSize: kFontSizeM,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
