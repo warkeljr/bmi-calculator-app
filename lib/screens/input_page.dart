@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
+import 'results_page.dart';
+
 import '../components/cards/reusable_card.dart';
 import '../components/icons/icon_content.dart';
 import '../constants/constants.dart';
 import '../models/calculator_brain.dart';
-import 'results_page.dart';
 import '../components/buttons/buttons.dart';
 import '../models/size_config.dart';
 import '../components/menus/side_menu.dart';
@@ -46,19 +47,6 @@ class _InputPageState extends State<InputPage> {
   void decreaseAge() {
     age = age - 1;
   }
-
-  // Timestamp for using into the listview
-  // int day = DateTime.now().day;
-  // int month = DateTime.now().month;
-  // int year = DateTime.now().year;
-  // int hour = DateTime.now().hour;
-  // int minute = DateTime.now().minute;
-  // int seconds = DateTime.now().millisecond;
-
-
-  // void timeStampForSavedValues() {
-  //   print('Calculation date: $day-$month-$year at $hour:$minute:$seconds');
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +126,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: TextStyle(
                           fontSize: SizeConfig.blockSizeVertical * 8,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w900,
                           //fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -306,7 +294,7 @@ class _InputPageState extends State<InputPage> {
                   text:['CALCULATE YOUR BMI'],
                   textStyle: TextStyle(
                     fontSize: kFontSizeM,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),

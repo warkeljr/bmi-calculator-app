@@ -13,11 +13,7 @@ class BmiWeightStatus extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Bmi', style: TextStyle(
-            fontSize: 60.0,
-            fontWeight: FontWeight.w400,
-            letterSpacing: 3,
-          )),
+          Text('Bmi', style: kLabelTextStyleL),
           Text('Reference', style: kLabelTextStyleL),
           SizedBox(
             height: kSizeBoxedHeightXXL,
@@ -44,7 +40,7 @@ class BmiWeightStatus extends StatelessWidget {
                     explanation: 'Normal'),
                 BmiReferenceCard(
                     colour: kBmiYellow,
-                    indicator: '25.0 29.9',
+                    indicator: '25.0 - 29.9',
                     explanation: 'Overweight'),
                 BmiReferenceCard(
                     colour: kBmiOrangeLight,

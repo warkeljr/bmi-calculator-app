@@ -1,6 +1,7 @@
 //import 'package:bmi_calculator/screens/history_page.dart';
 //import 'package:bmi_calculator/screens/login_page.dart';
 import 'package:bmi_calculator_app/screens/history_page.dart';
+import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -69,7 +70,7 @@ class _SideMenuState extends State<SideMenu> {
                           future: FirebaseAuth.instance.currentUser(),
                         builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
                             if (snapshot.hasData) {
-                              return Text('Welcome....');
+                              return Text('Welcom....');
                             }
                             else {
                               return Text('Not logged in');
@@ -100,8 +101,7 @@ class _SideMenuState extends State<SideMenu> {
               style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
             ),
             onTap: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => HistoryPage()));
+              
             },
           ),
           SizedBox(

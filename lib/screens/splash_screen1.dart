@@ -1,6 +1,8 @@
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'input_page.dart';
+
 class SplashScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class SplashScreen1 extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: FlatButton(
                     onPressed: () {
-                      
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => InputPage()));
                     },
                     child: Text(
                       'Skip',

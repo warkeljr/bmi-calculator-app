@@ -169,15 +169,20 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               onPressed: () async {
                                 try {
-                                  setState(() => loading = true);
+                                  setState(() {
+                                    loading = true;
+                                  });            
                                   final user =
-                                      await _auth.signInWithEmailAndPassword(email: email, password: password);
-                                  if (user != null) {
+                                      await _auth.signInWithEmailAndPassword(email: email, password: password);                
+                                  if (user != null) {              
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 HistoryPage()));
+                                    setState(() {
+                                      loading = false;
+                                    });
                                   }
                                 } catch (e) {
                                   Alert(
@@ -195,9 +200,9 @@ class _LoginPageState extends State<LoginPage> {
                                               color: kWhiteColor,
                                               fontSize: 20),
                                         ),
-                                        onPressed: () => Navigator.pop(
-                                          context,
-                                        ),
+                                        onPressed: () {
+                                        Navigator.pop(context);
+                                        },
 
                                         //radius: BorderRadius.circular(50.0),
                                         color: kPinkColor,
