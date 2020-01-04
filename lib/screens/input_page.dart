@@ -145,7 +145,7 @@ class _InputPageState extends State<InputPage> {
                           enabledThumbRadius:
                           SizeConfig.blockSizeVertical * 2.5),
                       overlayShape: RoundSliderOverlayShape(
-                          overlayRadius: SizeConfig.blockSizeVertical * 5),
+                          overlayRadius: SizeConfig.blockSizeVertical * 4.5),
                       overlayColor: kPinkOverlayColor,
                       thumbColor: kPinkColor,
                       activeTrackColor: kWhiteColor,

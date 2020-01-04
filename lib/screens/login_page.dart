@@ -201,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                                               fontSize: 20),
                                         ),
                                         onPressed: () {
-                                        Navigator.pop(context);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
                                         },
 
                                         //radius: BorderRadius.circular(50.0),
@@ -280,6 +280,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          SizedBox(height: 8,),
                         ],
                       ),
                     ),
