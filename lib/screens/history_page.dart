@@ -38,42 +38,48 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(FontAwesomeIcons.signOutAlt),
-              onPressed: () {
-                _auth.signOut();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => InputPage()));
-              })
-        ],
-        title: Text('Your BMI History'),
-      ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              //leading: FlutterLogo(size: 72.0),
-              title: Text(
-                '${items[index]}',
-                style: TextStyle(
-                  color: kSoftGreenColor,
-                  fontSize: kFontSizeML,
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+          child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {
+            Navigator.pop(context, true);
+          }),
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(FontAwesomeIcons.signOutAlt),
+                onPressed: () {
+                  _auth.signOut();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => InputPage()));
+                })
+          ],
+          title: Text('Your BMI History'),
+        ),
+        body: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                //leading: FlutterLogo(size: 72.0),
+                title: Text(
+                  '${items[index]}',
+                  style: TextStyle(
+                    color: kSoftGreenColor,
+                    fontSize: kFontSizeML,
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                '12-10-2019',
-                style: TextStyle(
-                  fontSize: kFontSizeM,
+                subtitle: Text(
+                  '12-10-2019',
+                  style: TextStyle(
+                    fontSize: kFontSizeM,
+                  ),
                 ),
+                trailing: Icon(Icons.arrow_forward_ios),
               ),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

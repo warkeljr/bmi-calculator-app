@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
 
   var alertStyle = AlertStyle(
     descStyle: TextStyle(color: kGreyColor, fontSize: 20),
-    backgroundColor: kWhiteColor,
+    backgroundColor: kPinkColor,
     overlayColor: Colors.black87,
     animationType: AnimationType.grow
   );
@@ -201,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                                               fontSize: 20),
                                         ),
                                         onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                                         },
 
                                         //radius: BorderRadius.circular(50.0),
