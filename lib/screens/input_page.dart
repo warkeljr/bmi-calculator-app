@@ -108,6 +108,7 @@ class _InputPageState extends State<InputPage> {
                 ],
               )),
           Expanded(
+            flex: 1,
             child: ReusableCard(
               colour: kActiveCardColor,
               cardChild: Column(

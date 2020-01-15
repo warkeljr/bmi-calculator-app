@@ -29,10 +29,11 @@ class _LoginPageState extends State<LoginPage> {
   //bool _hasInputError = false;
 
   var alertStyle = AlertStyle(
-    descStyle: TextStyle(color: kGreyColor, fontSize: 20),
-    backgroundColor: kPinkColor,
+    titleStyle: TextStyle(color: kWhiteColor, fontSize: 30, fontWeight: FontWeight.bold),
+    descStyle: TextStyle(color: kLightGreyColor, fontSize: 20),
+    backgroundColor: kActiveCardColor,
     overlayColor: Colors.black87,
-    animationType: AnimationType.grow
+    animationType: AnimationType.grow,
   );
 
   
@@ -41,250 +42,253 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return loading ? Loading() : Scaffold(
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: SizeConfig.blockSizeVertical * 5,
-                    ),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Welcome',
-                            style: kLabelTextStyleL,
-                          ),
-                          Text(
-                            'Back',
-                            style: kLabelTextStyleL,
-                          ),
-                        ],
+            body: GestureDetector(
+              onTap: () {FocusScope.of(context).requestFocus(new FocusNode());
+              },
+              child: SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical * 5,
                       ),
-                    ),
-                    SizedBox(
-                      height: SizeConfig.blockSizeVertical * 7,
-                    ),
-                    Center(
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: kWhiteColor, width: 1.0),
-                              color: kActiveCardColor,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Welcome',
+                              style: kLabelTextStyleL,
                             ),
-                            width: SizeConfig.blockSizeHorizontal * 80,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0,
-                                  top: 3.0,
-                                  bottom: 3.0,
-                                  right: 10.0),
-                              child: TextField(
-                                keyboardType: TextInputType.emailAddress,
-                                onChanged: (value) {
-                                  email = value;
-                                },
-                                textAlign: TextAlign.start,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Your Email',
-                                  hintStyle: TextStyle(letterSpacing: 1.5),
-                                  icon: Icon(Icons.mail),
-                                ),
-                                style: TextStyle(
-                                  fontSize: 20,
+                            Text(
+                              'Back',
+                              style: kLabelTextStyleL,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical * 7,
+                      ),
+                      Center(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: kWhiteColor, width: 1.0),
+                                color: kActiveCardColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: kWhiteColor, width: 1.0),
-                              color: kActiveCardColor,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10.0,
+                                    top: 3.0,
+                                    bottom: 3.0,
+                                    right: 10.0),
+                                child: TextField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  onChanged: (value) {
+                                    email = value;
+                                  },
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Your Email',
+                                    hintStyle: TextStyle(letterSpacing: 1.5),
+                                    icon: Icon(Icons.mail),
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ),
                             ),
-                            width: SizeConfig.blockSizeHorizontal * 80,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0,
-                                  top: 3.0,
-                                  bottom: 3.0,
-                                  right: 10.0),
-                              child: TextField(
-                                obscureText: true,
-                                onChanged: (value) {
-                                  password = value;
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: kWhiteColor, width: 1.0),
+                                color: kActiveCardColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10.0,
+                                    top: 3.0,
+                                    bottom: 3.0,
+                                    right: 10.0),
+                                child: TextField(
+                                  obscureText: true,
+                                  onChanged: (value) {
+                                    password = value;
 //                            _hasInputError = value.length < 6;
 //                            setState(() {
 //
 //                            });
-                                },
-                                textAlign: TextAlign.start,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(letterSpacing: 1.5),
-                                  //errorText: _hasInputError ? "Password is to small" : null,
-                                  icon: Icon(Icons.lock),
-                                ),
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                            width: SizeConfig.blockSizeHorizontal * 80,
-                            child: FlatButton(
-                              splashColor: Colors.pinkAccent,
-                              child: Text(
-                                'LOG IN',
-                                style: TextStyle(
-                                    letterSpacing: 1.5,
+                                  },
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Password',
+                                    hintStyle: TextStyle(letterSpacing: 1.5),
+                                    //errorText: _hasInputError ? "Password is to small" : null,
+                                    icon: Icon(Icons.lock),
+                                  ),
+                                  style: TextStyle(
                                     fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  ),
+                                ),
                               ),
-                              color: kPinkColor,
-                              textColor: kWhiteColor,
-                              padding: EdgeInsets.symmetric(vertical: 15.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              onPressed: () async {
-                                try {
-                                  setState(() {
-                                    loading = true;
-                                  });            
-                                  final user =
-                                      await _auth.signInWithEmailAndPassword(email: email, password: password);                
-                                  if (user != null) {              
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                HistoryPage()));
-                                    setState(() {
-                                      loading = false;
-                                    });
-                                  }
-                                } catch (e) {
-                                  Alert(
-                                    context: context,
-                                    type: AlertType.error,
-                                    style: alertStyle,
-                                    title: 'Login failed',
-                                    desc:
-                                        'please try again with the correct credentials. If you do not have an account just create one for free.',
-                                    buttons: [
-                                      DialogButton(
-                                        child: Text(
-                                          'Try again',
-                                          style: TextStyle(
-                                              color: kWhiteColor,
-                                              fontSize: 20),
-                                        ),
-                                        onPressed: () {
-                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-                                        },
-
-                                        //radius: BorderRadius.circular(50.0),
-                                        color: kPinkColor,
-                                      ),
-                                    ],
-                                  ).show();
-                                  print(e);
-                                  //print('Nothing in the fields is filled in');
-                                  loading = false;
-                                }
-                              },
                             ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              // DO SOMETHING
-                            },
-                            child: Text(
-                              'Forgot password?',
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: FlatButton(
+                                splashColor: Colors.pinkAccent,
+                                child: Text(
+                                  'LOG IN',
+                                  style: TextStyle(
+                                      letterSpacing: 1.5,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                color: kPinkColor,
+                                textColor: kWhiteColor,
+                                padding: EdgeInsets.symmetric(vertical: 15.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                onPressed: () async {
+                                  try {
+                                    setState(() {
+                                      loading = true;
+                                    });            
+                                    final user =
+                                        await _auth.signInWithEmailAndPassword(email: email, password: password);                
+                                    if (user != null) {              
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HistoryPage()));
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                    }
+                                  } catch (e) {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.error,
+                                      style: alertStyle,
+                                      title: 'Login failed',
+                                      desc:
+                                          'please try again with the correct credentials. If you do not have an account just create one for free.',
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            'Try again',
+                                            style: TextStyle(
+                                                color: kWhiteColor,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                                          },
+                                          //radius: BorderRadius.circular(50.0),
+                                          color: kPinkColor,
+                                        ),
+                                      ],
+                                    ).show();
+                                    print(e);
+                                    //print('Nothing in the fields is filled in');
+                                    loading = false;
+                                  }
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // DO SOMETHING
+                              },
+                              child: Text(
+                                'Forgot password?',
+                                style: TextStyle(
+                                  color: kLightGreyColor,
+                                  fontSize: kFontSizeXXS,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: SizeConfig.blockSizeVertical * 5,
+                            ),
+                            Text(
+                              'Don\'t have an account yet?',
                               style: TextStyle(
                                 color: kLightGreyColor,
-                                fontSize: kFontSizeXXS,
+                                fontSize: kFontSizeXS,
                                 letterSpacing: 0.5,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: SizeConfig.blockSizeVertical * 5,
-                          ),
-                          Text(
-                            'Don\'t have an account yet?',
-                            style: TextStyle(
-                              color: kLightGreyColor,
-                              fontSize: kFontSizeXS,
-                              letterSpacing: 0.5,
+                            SizedBox(
+                              height: SizeConfig.blockSizeVertical * 1,
                             ),
-                          ),
-                          SizedBox(
-                            height: SizeConfig.blockSizeVertical * 1,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => RegisterPage()));
-                            },
-                            child: Text(
-                              'Sign up',
-                              style: TextStyle(
-                                color: kPinkColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: kFontSizeM,
-                                letterSpacing: 1.5,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => RegisterPage()));
+                              },
+                              child: Text(
+                                'Sign up',
+                                style: TextStyle(
+                                  color: kPinkColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: kFontSizeM,
+                                  letterSpacing: 1.5,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: SizeConfig.blockSizeVertical * 8,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => InputPage()));
-                            },
-                            child: Text(
-                              'Skip Log In',
-                              style: TextStyle(
-                                color: kLightGreyColor,
+                            SizedBox(
+                              height: SizeConfig.blockSizeVertical * 8,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => InputPage()));
+                              },
+                              child: Text(
+                                'Skip Log In',
+                                style: TextStyle(
+                                  color: kLightGreyColor,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 8,),
-                        ],
+                            SizedBox(height: 8,),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
