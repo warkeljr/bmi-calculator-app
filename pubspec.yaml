@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  introduction_screen: ^1.0.7
 
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.5.0
@@ -28,7 +29,7 @@ flutter:
 
   uses-material-design: true
   assets:
-    - images/angela.png
+    - images/
   fonts:
     - family: Rubik
       fonts:
@@ -41,5 +42,3 @@ flutter:
       fonts:
         - asset: assets/fonts/SF-Pro-Display-Bold.otf
           weight: 700 # Bold
-
-

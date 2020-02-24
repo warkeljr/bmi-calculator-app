@@ -32,12 +32,35 @@ class _RegisterPageState extends State<RegisterPage> {
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());
               },
-                          child: SafeArea(
+              child: SafeArea(
                   child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => InputPage()));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(30.0),
+                              child: Text(
+                                'Skip',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: kLightGreyColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                     SizedBox(
                       height: SizeConfig.blockSizeVertical * 5,
                     ),
@@ -67,7 +90,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              border: Border.all(color: kWhiteColor, width: 1.0),
+                              border:
+                                  Border.all(color: kWhiteColor, width: 1.0),
                               color: kActiveCardColor,
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10.0),
@@ -76,7 +100,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             width: SizeConfig.blockSizeHorizontal * 80,
                             child: Padding(
                               padding: EdgeInsets.only(
-                                  left: 10.0, top: 3.0, bottom: 3.0, right: 10.0),
+                                  left: 10.0,
+                                  top: 3.0,
+                                  bottom: 3.0,
+                                  right: 10.0),
                               child: TextField(
                                 keyboardType: TextInputType.emailAddress,
                                 onChanged: (value) {
@@ -100,7 +127,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              border: Border.all(color: kWhiteColor, width: 1.0),
+                              border:
+                                  Border.all(color: kWhiteColor, width: 1.0),
                               color: kActiveCardColor,
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10.0),
@@ -109,7 +137,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             width: SizeConfig.blockSizeHorizontal * 80,
                             child: Padding(
                               padding: EdgeInsets.only(
-                                  left: 10.0, top: 3.0, bottom: 3.0, right: 10.0),
+                                  left: 10.0,
+                                  top: 3.0,
+                                  bottom: 3.0,
+                                  right: 10.0),
                               child: TextField(
                                 obscureText: true,
                                 onChanged: (value) {
@@ -139,7 +170,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 'REGISTER',
                                 style: TextStyle(
                                     letterSpacing: 1.5,
-                                    fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                    fontSize:
+                                        SizeConfig.blockSizeVertical * 2.5,
                                     fontWeight: FontWeight.bold),
                               ),
                               color: kPinkColor,
@@ -151,14 +183,15 @@ class _RegisterPageState extends State<RegisterPage> {
                               onPressed: () async {
                                 try {
                                   setState(() => loading = true);
-                                  final newUser =
-                                      await _auth.createUserWithEmailAndPassword(
+                                  final newUser = await _auth
+                                      .createUserWithEmailAndPassword(
                                           email: email, password: password);
                                   if (newUser != null) {
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => HistoryPage()));
+                                            builder: (context) =>
+                                                HistoryPage()));
                                   }
                                 } catch (e) {
                                   print(e);
@@ -183,7 +216,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => LoginPage()));
@@ -200,20 +233,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           SizedBox(
                             height: SizeConfig.blockSizeVertical * 8,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => InputPage()));
-                            },
-                            child: Text(
-                              'Skip Sign up',
-                              style: TextStyle(
-                                color: kLightGreyColor,
-                              ),
-                            ),
                           ),
                         ],
                       ),

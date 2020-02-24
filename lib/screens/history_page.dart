@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -23,7 +23,6 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   void getCurrentUser() async {
-    final user = await _auth.currentUser();
     try {
       final user = await _auth.currentUser();
       if (user != null) {
@@ -34,7 +33,7 @@ class _HistoryPageState extends State<HistoryPage> {
     }
   }
 
-  final items = List<String>.generate(100, (i) => 'Item $i');
+  final items = List<String>.generate(50, (i) => 'Item $i');
 
   @override
   Widget build(BuildContext context) {

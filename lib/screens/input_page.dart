@@ -1,4 +1,4 @@
-import 'package:bmi_calculator_app/screens/splash_screen1.dart';
+import 'package:bmi_calculator_app/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -57,7 +57,7 @@ class _InputPageState extends State<InputPage> {
           IconButton(
             icon: Icon(Icons.print),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen1()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
             },
           ),
         ],

@@ -69,6 +69,8 @@ const kIconSize = 80.0;
 // Colors
 const kPrimaryColor = Color(0xFF0A0E21);
 const kActiveCardColor = Color(0xFF1D1E33);
+const kActiveCardColorLight = Color(0xFF2e3052);
+const kActiveCardColorDark = Color(0xFF090a10);
 const kInactiveCardColor = Color(0xFF111328);
 const kPinkColor = Color(0xFFEB1555);
 const kWhiteColor = Color(0xFFFAFAFA);

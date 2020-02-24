@@ -14,7 +14,7 @@ class BmiReferenceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: SizeConfig.blockSizeVertical * 12,
-      margin: EdgeInsets.all(10.0),
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
       padding: EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: BoxDecoration(
         color: colour,

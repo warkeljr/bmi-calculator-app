@@ -1,5 +1,6 @@
 import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
+import 'package:bmi_calculator_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
@@ -133,7 +134,7 @@ class ResultsPage extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
+                                        builder: (context) => RegisterPage()));
                               }
                             } catch (e) {
                               print(e);
@@ -152,23 +153,48 @@ class ResultsPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Container(
-                    margin: EdgeInsets.only(right: 5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.info),
-                          tooltip: 'BMI weight status',
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BmiWeightStatus()));
-                          },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Container(
+                        width: 50,
+                        height: 50,
+                        margin: EdgeInsets.only(right: 5.0),
+                        decoration: BoxDecoration(
+                          color: kActiveCardColor,
+                          borderRadius: BorderRadius.all(Radius.circular(99)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: kActiveCardColorDark,
+                              offset: Offset(5.0, 5.0),
+                              blurRadius: 15.0,
+                              spreadRadius: 1.0,
+                            ),
+                            BoxShadow(
+                              color: kActiveCardColorLight,
+                              offset: Offset(-5.0, -5.0),
+                              blurRadius: 15.0,
+                              spreadRadius: 1.0,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(FontAwesomeIcons.info),
+                              tooltip: 'BMI weight status',
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BmiWeightStatus()));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

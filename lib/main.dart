@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/input_page.dart';
+import 'screens/onboarding_screen.dart';
 
 
 void main() => runApp(BMICalculator());
@@ -20,7 +21,7 @@ class BMICalculator extends StatelessWidget {
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
-      home: InputPage(),
+      home: OnboardingScreen(),
     );
   }
 }
