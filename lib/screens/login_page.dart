@@ -176,8 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                                     setState(() {
                                       loading = true;
                                     });            
-                                    final user =
-                                        await _auth.signInWithEmailAndPassword(email: email, password: password);                
+                                    final user = await _auth.signInWithEmailAndPassword(email: email, password: password);                
                                     if (user != null) {              
                                       Navigator.pushReplacement(
                                           context,

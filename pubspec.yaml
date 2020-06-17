@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.5.0
-  firebase_core: ^0.4.0+9
+  firebase_core: ^0.4.2
   firebase_auth: ^0.14.0+9
   cloud_firestore: ^0.12.10
   flutter_spinkit: ^4.0.0

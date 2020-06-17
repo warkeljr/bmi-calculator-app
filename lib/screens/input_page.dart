@@ -14,6 +14,10 @@ import '../models/size_config.dart';
 import '../components/menus/side_menu.dart';
 
 
+//!!ALERT TESTING
+import '../components/alert/login_register_alert.dart';
+
+
 enum Gender {
   male,
   female,
@@ -57,7 +61,13 @@ class _InputPageState extends State<InputPage> {
           IconButton(
             icon: Icon(Icons.print),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
+              //!ALERT TESTING
+              showDialog(context: context, barrierDismissible: false,
+              builder: (BuildContext context) {
+                  return Alert();
+                } 
+              );
             },
           ),
         ],

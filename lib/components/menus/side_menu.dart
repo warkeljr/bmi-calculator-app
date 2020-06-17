@@ -22,7 +22,7 @@ class _SideMenuState extends State<SideMenu> {
   }
 
  void getCurrentUser() async {
-   final user = await _auth.currentUser();
+   //final user = await _auth.currentUser();
    try {
      final user = await _auth.currentUser();
      if (user != null) {

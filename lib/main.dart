@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'screens/input_page.dart';
+//import 'screens/input_page.dart';
 import 'screens/onboarding_screen.dart';
 
 

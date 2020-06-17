@@ -3,6 +3,7 @@ import 'package:bmi_calculator_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../constants/constants.dart';
 import '../models/size_config.dart';
@@ -21,6 +22,14 @@ class _RegisterPageState extends State<RegisterPage> {
   String password;
 
   bool loading = false;
+
+  var alertStyle = AlertStyle(
+    titleStyle: TextStyle(color: kWhiteColor, fontSize: 30, fontWeight: FontWeight.bold),
+    descStyle: TextStyle(color: kLightGreyColor, fontSize: 20),
+    backgroundColor: kActiveCardColor,
+    overlayColor: Colors.black87,
+    animationType: AnimationType.grow,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -194,6 +203,29 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 HistoryPage()));
                                   }
                                 } catch (e) {
+                                  Alert(
+                                      context: context,
+                                      type: AlertType.error,
+                                      style: alertStyle,
+                                      title: 'registration failed',
+                                      desc:
+                                          'This e-mail is already used, try again with another e-mail ',
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            'Try again',
+                                            style: TextStyle(
+                                                color: kWhiteColor,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterPage()));
+                                          },
+                                          //radius: BorderRadius.circular(50.0),
+                                          color: kPinkColor,
+                                        ),
+                                      ],
+                                    ).show();
                                   print(e);
                                   loading = false;
                                 }

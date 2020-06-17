@@ -10,7 +10,7 @@ import 'bmi_weight_status.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'login_page.dart';
+//import 'login_page.dart';
 
 
 class ResultsPage extends StatelessWidget {
