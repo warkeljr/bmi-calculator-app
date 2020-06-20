@@ -22,7 +22,7 @@ class ResultsPage extends StatelessWidget {
   final String bmiInterpretation;
 
   final _auth = FirebaseAuth.instance;
-  FirebaseUser loggedInUser;
+  
 
   final _firestore = Firestore.instance;
   
@@ -114,6 +114,7 @@ class ResultsPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           onPressed: () async {
+                            FirebaseUser loggedInUser;
                             try {
                               final user = await _auth.currentUser();
                               if (user != null) {
