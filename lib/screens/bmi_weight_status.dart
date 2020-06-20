@@ -14,8 +14,8 @@ class BmiWeightStatus extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Bmi', style: kLabelTextStyleL),
-          Text('Reference', style: kLabelTextStyleL),
+          const Text('Bmi', style: kLabelTextStyleL),
+          const Text('Reference', style: kLabelTextStyleL),
           SizedBox(
             height: kSizeBoxedHeightXXL,
           ),

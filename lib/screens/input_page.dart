@@ -71,7 +71,7 @@ class _InputPageState extends State<InputPage> {
             },
           ),
         ],
-        title: Text('BMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -124,7 +124,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'Height',
                     style: kLabelTextStyleXS,
                   ),
@@ -144,7 +144,7 @@ class _InputPageState extends State<InputPage> {
                       SizedBox(
                         width: 5.0,
                       ),
-                      Text(
+                      const Text(
                         'cm',
                         style: kLabelTextStyleXS,
                       ),
@@ -186,7 +186,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Weight',
                           style: kLabelTextStyleXS,
                         ),
@@ -234,7 +234,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Age',
                           style: kLabelTextStyleXS,
                         ),

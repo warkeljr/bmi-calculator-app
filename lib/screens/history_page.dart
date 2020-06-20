@@ -53,7 +53,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       MaterialPageRoute(builder: (context) => InputPage()));
                 })
           ],
-          title: Text('Your BMI History'),
+          title: const Text('Your BMI History'),
         ),
         body: ListView.builder(
           itemCount: items.length,

@@ -59,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(30.0),
-                              child: Text(
+                              child: const Text(
                                 'Skip',
                                 style: TextStyle(
                                   fontSize: 20,
@@ -77,11 +77,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
+                          const Text(
                             'Create',
                             style: kLabelTextStyleL,
                           ),
-                          Text(
+                          const Text(
                             'Account',
                             style: kLabelTextStyleL,
                           ),
@@ -212,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           'This e-mail is already used, try again with another e-mail ',
                                       buttons: [
                                         DialogButton(
-                                          child: Text(
+                                          child: const Text(
                                             'Try again',
                                             style: TextStyle(
                                                 color: kWhiteColor,
@@ -235,7 +235,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           SizedBox(
                             height: 30,
                           ),
-                          Text(
+                          const Text(
                             'Already have an account',
                             style: TextStyle(
                               color: kLightGreyColor,
@@ -253,7 +253,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   MaterialPageRoute(
                                       builder: (context) => LoginPage()));
                             },
-                            child: Text(
+                            child: const Text(
                               'Log in',
                               style: TextStyle(
                                 color: kPinkColor,

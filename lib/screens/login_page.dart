@@ -58,11 +58,11 @@ class _LoginPageState extends State<LoginPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
+                            const Text(
                               'Welcome',
                               style: kLabelTextStyleL,
                             ),
-                            Text(
+                            const Text(
                               'Back',
                               style: kLabelTextStyleL,
                             ),
@@ -158,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                               width: SizeConfig.blockSizeHorizontal * 80,
                               child: FlatButton(
                                 splashColor: Colors.pinkAccent,
-                                child: Text(
+                                child: const Text(
                                   'LOG IN',
                                   style: TextStyle(
                                       letterSpacing: 1.5,
@@ -197,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                                           'please try again with the correct credentials. If you do not have an account just create one for free.',
                                       buttons: [
                                         DialogButton(
-                                          child: Text(
+                                          child: const Text(
                                             'Try again',
                                             style: TextStyle(
                                                 color: kWhiteColor,
@@ -225,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                               onTap: () {
                                 // DO SOMETHING
                               },
-                              child: Text(
+                              child: const Text(
                                 'Forgot password?',
                                 style: TextStyle(
                                   color: kLightGreyColor,
@@ -237,7 +237,7 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 5,
                             ),
-                            Text(
+                            const Text(
                               'Don\'t have an account yet?',
                               style: TextStyle(
                                 color: kLightGreyColor,
@@ -255,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                                     MaterialPageRoute(
                                         builder: (context) => RegisterPage()));
                               },
-                              child: Text(
+                              child: const Text(
                                 'Sign up',
                                 style: TextStyle(
                                   color: kPinkColor,
@@ -275,7 +275,7 @@ class _LoginPageState extends State<LoginPage> {
                                     MaterialPageRoute(
                                         builder: (context) => InputPage()));
                               },
-                              child: Text(
+                              child: const Text(
                                 'Skip Log In',
                                 style: TextStyle(
                                   color: kLightGreyColor,

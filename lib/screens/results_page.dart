@@ -36,7 +36,7 @@ class ResultsPage extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,7 +44,7 @@ class ResultsPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              child: Text(
+              child: const Text(
                 'Your Result',
                 style: kLabelTextStyleL,
               ),
@@ -68,11 +68,11 @@ class ResultsPage extends StatelessWidget {
                   ),
                   Column(
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Normal BMI range',
                         style: kLabelTextStyleXS,
                       ),
-                      Text(
+                      const Text(
                         '18.5 - 25 kg/m2',
                         style: kLabelTextStyleM,
                       ),
@@ -100,7 +100,7 @@ class ResultsPage extends StatelessWidget {
                         child: FlatButton(
                           hoverColor: Colors.yellow,
                           splashColor: Colors.lightBlueAccent,
-                          child: Text(
+                          child: const Text(
                             'SAVE RESULT',
                             style: TextStyle(
                                 letterSpacing: 1.5,
@@ -147,7 +147,7 @@ class ResultsPage extends StatelessWidget {
                         height: SizeConfig.blockSizeVertical * 1,
                       ),
                       Container(
-                        child: Text(
+                        child: const Text(
                           'Requires user account!',
                           style: kLabelTextStyleXXS,
                         ),
@@ -211,7 +211,7 @@ class ResultsPage extends StatelessWidget {
                 top: 10.0,
               ),
               child: Center(
-                child: Text(
+                child: const Text(
                   'RE-CALCULATE',
                   style: TextStyle(
                     fontSize: kFontSizeM,
