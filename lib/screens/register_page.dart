@@ -1,12 +1,16 @@
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:bmi_calculator_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+import 'package:bmi_calculator_app/services/auth.dart';
 import '../constants/constants.dart';
 import '../models/size_config.dart';
+
+import '../services/auth.dart';
+
 import 'history_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -15,7 +19,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _auth = FirebaseAuth.instance;
+  final AuthBase _auth = AuthService();
 
   //String username;
   String email;
@@ -192,9 +196,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               onPressed: () async {
                                 try {
                                   setState(() => loading = true);
-                                  final newUser = await _auth
-                                      .createUserWithEmailAndPassword(
-                                          email: email, password: password);
+                                  dynamic newUser = await _auth
+                                      .createUserWithEmailAndPassword(email, password);
                                   if (newUser != null) {
                                     Navigator.pushReplacement(
                                         context,

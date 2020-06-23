@@ -11,6 +11,10 @@ class SizeConfig {
   static double _safeAreaVertical;
   static double _safeBlockHorizontal;
   static double _safeBlockVertical;
+  
+  double sfBlockHor = _safeBlockHorizontal;
+  double sfBlockVer = _safeBlockVertical;
+    
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
@@ -18,6 +22,8 @@ class SizeConfig {
     screenHeight = _mediaQueryData.size.height;
     blockSizeHorizontal = screenWidth / 100;
     blockSizeVertical = screenHeight / 100;
+
+     
 
     _safeAreaHorizontal = _mediaQueryData.padding.left + _mediaQueryData.padding.right;
     _safeAreaVertical = _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
