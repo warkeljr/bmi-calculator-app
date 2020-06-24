@@ -1,13 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class User {
+  User({@required this.uid, this. email});
   final String uid;
-  User({this.uid});
+  final String email;
+  
 }
 
 abstract class AuthBase {
 
+  Future currentUser();
   Future signInAnonymously();
+  Future signInWithEmailAndPassword(String email, String password);
   Future createUserWithEmailAndPassword(String email, String password);
   Future signOut();
 
@@ -20,7 +25,12 @@ class AuthService extends AuthBase {
   // Create user obj for FirebaseUser
 
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+    return user != null ? User(uid: user.uid, email: user.email) : null;
+  }
+  @override
+  Future currentUser() async {
+    final user = await _auth.currentUser();
+    return _userFromFirebaseUser(user);
   }
 
   // Sign in anonymously
@@ -37,7 +47,16 @@ class AuthService extends AuthBase {
   }
 
   // Sign in with email & password
-
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password); 
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch(e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
   // Register with email & password
   Future createUserWithEmailAndPassword(String email, String password) async {

@@ -2,13 +2,15 @@ import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:bmi_calculator_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 
 import '../constants/constants.dart';
 import '../models/size_config.dart';
+import '../services/auth.dart';
+
 
 
 class LoginPage extends StatefulWidget {
@@ -19,7 +21,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  final _auth = FirebaseAuth.instance;
+  
+
+  final AuthBase _auth = AuthService();
 
   String email;
   String password;
@@ -176,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                                     setState(() {
                                       loading = true;
                                     });            
-                                    final user = await _auth.signInWithEmailAndPassword(email: email, password: password);                
+                                    final user = await _auth.signInWithEmailAndPassword(email, password);                
                                     if (user != null) {              
                                       Navigator.pushReplacement(
                                           context,

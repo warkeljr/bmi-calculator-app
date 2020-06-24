@@ -13,9 +13,9 @@ class Loading extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SpinKitRing(
+            SpinKitFadingCircle(
               color: kWhiteColor,
-              size: 50,
+              size: 80,
             ),
             SizedBox(
               height: 20.0,

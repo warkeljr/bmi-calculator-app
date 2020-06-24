@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../services/auth.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -11,28 +12,31 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  final _auth = FirebaseAuth.instance;
-  FirebaseUser loggedInUser;
+  final AuthBase _auth = AuthService();
 
-  //final _firestore = Firestore.instance;
+ User _user;
 
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
-  }
+ @override
+ void initState() { 
+   super.initState();
+   _checkCurrentUser();
+ }
 
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser();
-      if (user != null) {
-        loggedInUser = user;
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+ Future<void> _checkCurrentUser() async {
+   User user = await _auth.currentUser();
+   _updateUser(user);
+   print('The current logged in user = ${user.email}');
+   print('The current logged in user = ${user.uid}');
+ }
 
+ void _updateUser(User user) {
+   setState(() {
+     _user = user;
+   });
+ }
+
+
+ 
   final items = List<String>.generate(50, (i) => 'Item $i');
 
   @override
@@ -49,6 +53,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 icon: Icon(FontAwesomeIcons.signOutAlt),
                 onPressed: () {
                   _auth.signOut();
+                  
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => InputPage()));
                 })
