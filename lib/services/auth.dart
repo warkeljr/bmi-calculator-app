@@ -1,12 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bmi_calculator_app/models/user.dart';
 
-class User {
-  User({@required this.uid, this. email});
-  final String uid;
-  final String email;
-  
-}
+
 
 abstract class AuthBase {
 
@@ -25,8 +20,9 @@ class AuthService extends AuthBase {
   // Create user obj for FirebaseUser
 
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid, email: user.email) : null;
+    return user != null ? User(uid: user.uid,) : null;
   }
+   
   @override
   Future currentUser() async {
     final user = await _auth.currentUser();
