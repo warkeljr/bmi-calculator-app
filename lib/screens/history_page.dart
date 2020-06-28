@@ -69,20 +69,29 @@ class _HistoryPageState extends State<HistoryPage> {
             return Dismissible(
               background: Container(
                 color: Colors.red,
-                child: Center(
-                  child: Text(
-                    'Delete',
-                    textAlign: TextAlign.end,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
-                ),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.end,
+                   children: [
+                     Text(
+                        'Delete',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                      ),
+                   ],
+                 ),
               ),
               key: Key(item),
               onDismissed: (direction) {
                 setState(() {
                   items.removeAt(index);
                   print('there all ${items.length} left');
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Item dismissed')));
+                  Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Item removed', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                      duration: Duration(seconds: 1),
+                      backgroundColor: kPinkColor,
+                    ),
+                  );
                 });
               },
               direction: DismissDirection.endToStart,
