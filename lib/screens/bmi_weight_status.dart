@@ -27,8 +27,7 @@ class BmiWeightStatus extends StatelessWidget {
                 BmiReferenceCard(
                   colour: kBmiBlueDark,
                   indicator: '< 16',
-                  explanation: 'Very serious underweight',
-                ),
+                  explanation: 'Very serious underweight'),
                 BmiReferenceCard(
                     colour: kBmiBlueMiddle,
                     indicator: '16.0 - 16.9',
