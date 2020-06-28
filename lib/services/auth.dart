@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bmi_calculator_app/models/user.dart';
 
-
-
 abstract class AuthBase {
 
   Future currentUser();
