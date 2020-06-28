@@ -8,6 +8,7 @@ import 'package:bmi_calculator_app/models/user.dart';
 import '../services/auth.dart';
 
 import 'package:flutter/foundation.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -48,7 +49,7 @@ class _HistoryPageState extends State<HistoryPage> {
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.pop(context, true);
+                Navigator.pop(context);
               }),
           actions: <Widget>[
             IconButton(
@@ -56,7 +57,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 onPressed: () {
                   _auth.signOut();
 
-                  Navigator.push(context,
+                  Navigator.pop(context,
                       MaterialPageRoute(builder: (context) => InputPage()));
                 })
           ],
@@ -68,17 +69,23 @@ class _HistoryPageState extends State<HistoryPage> {
             final item = items[index];
             return Dismissible(
               background: Container(
+                padding: EdgeInsets.only(right: 30),
                 color: Colors.red,
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.end,
-                   children: [
-                     Text(
-                        'Delete',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                   ],
-                 ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    // Text(
+                    //   'Delete',
+                    //   textAlign: TextAlign.right,
+                    //   style:
+                    //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    // ),
+                    SizedBox(
+                      width: SizeConfig.blockSizeVertical * 2,
+                    ),
+                    Icon(Icons.delete, size: 30,),
+                  ],
+                ),
               ),
               key: Key(item),
               onDismissed: (direction) {
@@ -87,7 +94,13 @@ class _HistoryPageState extends State<HistoryPage> {
                   print('there all ${items.length} left');
                   Scaffold.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Item removed', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                      content: Text(
+                        'Item removed',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
                       duration: Duration(seconds: 1),
                       backgroundColor: kPinkColor,
                     ),
