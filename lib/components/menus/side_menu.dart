@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
+import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -67,7 +68,7 @@ class _SideMenuState extends State<SideMenu> {
                           future: FirebaseAuth.instance.currentUser(),
                         builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
                             if (snapshot.hasData) {
-                              return Text('Welcom....');
+                              return Text('Welcome');
                             }
                             else {
                               return Text('Not logged in');
@@ -139,8 +140,8 @@ class _SideMenuState extends State<SideMenu> {
               style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
             ),
             onTap: () {
-//              Navigator.push(
-//                  context, MaterialPageRoute(builder: (context) => InfoPage()));
+             Navigator.push(
+                 context, MaterialPageRoute(builder: (context) => BmiWeightStatus()));
             },
           ),
           ListTile(

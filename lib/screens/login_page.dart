@@ -279,12 +279,33 @@ class _LoginPageState extends State<LoginPage> {
                                   iconSize: 30,
                                 ),
                                 IconButton(
-                                  icon: Icon(FontAwesomeIcons.twitter),
-                                  onPressed: () {},
+                                  icon: Icon(
+                                      FontAwesomeIcons.solidQuestionCircle),
+                                  onPressed: () async {
+                                    setState(() {
+                                      loading = true;
+                                    });
+
+                                    dynamic result =
+                                        await _auth.signInAnonymously();
+                                    if (result == null) {
+                                      print('Signin anonymous failed');
+                                    } else {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HistoryPage()));
+                                                  print('Anonymous logged in');
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                    }
+                                  },
                                   iconSize: 30,
                                 ),
                                 IconButton(
-                                  icon: Icon(FontAwesomeIcons.github),
+                                  icon: Icon(FontAwesomeIcons.apple),
                                   onPressed: () {},
                                   iconSize: 30,
                                 ),
