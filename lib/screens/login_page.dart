@@ -1,28 +1,23 @@
 import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:bmi_calculator_app/screens/register_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../constants/constants.dart';
 import '../models/size_config.dart';
 import '../services/auth.dart';
 
-
-
 class LoginPage extends StatefulWidget {
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-
-  
-
   final AuthBase _auth = AuthService();
 
   String email;
@@ -33,21 +28,23 @@ class _LoginPageState extends State<LoginPage> {
   //bool _hasInputError = false;
 
   var alertStyle = AlertStyle(
-    titleStyle: TextStyle(color: kWhiteColor, fontSize: 30, fontWeight: FontWeight.bold),
+    titleStyle: TextStyle(
+        color: kWhiteColor, fontSize: 30, fontWeight: FontWeight.bold),
     descStyle: TextStyle(color: kLightGreyColor, fontSize: 20),
     backgroundColor: kActiveCardColor,
     overlayColor: Colors.black87,
     animationType: AnimationType.grow,
   );
 
-  
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return loading ? Loading() : Scaffold(
+    return loading
+        ? Loading()
+        : Scaffold(
             body: GestureDetector(
-              onTap: () {FocusScope.of(context).requestFocus(new FocusNode());
+              onTap: () {
+                FocusScope.of(context).requestFocus(new FocusNode());
               },
               child: SafeArea(
                 child: SingleChildScrollView(
@@ -114,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 30,
+                              height: 20,
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -156,7 +153,23 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 30,
+                              height: 10,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // DO SOMETHING
+                              },
+                              child: const Text(
+                                'Forgot password?',
+                                style: TextStyle(
+                                  color: kLightGreyColor,
+                                  fontSize: kFontSizeXXS,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: SizeConfig.blockSizeVertical * 3,
                             ),
                             Container(
                               width: SizeConfig.blockSizeHorizontal * 80,
@@ -179,9 +192,11 @@ class _LoginPageState extends State<LoginPage> {
                                   try {
                                     setState(() {
                                       loading = true;
-                                    });            
-                                    final user = await _auth.signInWithEmailAndPassword(email, password);                
-                                    if (user != null) {              
+                                    });
+                                    final user =
+                                        await _auth.signInWithEmailAndPassword(
+                                            email, password);
+                                    if (user != null) {
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
@@ -208,7 +223,11 @@ class _LoginPageState extends State<LoginPage> {
                                                 fontSize: 20),
                                           ),
                                           onPressed: () {
-                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LoginPage()));
                                           },
                                           //radius: BorderRadius.circular(50.0),
                                           color: kPinkColor,
@@ -223,51 +242,88 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 20,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                // DO SOMETHING
-                              },
-                              child: const Text(
-                                'Forgot password?',
-                                style: TextStyle(
-                                  color: kLightGreyColor,
-                                  fontSize: kFontSizeXXS,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
                               height: SizeConfig.blockSizeVertical * 5,
                             ),
-                            const Text(
-                              'Don\'t have an account yet?',
-                              style: TextStyle(
-                                color: kLightGreyColor,
-                                fontSize: kFontSizeXS,
-                                letterSpacing: 0.5,
+                            Row(children: <Widget>[
+                              Expanded(
+                                child: new Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 40.0, right: 20.0),
+                                    child: Divider(
+                                      color: Colors.white,
+                                      height: 36,
+                                    )),
                               ),
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical * 1,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => RegisterPage()));
-                              },
-                              child: const Text(
-                                'Sign up',
-                                style: TextStyle(
-                                  color: kPinkColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: kFontSizeM,
-                                  letterSpacing: 1.5,
+                              Text("OR"),
+                              Expanded(
+                                child: new Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 20.0, right: 40.0),
+                                    child: Divider(
+                                      color: Colors.white,
+                                      height: 36,
+                                    )),
+                              ),
+                            ]),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  icon: Icon(FontAwesomeIcons.facebook),
+                                  onPressed: () {},
+                                  iconSize: 30,
                                 ),
-                              ),
+                                IconButton(
+                                  icon: Icon(FontAwesomeIcons.google),
+                                  onPressed: () {},
+                                  iconSize: 30,
+                                ),
+                                IconButton(
+                                  icon: Icon(FontAwesomeIcons.twitter),
+                                  onPressed: () {},
+                                  iconSize: 30,
+                                ),
+                                IconButton(
+                                  icon: Icon(FontAwesomeIcons.github),
+                                  onPressed: () {},
+                                  iconSize: 30,
+                                ),
+                              ],
+                            ),
+                            SizedBox(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Don\'t have an account?',
+                                  style: TextStyle(
+                                    color: kLightGreyColor,
+                                    fontSize: kFontSizeXXS,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: SizeConfig.blockSizeHorizontal * 1,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegisterPage()));
+                                  },
+                                  child: const Text(
+                                    'Register',
+                                    style: TextStyle(
+                                      color: kPinkColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: kFontSizeXXS,
+                                      letterSpacing: 1.5,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 8,
@@ -286,7 +342,9 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 8,),
+                            SizedBox(
+                              height: 8,
+                            ),
                           ],
                         ),
                       ),
