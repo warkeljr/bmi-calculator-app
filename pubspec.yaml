@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^0.12.10
   flutter_spinkit: ^4.0.0
   rflutter_alert: ^1.0.3
+  google_sign_in: ^4.5.1
 
 dev_dependencies:
   flutter_test:

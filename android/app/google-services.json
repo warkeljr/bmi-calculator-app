@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1047466522719-kfu2t6b3rho3a105pr8o9lg4md18f7bq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nl.dutchappfactory.bmi_calculator_app",
+            "certificate_hash": "04c2ab555c2aedf23eb94567d18b5cc1be6eef17"
+          }
+        },
+        {
           "client_id": "1047466522719-4c5ilneog13ggvpm2o22vgpl99pah1hi.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "1047466522719-4c5ilneog13ggvpm2o22vgpl99pah1hi.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1047466522719-dr1686c9ahr0o1q2felv4m37jk62m7mk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "nl.dutchappfactory.bmiCalculatorApp"
+              }
             }
           ]
         }

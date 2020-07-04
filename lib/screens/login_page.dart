@@ -275,7 +275,11 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 IconButton(
                                   icon: Icon(FontAwesomeIcons.google),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _auth.signInWithGoogle().whenComplete(() {
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HistoryPage()));
+                                    });
+                                  },
                                   iconSize: 30,
                                 ),
                                 IconButton(
