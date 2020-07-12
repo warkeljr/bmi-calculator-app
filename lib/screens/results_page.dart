@@ -115,11 +115,14 @@ class ResultsPage extends StatelessWidget {
                           ),
                           onPressed: () async {
                             FirebaseUser loggedInUser;
+                            print('the user before the try and catch bock is ${loggedInUser}');
                             try {
                               final user = await _auth.currentUser();
                               if (user != null) {
                                 loggedInUser = user;
+                                print(user);
                                 final uid = await getCurrentUID();
+                                print(uid);
                                 _firestore.collection('userData').document(uid).collection('bmiResults').add({
                                   'result': bmiResult,
                                   'result_text': bmiResultText,
