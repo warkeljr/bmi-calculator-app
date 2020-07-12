@@ -270,28 +270,7 @@ class _LoginPageState extends State<LoginPage> {
                                 children: [
                                   IconButton(
                                     icon: Icon(FontAwesomeIcons.google),
-                                    onPressed: () async {
-                                      Future user = _auth.currentUser();
-                                      try {
-                                        setState(() {
-                                          loading = true;
-                                        });
-                                        if (user != null) {
-                                          await _auth.signInWithGoogle().whenComplete(() {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        HistoryPage()));
-                                            setState(() {
-                                              loading = false;
-                                            });
-                                          });
-                                        }
-                                      } catch(e) {
-                                        print('Error sign in with Google, message ${e}');
-                                      }
-                                    },
+                                    onPressed: () async {},
                                     iconSize: 30,
                                   ),
                                   IconButton(
