@@ -1,48 +1,26 @@
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
+import 'package:bmi_calculator_app/models/user.dart';
 
-class SideMenu extends StatefulWidget {
-  @override
-  _SideMenuState createState() => _SideMenuState();
-}
-
-class _SideMenuState extends State<SideMenu> {
-  final _auth = FirebaseAuth.instance;
-  
- FirebaseUser loggedInUser;
-
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
-  }
-
- void getCurrentUser() async {
-   //final user = await _auth.currentUser();
-   try {
-     final user = await _auth.currentUser();
-     if (user != null) {
-       loggedInUser = user;
-       print(loggedInUser.email);
-     }
-   } catch (e) {
-     print(e);
-   }
- }
+class Sidemenu extends StatelessWidget {
+  final AuthBase _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+
+
     return Drawer(
       child: ListView(
         children: <Widget>[
           Container(
             height: 100.0,
-            //color: kPinkColor,
             child: DrawerHeader(
               decoration: BoxDecoration(
                 color: kPinkColor,
@@ -64,16 +42,9 @@ class _SideMenuState extends State<SideMenu> {
 //                    ),
                     Flexible(
                       flex: 3,
-                      child: FutureBuilder(
-                          future: FirebaseAuth.instance.currentUser(),
-                        builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
-                            if (snapshot.hasData) {
-                              return Text('Welcome');
-                            }
-                            else {
-                              return Text('Not logged in');
-                            }
-                        },
+                      child: Center(
+                        child: 
+                       user != null ? Text('Logged in') : Text('logged out'),
                       ),
                     ),
                   ],
@@ -88,8 +59,6 @@ class _SideMenuState extends State<SideMenu> {
               style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
             ),
             onTap: () {
-//              Navigator.push(
-//                  context, MaterialPageRoute(builder: (context) => LoginPage()));
             },
           ),
           ListTile(
@@ -98,9 +67,7 @@ class _SideMenuState extends State<SideMenu> {
               'BMI History',
               style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
             ),
-            onTap: () {
-              
-            },
+            onTap: () {},
           ),
           SizedBox(
             height: 40.0,
@@ -140,8 +107,8 @@ class _SideMenuState extends State<SideMenu> {
               style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
             ),
             onTap: () {
-             Navigator.push(
-                 context, MaterialPageRoute(builder: (context) => BmiWeightStatus()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BmiWeightStatus()));
             },
           ),
           ListTile(

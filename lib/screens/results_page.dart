@@ -1,14 +1,18 @@
-import 'package:bmi_calculator_app/screens/history_page.dart';
-import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
+
+//import 'dart:js';
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+
+import 'package:bmi_calculator_app/screens/history_page.dart';
+import 'package:bmi_calculator_app/screens/login_page.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
+import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
-import 'bmi_weight_status.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bmi_calculator_app/models/user.dart';
+
 
 //import 'login_page.dart';
 
@@ -21,8 +25,8 @@ class ResultsPage extends StatelessWidget {
   final String bmiResult;
   final String bmiInterpretation;
 
-  final _auth = FirebaseAuth.instance;
-  
+//  final _auth = FirebaseAuth.instance;
+  final AuthBase _auth = AuthService();
 
   final _firestore = Firestore.instance;
   
@@ -31,8 +35,12 @@ class ResultsPage extends StatelessWidget {
     return (await _auth.currentUser()).uid;
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+    print(user);
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -114,15 +122,12 @@ class ResultsPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           onPressed: () async {
-                            FirebaseUser loggedInUser;
-                            print('the user before the try and catch bock is ${loggedInUser}');
+                            User loggedInUser;
                             try {
                               final user = await _auth.currentUser();
                               if (user != null) {
                                 loggedInUser = user;
-                                print(user);
                                 final uid = await getCurrentUID();
-                                print(uid);
                                 _firestore.collection('userData').document(uid).collection('bmiResults').add({
                                   'result': bmiResult,
                                   'result_text': bmiResultText,
@@ -157,49 +162,6 @@ class ResultsPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Container(
-                        width: 50,
-                        height: 50,
-                        margin: EdgeInsets.only(right: 5.0),
-                        decoration: BoxDecoration(
-                          color: kActiveCardColor,
-                          borderRadius: BorderRadius.all(Radius.circular(99)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: kActiveCardColorDark,
-                              offset: Offset(5.0, 5.0),
-                              blurRadius: 15.0,
-                              spreadRadius: 1.0,
-                            ),
-                            BoxShadow(
-                              color: kActiveCardColorLight,
-                              offset: Offset(-5.0, -5.0),
-                              blurRadius: 15.0,
-                              spreadRadius: 1.0,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(FontAwesomeIcons.info),
-                              tooltip: 'BMI weight status',
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => BmiWeightStatus()));
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
@@ -217,7 +179,7 @@ class ResultsPage extends StatelessWidget {
                 child: const Text(
                   'RE-CALCULATE',
                   style: TextStyle(
-                    fontSize: kFontSizeM,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

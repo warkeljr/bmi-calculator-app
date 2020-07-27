@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/screens/input_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,7 +31,6 @@ class _HistoryPageState extends State<HistoryPage> {
   Future<void> _checkCurrentUser() async {
     User user = await _auth.currentUser();
     _updateUser(user);
-    print('The current logged in user = ${user.uid}');
   }
 
   void _updateUser(User user) {
@@ -61,7 +62,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       MaterialPageRoute(builder: (context) => InputPage()));
                 })
           ],
-          title: const Text('Your BMI History'),
+          title: Text('History'),
         ),
         body: ListView.builder(
           itemCount: items.length,

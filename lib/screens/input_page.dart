@@ -1,21 +1,17 @@
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
-import 'results_page.dart';
-
-import '../components/cards/reusable_card.dart';
-import '../components/icons/icon_content.dart';
-import '../constants/constants.dart';
-import '../models/calculator_brain.dart';
-import '../components/buttons/buttons.dart';
-import '../models/size_config.dart';
-import '../components/menus/side_menu.dart';
-
-
-//!!ALERT TESTING
-import '../components/alert/login_register_alert.dart';
+import 'package:bmi_calculator_app/screens/results_page.dart';
+import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
+import 'package:bmi_calculator_app/components/icons/icon_content.dart';
+import 'package:bmi_calculator_app/components/buttons/buttons.dart';
+import 'package:bmi_calculator_app/components/menus/side_menu.dart';
+import 'package:bmi_calculator_app/components/alert/login_register_alert.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/models/calculator_brain.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
 
 
 enum Gender {
@@ -27,7 +23,6 @@ class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
-
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
@@ -63,11 +58,12 @@ class _InputPageState extends State<InputPage> {
             onPressed: () {
               //Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
               //!ALERT TESTING
-              showDialog(context: context, barrierDismissible: false,
-              builder: (BuildContext context) {
-                  return Alert();
-                } 
-              );
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext context) {
+                    return Alert();
+                  });
             },
           ),
         ],
@@ -78,45 +74,45 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Expanded(
               child: Row(
-                children: <Widget>[
-                  Container(
-                    width: SizeConfig.blockSizeHorizontal * 50,
-                    height: SizeConfig.blockSizeVertical * 25,
-                    child: ReusableCard(
-                      onPress: () {
-                        setState(() {
-                          selectedGender = Gender.male;
-                        });
-                      },
-                      colour: selectedGender == Gender.male
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'Male',
-                      ),
-                    ),
+            children: <Widget>[
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 50,
+                height: SizeConfig.blockSizeVertical * 25,
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  colour: selectedGender == Gender.male
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'Male',
                   ),
-                  Container(
-                    width: SizeConfig.blockSizeHorizontal * 50,
-                    height: SizeConfig.blockSizeVertical * 25,
-                    child: ReusableCard(
-                      onPress: () {
-                        setState(() {
-                          selectedGender = Gender.female;
-                        });
-                      },
-                      colour: selectedGender == Gender.female
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'Female',
-                      ),
-                    ),
+                ),
+              ),
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 50,
+                height: SizeConfig.blockSizeVertical * 25,
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  colour: selectedGender == Gender.female
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'Female',
                   ),
-                ],
-              )),
+                ),
+              ),
+            ],
+          )),
           Expanded(
             flex: 1,
             child: ReusableCard(
@@ -154,7 +150,7 @@ class _InputPageState extends State<InputPage> {
                     data: SliderTheme.of(context).copyWith(
                       thumbShape: RoundSliderThumbShape(
                           enabledThumbRadius:
-                          SizeConfig.blockSizeVertical * 2.5),
+                              SizeConfig.blockSizeVertical * 2.5),
                       overlayShape: RoundSliderOverlayShape(
                           overlayRadius: SizeConfig.blockSizeVertical * 4.5),
                       overlayColor: kPinkOverlayColor,
@@ -282,17 +278,16 @@ class _InputPageState extends State<InputPage> {
           GestureDetector(
             onTap: () {
               CalculatorBrain calc =
-              CalculatorBrain(height: height, weight: weight);
+                  CalculatorBrain(height: height, weight: weight);
 
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => ResultsPage(
-                        bmiResult: calc.calculateBMI(),
-                        bmiResultText: calc.getResult(),
-                        bmiInterpretation: calc.interpretation(),
-                      )));
-              //timeStampForSavedValues();
+                            bmiResult: calc.calculateBMI(),
+                            bmiResultText: calc.getResult(),
+                            bmiInterpretation: calc.interpretation(),
+                          )));
             },
             child: Container(
               color: kPinkColor,
@@ -300,13 +295,10 @@ class _InputPageState extends State<InputPage> {
                 top: 10.0,
               ),
               child: Center(
-                child: FadeAnimatedTextKit(
-                  duration: Duration(seconds: 5),
-                  text:['CALCULATE YOUR BMI'],
-                  textStyle: TextStyle(
-                    fontSize: kFontSizeM,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: const Text(
+                  'CALCULATE BMI',
+                  style: TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ),
               width: double.infinity,
@@ -316,7 +308,7 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-      drawer: SideMenu(),
+      drawer: Sidemenu(),
     );
   }
 }

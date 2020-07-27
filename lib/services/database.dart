@@ -6,7 +6,7 @@ class DatabaseService {
 
   // Collection reference
 
-  final CollectionReference bmiresults =
+  final CollectionReference bmiresults = 
       Firestore.instance.collection('bmiResults');
 
   Future updateUserData(

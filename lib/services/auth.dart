@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:bmi_calculator_app/models/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'package:bmi_calculator_app/models/user.dart';
 
 abstract class AuthBase {
   Future currentUser();
@@ -18,11 +19,11 @@ class AuthService implements AuthBase {
   // Create user obj for FirebaseUser
 
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null
-        ? User(
-            uid: user.uid,
-          )
-        : null;
+    return user != null ? User(uid: user.uid) : null;
+  }
+  
+  Stream<User> get user{
+     return _auth.onAuthStateChanged.map((FirebaseUser user) => _userFromFirebaseUser(user));
   }
 
   @override
@@ -73,8 +74,8 @@ class AuthService implements AuthBase {
   // Sign in with google sign in
   Future<String> signInWithGoogle() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+    final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleSignInAuthentication.accessToken,
       idToken: googleSignInAuthentication.idToken,
