@@ -297,7 +297,7 @@ class _LoginPageState extends State<LoginPage> {
                                       print('Error signing in');
                                     } else {
                                       print('Signed in');
-                                      print(result.uid);
+                                      print('This is the uid from the login page: $result.uid');
                                       setState(() {
                                         loading = true;
                                       });

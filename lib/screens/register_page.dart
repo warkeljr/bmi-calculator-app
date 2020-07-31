@@ -1,17 +1,14 @@
-import 'package:bmi_calculator_app/screens/input_page.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
-import 'package:flutter/material.dart';
 
-import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
+import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
+import 'package:bmi_calculator_app/screens/input_page.dart';
+import 'package:bmi_calculator_app/screens/login_page.dart';
+import 'package:bmi_calculator_app/screens/history_page.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
-import '../constants/constants.dart';
-import '../models/size_config.dart';
-
-import '../services/auth.dart';
-
-import 'history_page.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
 
 class RegisterPage extends StatefulWidget {
   @override

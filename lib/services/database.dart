@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
   final String uid;
+
   DatabaseService({this.uid});
 
   // Collection reference
 
-  final CollectionReference bmiresults = 
-      Firestore.instance.collection('bmiResults');
+  final CollectionReference bmiresults =
+      Firestore.instance.collection('BMIHistory');
 
   Future updateUserData(
       String bmiResultText, String bmiResult, String bmiInterpretation) async {
@@ -16,5 +17,10 @@ class DatabaseService {
       'bmiResult': bmiResult,
       'bmiInterpretation': bmiInterpretation
     });
+  }
+
+  // Get bmiresults stream
+  Stream<QuerySnapshot> get BMIHistory {
+    return bmiresults.snapshots();
   }
 }

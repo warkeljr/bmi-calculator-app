@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:bmi_calculator_app/models/user.dart';
+import 'package:bmi_calculator_app/services/database.dart';
 
 abstract class AuthBase {
   Future currentUser();
@@ -64,6 +65,9 @@ class AuthService implements AuthBase {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+
+      // create new document for the user with the uid
+      await DatabaseService(uid: user.uid).updateUserData('BMI ok', '90', 'Slightly underweight');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
