@@ -11,7 +11,7 @@ The various logins are:
 - email and password
 - anonymous
 - sign in with a google account
-- sign in with  your facebook account
+- sign in with  your facebook account "Will due to stability not implemented"
 
 Working on login with Apple
 
