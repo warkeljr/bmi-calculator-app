@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 

@@ -10,7 +10,6 @@ import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/models/user.dart';
 
-//import 'login_page.dart';
 
 class ResultsPage extends StatelessWidget {
   ResultsPage(
@@ -114,48 +113,38 @@ class ResultsPage extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0),
                           ),
-                          onPressed: () {
-                            if (user == null) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LoginPage()));
-                            } else {
-                              print('This is the uid from the results page: $user.uid');
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HistoryPage()));
+                          onPressed: () async {
+                            User loggedInUser;
+                            try {
+                              final user = await _auth.currentUser();
+                              if (user != null) {
+                                loggedInUser = user;
+                                final uid = await getCurrentUID();
+                                _firestore
+                                    .collection('userData')
+                                    .document(uid)
+                                    .collection('bmiResults')
+                                    .add({
+                                  'result': bmiResult,
+                                  'result_text': bmiResultText,
+                                  'user_email': loggedInUser.email,
+                                  'date': Timestamp.now(),
+                                  'interpretation': bmiInterpretation,
+                                });
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HistoryPage()));
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()));
+                              }
+                            } catch (e) {
+                              print(e);
                             }
                           },
-//                          onPressed: () async {
-//                            User loggedInUser;
-//                            try {
-//                              final user = await _auth.currentUser();
-//                              if (user != null) {
-//                                loggedInUser = user;
-//                                final uid = await getCurrentUID();
-//                                _firestore.collection('userData').document(uid).collection('bmiResults').add({
-//                                  'result': bmiResult,
-//                                  'result_text': bmiResultText,
-//                                  'user_email': loggedInUser.email,
-//                                  'date': Timestamp.now(),
-//                                  'interpretation': bmiInterpretation,
-//                                });
-//                                Navigator.push(
-//                                    context,
-//                                    MaterialPageRoute(
-//                                        builder: (context) => HistoryPage()));
-//                              } else {
-//                                Navigator.push(
-//                                    context,
-//                                    MaterialPageRoute(
-//                                        builder: (context) => LoginPage()));
-//                              }
-//                            } catch (e) {
-//                              print(e);
-//                            }
-//                          },
                         ),
                       ),
                       SizedBox(

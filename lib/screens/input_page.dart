@@ -1,5 +1,3 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -12,7 +10,6 @@ import 'package:bmi_calculator_app/components/alert/login_register_alert.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/calculator_brain.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
-
 
 enum Gender {
   male,
@@ -32,19 +29,19 @@ class _InputPageState extends State<InputPage> {
   int age = 26;
 
   void increaseWeight() {
-    weight = weight + 1;
+    weight++;
   }
 
   void decreaseWeight() {
-    weight = weight - 1;
+    weight--;
   }
 
   void increaseAge() {
-    age = age + 1;
+    age++;
   }
 
   void decreaseAge() {
-    age = age - 1;
+    age--;
   }
 
   @override
@@ -297,8 +294,7 @@ class _InputPageState extends State<InputPage> {
               child: Center(
                 child: const Text(
                   'CALCULATE BMI',
-                  style: TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ),
               width: double.infinity,

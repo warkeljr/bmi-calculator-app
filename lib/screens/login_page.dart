@@ -18,14 +18,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final AuthBase _auth = AuthService();
 
-
   String email;
   String password;
 
   bool loading = false;
-
-  //bool _hasInputError = false;
-
 
   Future<void> _showMyDialog() async {
     return showDialog<void>(
@@ -167,7 +163,6 @@ class _LoginPageState extends State<LoginPage> {
                                     border: InputBorder.none,
                                     hintText: 'Password',
                                     hintStyle: TextStyle(letterSpacing: 1.5),
-                                    //errorText: _hasInputError ? "Password is to small" : null,
                                     icon: Icon(Icons.lock),
                                   ),
                                   style: TextStyle(

@@ -1,15 +1,12 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator_app/screens/input_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:bmi_calculator_app/constants/constants.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:bmi_calculator_app/models/user.dart';
-
-import '../services/auth.dart';
-
 import 'package:flutter/foundation.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:bmi_calculator_app/models/user.dart';
+import 'package:bmi_calculator_app/screens/input_page.dart';
+import 'package:bmi_calculator_app/services/auth.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -111,7 +108,11 @@ class _HistoryPageState extends State<HistoryPage> {
               direction: DismissDirection.endToStart,
               child: Card(
                 child: ListTile(
-                  //leading: FlutterLogo(size: 72.0),
+                  leading: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FlutterLogo(size: SizeConfig.blockSizeHorizontal * 10),
+                  ),
+                  contentPadding: EdgeInsets.all(4.0),
                   title: Text(
                     '${items[index]}',
                     style: TextStyle(
@@ -120,7 +121,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
                   ),
                   subtitle: Text(
-                    '12-10-2019',
+                    '12-10-2020',
                     style: TextStyle(
                       fontSize: kFontSizeM,
                     ),

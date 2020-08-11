@@ -24,6 +24,13 @@ class Loading extends StatelessWidget {
               'One moment please...',
               style: TextStyle(fontSize: 15.0, color: kWhiteColor),
             ),
+            SizedBox(height: 20),
+            FlatButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+            ),
           ],
         ),
       ),

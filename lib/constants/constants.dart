@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 // Font sizes
-// Font sizes are configured by the size_config model
+// Sizes are configured by the size_config model
 const kFontSizeXXS = 12.0;
 const kFontSizeXS = 16.0;
 // Size 20 -> size_config 2.2
@@ -93,8 +93,6 @@ const kBmiOrangeDark = Color(0xFFFF6D00);
 const kBmiRed = Color(0xFFDD2C00);
 
 
-
-
 // SizedBox
 const kSizeBoxedHeightXS = 5.0;
 const kSizeBoxedWidthXS = 5.0;
@@ -108,6 +106,7 @@ const kSizeBoxedHeightXL = 25.0;
 const kSizeBoxedWidthXL = 25.0;
 const kSizeBoxedHeightXXL = 30.0;
 const kSizeBoxedWidthXXL = 30.0;
+
 
 // Container
 const kBottomContainerHeight = 80.0;
