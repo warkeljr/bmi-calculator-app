@@ -39,7 +39,10 @@ class OnboardingScreen extends StatelessWidget {
                 context, MaterialPageRoute(builder: (contect) => InputPage()));
           },
           showNextButton: true,
-          next: Icon(Icons.arrow_forward,size: 30.0),
+          next:
+
+
+          Icon(Icons.arrow_forward,size: 30.0),
           done: Text(
             'Done',
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),

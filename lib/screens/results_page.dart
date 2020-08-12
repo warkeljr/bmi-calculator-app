@@ -10,7 +10,6 @@ import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/models/user.dart';
 
-
 class ResultsPage extends StatelessWidget {
   ResultsPage(
       {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation});
