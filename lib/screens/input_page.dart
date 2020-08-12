@@ -214,7 +214,7 @@ class _InputPageState extends State<InputPage> {
                                   increaseWeight();
                                 });
                               },
-                            ),f
+                            ),
                           ],
                         ),
                       ],
