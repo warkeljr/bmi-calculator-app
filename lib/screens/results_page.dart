@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bmi_calculator_app/screens/history_page.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
-import 'package:bmi_calculator_app/constants/constants.dart';
-import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
-import 'package:bmi_calculator_app/services/auth.dart';
-import 'package:bmi_calculator_app/models/size_config.dart';
-import 'package:bmi_calculator_app/models/user.dart';
-import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
+import '../screens/history_page.dart';
+import '../screens/login_page.dart';
+import '../constants/constants.dart';
+import '../components/cards/reusable_card.dart';
+import '../services/auth.dart';
+import '../models/size_config.dart';
+import '../models/user.dart';
+import '../components/animations/screenTitleAnimation.dart';
 
 class ResultsPage extends StatefulWidget {
   ResultsPage(

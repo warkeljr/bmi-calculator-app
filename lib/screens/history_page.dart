@@ -1,14 +1,14 @@
-import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:bmi_calculator_app/models/user.dart';
-import 'package:bmi_calculator_app/screens/input_page.dart';
-import 'package:bmi_calculator_app/services/auth.dart';
-import 'package:bmi_calculator_app/constants/constants.dart';
-import 'package:bmi_calculator_app/models/size_config.dart';
+import '../models/user.dart';
+import '../screens/input_page.dart';
+import '../services/auth.dart';
+import '../constants/constants.dart';
+import '../models/size_config.dart';
+import '../components/animations/screenTitleAnimation.dart';
 
 class HistoryPage extends StatefulWidget {
   @override

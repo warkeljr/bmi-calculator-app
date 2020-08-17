@@ -1,7 +1,8 @@
 import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator_app/constants/constants.dart';
-import 'package:bmi_calculator_app/components/cards/bmiReference_card.dart';
+
+import '../constants/constants.dart';
+import '../components/cards/bmiReference_card.dart';
 
 
 class BmiWeightStatus extends StatelessWidget {

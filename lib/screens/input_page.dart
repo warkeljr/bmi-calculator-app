@@ -1,16 +1,16 @@
-import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:bmi_calculator_app/screens/results_page.dart';
-import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
-import 'package:bmi_calculator_app/components/icons/icon_content.dart';
-import 'package:bmi_calculator_app/components/buttons/buttons.dart';
-import 'package:bmi_calculator_app/components/menus/side_menu.dart';
-import 'package:bmi_calculator_app/components/alert/login_register_alert.dart';
-import 'package:bmi_calculator_app/constants/constants.dart';
-import 'package:bmi_calculator_app/models/calculator_brain.dart';
-import 'package:bmi_calculator_app/models/size_config.dart';
+import '../screens/results_page.dart';
+import '../components/cards/reusable_card.dart';
+import '../components/icons/icon_content.dart';
+import '../components/buttons/buttons.dart';
+import '../components/menus/side_menu.dart';
+import '../components/alert/login_register_alert.dart';
+import '../constants/constants.dart';
+import '../models/calculator_brain.dart';
+import '../models/size_config.dart';
+import '../components/animations/screenTitleAnimation.dart';
 
 enum Gender {
   male,

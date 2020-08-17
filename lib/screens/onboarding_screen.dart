@@ -1,10 +1,10 @@
-import 'dart:ui';
-
-import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:introduction_screen/introduction_screen.dart';
 
-import 'input_page.dart';
+import '../screens/input_page.dart';
+import '../constants/constants.dart';
+
 
 class OnboardingScreen extends StatelessWidget {
   List<PageViewModel> getPages() {
