@@ -9,6 +9,7 @@ import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
+import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -60,6 +61,10 @@ class _LoginPageState extends State<LoginPage> {
     animationType: AnimationType.grow,
   );
 
+  Tween<double> _scaleTween =Tween<double>(begin: 0, end: 1);
+  Duration _scaleDuration = Duration(milliseconds: 1000);
+  Curve _curve = Curves.elasticOut;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -83,14 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            const Text(
-                              'Welcome',
-                              style: kLabelTextStyleL,
-                            ),
-                            const Text(
-                              'Back',
-                              style: kLabelTextStyleL,
-                            ),
+                            ScreenTitle(text:'Welcome'),
+                            ScreenTitle(text:'Back'),
                           ],
                         ),
                       ),
@@ -190,46 +189,54 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 3,
                             ),
-                            Container(
-                              width: SizeConfig.blockSizeHorizontal * 80,
-                              child: FlatButton(
-                                splashColor: Colors.pinkAccent,
-                                child: const Text(
-                                  'LOG IN',
-                                  style: TextStyle(
-                                      letterSpacing: 1.5,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                color: kPinkColor,
-                                textColor: kWhiteColor,
-                                padding: EdgeInsets.symmetric(vertical: 15.0),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                onPressed: () async {
-                                  try {
-                                    setState(() {
-                                      loading = true;
-                                    });
-                                    final user =
-                                        await _auth.signInWithEmailAndPassword(
-                                            email, password);
-                                    if (user != null) {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HistoryPage()));
+                            TweenAnimationBuilder(
+                              curve: _curve,
+                              tween: _scaleTween,
+                              duration: Duration(milliseconds: 1500),
+                              builder: (context, scale, child) {
+                                return Transform.scale(scale: scale, child: child,);
+                              },
+                              child: Container(
+                                width: SizeConfig.blockSizeHorizontal * 80,
+                                child: FlatButton(
+                                  splashColor: Colors.pinkAccent,
+                                  child: const Text(
+                                    'LOG IN',
+                                    style: TextStyle(
+                                        letterSpacing: 1.5,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  color: kPinkColor,
+                                  textColor: kWhiteColor,
+                                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  onPressed: () async {
+                                    try {
                                       setState(() {
-                                        loading = false;
+                                        loading = true;
                                       });
+                                      final user =
+                                          await _auth.signInWithEmailAndPassword(
+                                              email, password);
+                                      if (user != null) {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HistoryPage()));
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                      }
+                                    } catch (e) {
+                                      print(e);
+                                      loading = false;
                                     }
-                                  } catch (e) {
-                                    print(e);
-                                    loading = false;
-                                  }
-                                },
+                                  },
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -259,59 +266,83 @@ class _LoginPageState extends State<LoginPage> {
                             Row(/**/
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                IconButton(
-                                  icon: Icon(FontAwesomeIcons.google),
-                                  onPressed: () async {
-                                    final user = _auth.currentUser();
-                                    dynamic result =
-                                        await _auth.signInWithGoogle();
-                                    if (result != null) {
-                                      setState(() {
-                                        loading = true;
-                                      });
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HistoryPage()));
-                                    } else {
+                                TweenAnimationBuilder(
+                                  curve: _curve,
+                                  tween: _scaleTween,
+                                  duration: Duration(milliseconds: 500),
+                                  builder: (context, scale, child) {
+                                    return Transform.scale(scale: scale, child: child,);
+                                  },
+                                  child: IconButton(
+                                    icon: Icon(FontAwesomeIcons.google),
+                                    onPressed: () async {
+                                      final user = _auth.currentUser();
+                                      dynamic result =
+                                          await _auth.signInWithGoogle();
+                                      if (result != null) {
+                                        setState(() {
+                                          loading = true;
+                                        });
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HistoryPage()));
+                                      } else {
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                      }
+                                    },
+                                    iconSize: 30,
+                                  ),
+                                ),
+                                TweenAnimationBuilder(
+                                  curve: _curve,
+                                  tween: _scaleTween,
+                                  duration: Duration(milliseconds: 500),
+                                  builder: (context, scale, child) {
+                                    return Transform.scale(scale: scale, child: child,);
+                                  },
+                                  child: IconButton(
+                                    icon: Icon(
+                                        FontAwesomeIcons.solidQuestionCircle),
+                                    onPressed: () async {
+                                      dynamic result =
+                                          await _auth.signInAnonymously();
+                                      if (result == null) {
+                                        print('Error signing in');
+                                      } else {
+                                        print('Signed in');
+                                        print('This is the uid from the login page: $result.uid');
+                                        setState(() {
+                                          loading = true;
+                                        });
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HistoryPage()));
+                                      }
                                       setState(() {
                                         loading = false;
                                       });
-                                    }
-                                  },
-                                  iconSize: 30,
+                                    },
+                                    iconSize: 30,
+                                  ),
                                 ),
-                                IconButton(
-                                  icon: Icon(
-                                      FontAwesomeIcons.solidQuestionCircle),
-                                  onPressed: () async {
-                                    dynamic result =
-                                        await _auth.signInAnonymously();
-                                    if (result == null) {
-                                      print('Error signing in');
-                                    } else {
-                                      print('Signed in');
-                                      print('This is the uid from the login page: $result.uid');
-                                      setState(() {
-                                        loading = true;
-                                      });
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HistoryPage()));
-                                    }
-                                    setState(() {
-                                      loading = false;
-                                    });
+                                TweenAnimationBuilder(
+                                  curve: _curve,
+                                  tween: _scaleTween,
+                                  duration: Duration(milliseconds: 500),
+                                  builder: (context, scale, child) {
+                                    return Transform.scale(scale: scale, child: child,);
                                   },
-                                  iconSize: 30,
-                                ),
-                                IconButton(
-                                  icon: Icon(FontAwesomeIcons.apple),
-                                  onPressed: () {},
-                                  iconSize: 30,
+                                  child: IconButton(
+                                    icon: Icon(FontAwesomeIcons.apple),
+                                    onPressed: () {},
+                                    iconSize: 30,
+                                  ),
                                 ),
                               ],
                             ),

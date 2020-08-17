@@ -9,8 +9,9 @@ import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/models/user.dart';
+import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 
-class ResultsPage extends StatelessWidget {
+class ResultsPage extends StatefulWidget {
   ResultsPage(
       {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation});
 
@@ -18,37 +19,41 @@ class ResultsPage extends StatelessWidget {
   final String bmiResult;
   final String bmiInterpretation;
 
-//  final _auth = FirebaseAuth.instance;
+  @override
+  _ResultsPageState createState() => _ResultsPageState();
+}
+
+class _ResultsPageState extends State<ResultsPage> {
   final AuthBase _auth = AuthService();
 
   final _firestore = Firestore.instance;
 
-  //GET UID
   Future<String> getCurrentUID() async {
     return (await _auth.currentUser()).uid;
   }
 
+
+  Tween<double> _scaleTween =Tween<double>(begin: 0, end: 1);
+  Duration _scaleDuration = Duration(milliseconds: 1500);
+  Curve _curve = Curves.elasticOut;
+
   @override
   Widget build(BuildContext context) {
+
     final user = Provider.of<User>(context);
     print(user);
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BMI CALCULATOR'),
+//        title: Text('BMI Calculator'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            child: Container(
-              child: const Text(
-                'Your Result',
-                style: kLabelTextStyleL,
-              ),
+            child: ScreenTitle(text: 'Your Result'),
             ),
-          ),
           Expanded(
             flex: 5,
             child: ReusableCard(
@@ -57,13 +62,29 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    bmiResultText.toUpperCase(),
-                    style: kResultTextStyleGreen,
+                  TweenAnimationBuilder(
+                    curve: _curve,
+                    tween: _scaleTween,
+                    duration: _scaleDuration,
+                    builder: (context, scale, child) {
+                      return Transform.scale(scale: scale, child: child);
+                    },
+                    child: Text(
+                      widget.bmiResultText.toUpperCase(),
+                      style: kResultTextStyleGreen,
+                    ),
                   ),
-                  Text(
-                    bmiResult.toUpperCase(),
-                    style: kResultTextStyleBigNumber,
+                  TweenAnimationBuilder(
+                    curve: _curve,
+                    tween: _scaleTween,
+                    duration: _scaleDuration,
+                    builder: (context, scale, child) {
+                      return Transform.scale(scale: scale, child: child);
+                    },
+                    child: Text(
+                      widget.bmiResult.toUpperCase(),
+                      style: kResultTextStyleBigNumber,
+                    ),
                   ),
                   Column(
                     children: <Widget>[
@@ -82,7 +103,7 @@ class ResultsPage extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          bmiInterpretation,
+                          widget.bmiInterpretation,
                           style: kLabelTextStyleM,
                           textAlign: TextAlign.center,
                         ),
@@ -96,54 +117,62 @@ class ResultsPage extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         width: SizeConfig.blockSizeHorizontal * 50,
-                        child: FlatButton(
-                          hoverColor: Colors.yellow,
-                          splashColor: Colors.lightBlueAccent,
-                          child: const Text(
-                            'SAVE RESULT',
-                            style: TextStyle(
-                                letterSpacing: 1.5,
-                                fontSize: kFontSizeXS,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          color: Colors.blue,
-                          textColor: kWhiteColor,
-                          padding: EdgeInsets.symmetric(vertical: 13.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          onPressed: () async {
-                            User loggedInUser;
-                            try {
-                              final user = await _auth.currentUser();
-                              if (user != null) {
-                                loggedInUser = user;
-                                final uid = await getCurrentUID();
-                                _firestore
-                                    .collection('userData')
-                                    .document(uid)
-                                    .collection('bmiResults')
-                                    .add({
-                                  'result': bmiResult,
-                                  'result_text': bmiResultText,
-                                  'user_email': loggedInUser.email,
-                                  'date': Timestamp.now(),
-                                  'interpretation': bmiInterpretation,
-                                });
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HistoryPage()));
-                              } else {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginPage()));
-                              }
-                            } catch (e) {
-                              print(e);
-                            }
+                        child: TweenAnimationBuilder(
+                          curve: _curve,
+                          tween: _scaleTween,
+                          duration: _scaleDuration,
+                          builder: (context, scale, child) {
+                            return Transform.scale(scale: scale, child: child);
                           },
+                          child: FlatButton(
+                            hoverColor: Colors.yellow,
+                            splashColor: Colors.lightBlueAccent,
+                            child: const Text(
+                              'SAVE RESULT',
+                              style: TextStyle(
+                                  letterSpacing: 1.5,
+                                  fontSize: kFontSizeXS,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            color: Colors.blue,
+                            textColor: kWhiteColor,
+                            padding: EdgeInsets.symmetric(vertical: 13.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.0),
+                            ),
+                            onPressed: () async {
+                              User loggedInUser;
+                              try {
+                                final user = await _auth.currentUser();
+                                if (user != null) {
+                                  loggedInUser = user;
+                                  final uid = await getCurrentUID();
+                                  _firestore
+                                      .collection('userData')
+                                      .document(uid)
+                                      .collection('bmiResults')
+                                      .add({
+                                    'result': widget.bmiResult,
+                                    'result_text': widget.bmiResultText,
+                                    'user_email': loggedInUser.email,
+                                    'date': Timestamp.now(),
+                                    'interpretation': widget.bmiInterpretation,
+                                  });
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HistoryPage()));
+                                } else {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()));
+                                }
+                              } catch (e) {
+                                print(e);
+                              }
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(

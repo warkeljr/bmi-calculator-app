@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -59,7 +60,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       MaterialPageRoute(builder: (context) => InputPage()));
                 })
           ],
-          title: Text('History'),
+          title: Text('BMI History'),
         ),
         body: ListView.builder(
           itemCount: items.length,

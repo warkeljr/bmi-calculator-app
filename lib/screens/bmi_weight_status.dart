@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/components/cards/bmiReference_card.dart';
@@ -15,8 +16,8 @@ class BmiWeightStatus extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text('Bmi', style: kLabelTextStyleL),
-          const Text('Reference', style: kLabelTextStyleL),
+          ScreenTitle(text: 'BMI'),
+          ScreenTitle(text: 'Reference'),
           SizedBox(
             height: kSizeBoxedHeightXXL,
           ),
