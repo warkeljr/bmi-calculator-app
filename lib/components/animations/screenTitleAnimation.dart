@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 
-class ScreenTitle extends StatelessWidget {
+class ScreenTitle extends StatefulWidget {
   final String text;
   ScreenTitle({Key key, this.text}) : super(key: key);
 
   @override
+  _ScreenTitleState createState() => _ScreenTitleState();
+}
+
+class _ScreenTitleState extends State<ScreenTitle> {
+  @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
         child: Text(
-          text,
+          widget.text,
           style: kLabelTextStyleL,
         ),
         //curve: Curves.bounceOut,
