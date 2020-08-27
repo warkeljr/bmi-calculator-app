@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:delayed_display/delayed_display.dart';
 
 import '../components/loading/loading_spinner.dart';
 import '../screens/input_page.dart';
@@ -24,7 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
   bool loading = false;
 
   var alertStyle = AlertStyle(
-    titleStyle: TextStyle(color: kWhiteColor, fontSize: 30, fontWeight: FontWeight.bold),
+    titleStyle: TextStyle(
+        color: kWhiteColor, fontSize: 30, fontWeight: FontWeight.bold),
     descStyle: TextStyle(color: kLightGreyColor, fontSize: 20),
     backgroundColor: kActiveCardColor,
     overlayColor: Colors.black87,
@@ -51,23 +53,23 @@ class _RegisterPageState extends State<RegisterPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         GestureDetector(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => InputPage()));
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: const Text(
-                                'Skip',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: kLightGreyColor,
-                                ),
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => InputPage()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: const Text(
+                              'Skip',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: kLightGreyColor,
                               ),
                             ),
                           ),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -77,13 +79,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const Text(
-                            'Create',
-                            style: kLabelTextStyleL,
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 300),
+                            child: const Text(
+                              'Create',
+                              style: kLabelTextStyleL,
+                            ),
                           ),
-                          const Text(
-                            'Account',
-                            style: kLabelTextStyleL,
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 500),
+                            child: const Text(
+                              'Account',
+                              style: kLabelTextStyleL,
+                            ),
                           ),
                         ],
                       ),
@@ -97,73 +105,40 @@ class _RegisterPageState extends State<RegisterPage> {
                           SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: kWhiteColor, width: 1.0),
-                              color: kActiveCardColor,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                            ),
-                            width: SizeConfig.blockSizeHorizontal * 80,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0,
-                                  top: 3.0,
-                                  bottom: 3.0,
-                                  right: 10.0),
-                              child: TextField(
-                                keyboardType: TextInputType.emailAddress,
-                                onChanged: (value) {
-                                  email = value;
-                                },
-                                textAlign: TextAlign.start,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Your Email',
-                                  hintStyle: TextStyle(letterSpacing: 1.5),
-                                  icon: Icon(Icons.mail),
-                                ),
-                                style: TextStyle(
-                                  fontSize: 20,
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 700),
+                            slidingBeginOffset: Offset(0.35, 0.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: kWhiteColor, width: 1.0),
+                                color: kActiveCardColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: kWhiteColor, width: 1.0),
-                              color: kActiveCardColor,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                            ),
-                            width: SizeConfig.blockSizeHorizontal * 80,
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0,
-                                  top: 3.0,
-                                  bottom: 3.0,
-                                  right: 10.0),
-                              child: TextField(
-                                obscureText: true,
-                                onChanged: (value) {
-                                  password = value;
-                                },
-                                textAlign: TextAlign.start,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(letterSpacing: 1.5),
-                                  icon: Icon(Icons.lock),
-                                ),
-                                style: TextStyle(
-                                  fontSize: 20,
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10.0,
+                                    top: 3.0,
+                                    bottom: 3.0,
+                                    right: 10.0),
+                                child: TextField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  onChanged: (value) {
+                                    email = value;
+                                  },
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Your Email',
+                                    hintStyle: TextStyle(letterSpacing: 1.5),
+                                    icon: Icon(Icons.mail),
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             ),
@@ -171,38 +146,83 @@ class _RegisterPageState extends State<RegisterPage> {
                           SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            width: SizeConfig.blockSizeHorizontal * 80,
-                            child: FlatButton(
-                              splashColor: Colors.pinkAccent,
-                              child: Text(
-                                'REGISTER',
-                                style: TextStyle(
-                                    letterSpacing: 1.5,
-                                    fontSize:
-                                        SizeConfig.blockSizeVertical * 2.5,
-                                    fontWeight: FontWeight.bold),
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 900),
+                            slidingBeginOffset: Offset(0.35, 0.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: kWhiteColor, width: 1.0),
+                                color: kActiveCardColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
                               ),
-                              color: kPinkColor,
-                              textColor: kWhiteColor,
-                              padding: EdgeInsets.symmetric(vertical: 15.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10.0,
+                                    top: 3.0,
+                                    bottom: 3.0,
+                                    right: 10.0),
+                                child: TextField(
+                                  obscureText: true,
+                                  onChanged: (value) {
+                                    password = value;
+                                  },
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Password',
+                                    hintStyle: TextStyle(letterSpacing: 1.5),
+                                    icon: Icon(Icons.lock),
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ),
-                              onPressed: () async {
-                                try {
-                                  setState(() => loading = true);
-                                  dynamic newUser = await _auth
-                                      .createUserWithEmailAndPassword(email, password);
-                                  if (newUser != null) {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                HistoryPage()));
-                                  }
-                                } catch (e) {
-                                  Alert(
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 1400),
+                            slidingCurve: Curves.elasticOut,
+                            child: Container(
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: FlatButton(
+                                splashColor: Colors.pinkAccent,
+                                child: Text(
+                                  'REGISTER',
+                                  style: TextStyle(
+                                      letterSpacing: 1.5,
+                                      fontSize:
+                                          SizeConfig.blockSizeVertical * 2.5,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                color: kPinkColor,
+                                textColor: kWhiteColor,
+                                padding: EdgeInsets.symmetric(vertical: 15.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                onPressed: () async {
+                                  try {
+                                    setState(() => loading = true);
+                                    dynamic newUser = await _auth
+                                        .createUserWithEmailAndPassword(
+                                            email, password);
+                                    if (newUser != null) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HistoryPage()));
+                                    }
+                                  } catch (e) {
+                                    Alert(
                                       context: context,
                                       type: AlertType.error,
                                       style: alertStyle,
@@ -218,28 +238,36 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 fontSize: 20),
                                           ),
                                           onPressed: () {
-                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterPage()));
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        RegisterPage()));
                                           },
                                           //radius: BorderRadius.circular(50.0),
                                           color: kPinkColor,
                                         ),
                                       ],
                                     ).show();
-                                  print(e);
-                                  loading = false;
-                                }
-                              },
+                                    print(e);
+                                    loading = false;
+                                  }
+                                },
+                              ),
                             ),
                           ),
                           SizedBox(
                             height: 30,
                           ),
-                          const Text(
-                            'Already have an account',
-                            style: TextStyle(
-                              color: kLightGreyColor,
-                              fontSize: kFontSizeXS,
-                              letterSpacing: 0.5,
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 1700),
+                            child: const Text(
+                              'Already have an account',
+                              style: TextStyle(
+                                color: kLightGreyColor,
+                                fontSize: kFontSizeXS,
+                                letterSpacing: 0.5,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -252,13 +280,16 @@ class _RegisterPageState extends State<RegisterPage> {
                                   MaterialPageRoute(
                                       builder: (context) => LoginPage()));
                             },
-                            child: const Text(
-                              'Log in',
-                              style: TextStyle(
-                                color: kPinkColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: kFontSizeM,
-                                letterSpacing: 1.5,
+                            child: DelayedDisplay(
+                              delay: Duration(milliseconds: 1900),
+                              child: const Text(
+                                'Log in',
+                                style: TextStyle(
+                                  color: kPinkColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: kFontSizeM,
+                                  letterSpacing: 1.5,
+                                ),
                               ),
                             ),
                           ),

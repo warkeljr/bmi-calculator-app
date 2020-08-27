@@ -3,12 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 
-class IconContent extends StatelessWidget {
-
+class IconContent extends StatefulWidget {
   IconContent({@required this.icon, this.label});
 
   final IconData icon;
   final String label;
+
+  @override
+  _IconContentState createState() => _IconContentState();
+}
+
+class _IconContentState extends State<IconContent>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller =
+        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+
+    _controller.forward();
+
+    _controller.addListener(() {
+      print(_controller.value);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +38,14 @@ class IconContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Icon(
-          icon,
+          widget.icon,
           size: SizeConfig.blockSizeVertical * 10,
         ),
         SizedBox(
           height: kSizeBoxedHeightM,
         ),
         Text(
-          label,
+          widget.label,
           style: kLabelTextStyleXS,
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:delayed_display/delayed_display.dart';
 
 import '../screens/results_page.dart';
 import '../components/cards/reusable_card.dart';
@@ -10,7 +11,7 @@ import '../components/alert/login_register_alert.dart';
 import '../constants/constants.dart';
 import '../models/calculator_brain.dart';
 import '../models/size_config.dart';
-import '../components/animations/screenTitleAnimation.dart';
+import '../components/animations/fadeInAnimation.dart';
 
 enum Gender {
   male,
@@ -45,10 +46,6 @@ class _InputPageState extends State<InputPage> {
     age--;
   }
 
-  Tween<double> _scaleTween =Tween<double>(begin: 0, end: 1);
-  Duration _scaleDuration = Duration(milliseconds: 1500);
-  Curve _curve = Curves.elasticOut;
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -77,13 +74,9 @@ class _InputPageState extends State<InputPage> {
           Expanded(
               child: Row(
             children: <Widget>[
-              TweenAnimationBuilder(
-                curve: _curve,
-                tween: _scaleTween,
-                duration: _scaleDuration,
-                builder: (context, scale, child) {
-                  return Transform.scale(scale: scale, child: child);
-                },
+              DelayedDisplay(
+                delay: Duration(milliseconds: 200),
+                slidingBeginOffset: Offset(-0.35, -0.0),
                 child: Container(
                   width: SizeConfig.blockSizeHorizontal * 50,
                   height: SizeConfig.blockSizeVertical * 25,
@@ -103,13 +96,9 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
               ),
-              TweenAnimationBuilder(
-                curve: _curve,
-                tween: _scaleTween,
-                duration: _scaleDuration,
-                builder: (context, scale, child) {
-                  return Transform.scale(scale: scale, child: child,);
-                },
+              DelayedDisplay(
+                delay: Duration(milliseconds: 200),
+                slidingBeginOffset: Offset(0.35, 0.0),
                 child: Container(
                   width: SizeConfig.blockSizeHorizontal * 50,
                   height: SizeConfig.blockSizeVertical * 25,
@@ -133,13 +122,8 @@ class _InputPageState extends State<InputPage> {
           )),
           Expanded(
             flex: 1,
-            child: TweenAnimationBuilder(
-              curve: _curve,
-              tween: _scaleTween,
-              duration: _scaleDuration,
-              builder: (context, scale, child) {
-                return Transform.scale(scale: scale, child: child,);
-              },
+            child: DelayedDisplay(
+              delay: Duration(milliseconds: 500),
               child: ReusableCard(
                 colour: kActiveCardColor,
                 cardChild: Column(
@@ -203,13 +187,9 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: TweenAnimationBuilder(
-                    curve: _curve,
-                    tween: _scaleTween,
-                    duration: _scaleDuration,
-                    builder: (context, scale, child) {
-                      return Transform.scale(scale: scale, child: child,);
-                    },
+                  child: DelayedDisplay(
+                    delay: Duration(milliseconds: 200),
+                    slidingBeginOffset: Offset(-0.35, -0.0),
                     child: ReusableCard(
                       colour: kActiveCardColor,
                       cardChild: Column(
@@ -259,13 +239,9 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: TweenAnimationBuilder(
-                    curve: _curve,
-                    tween: _scaleTween,
-                    duration: _scaleDuration,
-                    builder: (context, scale, child) {
-                      return Transform.scale(scale: scale, child: child,);
-                    },
+                  child: DelayedDisplay(
+                    delay: Duration(milliseconds: 200),
+                    slidingBeginOffset: Offset(0.35, 0.0),
                     child: ReusableCard(
                       colour: kActiveCardColor,
                       cardChild: Column(
@@ -317,13 +293,9 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          TweenAnimationBuilder(
-            curve: _curve,
-            tween: _scaleTween,
-            duration: Duration(milliseconds: 500),
-            builder: (context, scale, child) {
-              return Transform.scale(scale: scale, child: child,);
-            },
+          DelayedDisplay(
+            delay: Duration(milliseconds: 800),
+            slidingCurve: Curves.elasticOut,
             child: GestureDetector(
               onTap: () {
                 CalculatorBrain calc =
