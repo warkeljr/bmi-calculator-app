@@ -11,7 +11,6 @@ import '../components/alert/login_register_alert.dart';
 import '../constants/constants.dart';
 import '../models/calculator_brain.dart';
 import '../models/size_config.dart';
-import '../components/animations/fadeInAnimation.dart';
 
 enum Gender {
   male,

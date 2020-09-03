@@ -12,7 +12,7 @@ class HistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.start,

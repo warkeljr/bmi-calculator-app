@@ -2,6 +2,7 @@ import 'package:bmi_calculator_app/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:delayed_display/delayed_display.dart';
 
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
@@ -15,7 +16,6 @@ class Sidemenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-
 
     return Drawer(
       child: ListView(
@@ -44,8 +44,9 @@ class Sidemenu extends StatelessWidget {
                     Flexible(
                       flex: 3,
                       child: Center(
-                        child: 
-                       user != null ? Text('Logged in') : Text('logged out'),
+                        child: user != null
+                            ? Text('Logged in')
+                            : Text('logged out'),
                       ),
                     ),
                   ],
@@ -53,22 +54,29 @@ class Sidemenu extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.user),
-            title: Text(
-              'My Profile',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 100),
+            slidingBeginOffset: Offset(-0.35, 0.0),
+            child: ListTile(
+              leading: Icon(FontAwesomeIcons.user),
+              title: Text(
+                'My Profile',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {},
             ),
-            onTap: () {
-            },
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.history),
-            title: Text(
-              'BMI History',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 300),
+            slidingBeginOffset: Offset(-0.35, 0.0),
+                      child: ListTile(
+              leading: Icon(FontAwesomeIcons.history),
+              title: Text(
+                'BMI History',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {},
             ),
-            onTap: () {},
           ),
           SizedBox(
             height: 40.0,

@@ -1,9 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:delayed_display/delayed_display.dart';
 
 import '../components/loading/loading_spinner.dart';
-import '../screens/input_page.dart';
 import '../screens/login_page.dart';
 import '../screens/history_page.dart';
 import '../services/auth.dart';
@@ -39,6 +39,13 @@ class _RegisterPageState extends State<RegisterPage> {
     return loading
         ? Loading()
         : Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Platform.isIOS ? Icon(Icons.arrow_back_ios) : Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
+          ),
             body: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());
@@ -49,45 +56,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => InputPage()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(30.0),
-                            child: const Text(
-                              'Skip',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: kLightGreyColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: SizeConfig.blockSizeVertical * 5,
-                    ),
                     Container(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           DelayedDisplay(
-                            delay: Duration(milliseconds: 300),
+                            delay: Duration(milliseconds: 200),
                             child: const Text(
                               'Create',
                               style: kLabelTextStyleL,
                             ),
                           ),
                           DelayedDisplay(
-                            delay: Duration(milliseconds: 500),
+                            delay: Duration(milliseconds: 300),
                             child: const Text(
                               'Account',
                               style: kLabelTextStyleL,
@@ -106,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 30,
                           ),
                           DelayedDisplay(
-                            delay: Duration(milliseconds: 700),
+                            delay: Duration(milliseconds: 400),
                             slidingBeginOffset: Offset(0.35, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
@@ -147,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 30,
                           ),
                           DelayedDisplay(
-                            delay: Duration(milliseconds: 900),
+                            delay: Duration(milliseconds: 500),
                             slidingBeginOffset: Offset(0.35, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
@@ -188,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 30,
                           ),
                           DelayedDisplay(
-                            delay: Duration(milliseconds: 1400),
+                            delay: Duration(milliseconds: 1000),
                             slidingCurve: Curves.elasticOut,
                             child: Container(
                               width: SizeConfig.blockSizeHorizontal * 80,
@@ -260,7 +241,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 30,
                           ),
                           DelayedDisplay(
-                            delay: Duration(milliseconds: 1700),
+                            delay: Duration(milliseconds: 800),
                             child: const Text(
                               'Already have an account',
                               style: TextStyle(
@@ -281,7 +262,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       builder: (context) => LoginPage()));
                             },
                             child: DelayedDisplay(
-                              delay: Duration(milliseconds: 1900),
+                              delay: Duration(milliseconds: 900),
                               child: const Text(
                                 'Log in',
                                 style: TextStyle(

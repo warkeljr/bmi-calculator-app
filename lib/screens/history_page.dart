@@ -8,7 +8,6 @@ import '../screens/input_page.dart';
 import '../services/auth.dart';
 import '../constants/constants.dart';
 import '../models/size_config.dart';
-import '../components/animations/screenTitleAnimation.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -73,16 +72,13 @@ class _HistoryPageState extends State<HistoryPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Text(
-                    //   'Delete',
-                    //   textAlign: TextAlign.right,
-                    //   style:
-                    //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    // ),
                     SizedBox(
                       width: SizeConfig.blockSizeVertical * 2,
                     ),
-                    Icon(Icons.delete, size: 30,),
+                    Icon(
+                      Icons.delete,
+                      size: 30,
+                    ),
                   ],
                 ),
               ),
@@ -97,7 +93,7 @@ class _HistoryPageState extends State<HistoryPage> {
                         'Item removed',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),
                       duration: Duration(seconds: 1),
@@ -108,12 +104,26 @@ class _HistoryPageState extends State<HistoryPage> {
               },
               direction: DismissDirection.endToStart,
               child: Card(
+                color: kInactiveCardColor,
                 child: ListTile(
-                  leading: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: FlutterLogo(size: SizeConfig.blockSizeHorizontal * 10),
+                  onTap: () {},
+                  contentPadding: EdgeInsets.only(top: 10, bottom: 10),
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue,
+                    ),
+                    height: 75,
+                    width: 75,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('21,5', style: TextStyle(
+                          fontSize: 20.0,
+                        ),),
+                      ),
+                    ),
                   ),
-                  contentPadding: EdgeInsets.all(4.0),
                   title: Text(
                     '${items[index]}',
                     style: TextStyle(

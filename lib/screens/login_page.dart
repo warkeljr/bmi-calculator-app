@@ -1,15 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../screens/history_page.dart';
-import '../screens/input_page.dart';
 import '../screens/register_page.dart';
 import '../components/loading/loading_spinner.dart';
 import '../constants/constants.dart';
 import '../models/size_config.dart';
 import '../services/auth.dart';
 import '../components/animations/fadeInAnimation.dart';
-import '../components/animations/screenTitleAnimation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -34,6 +34,16 @@ class _LoginPageState extends State<LoginPage> {
     return loading
         ? Loading()
         : Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                  icon: Platform.isIOS
+                      ? Icon(Icons.arrow_back_ios)
+                      : Icon(Icons.arrow_back),
+                  //Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ),
             body: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());
@@ -44,9 +54,9 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
-                        height: SizeConfig.blockSizeVertical * 5,
-                      ),
+                      // SizedBox(
+                      //   height: SizeConfig.blockSizeVertical * 5,
+                      // ),
                       FadeIn(
                         1.0,
                         Container(
@@ -170,59 +180,63 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 3,
                             ),
-                            FadeIn(2.8, TweenAnimationBuilder(
-                              curve: _curve,
-                              tween: _scaleTween,
-                              duration: Duration(milliseconds: 1500),
-                              builder: (context, scale, child) {
-                                return Transform.scale(
-                                  scale: scale,
-                                  child: child,
-                                );
-                              },
-                              child: Container(
-                                width: SizeConfig.blockSizeHorizontal * 80,
-                                child: FlatButton(
-                                  splashColor: Colors.pinkAccent,
-                                  child: const Text(
-                                    'LOG IN',
-                                    style: TextStyle(
-                                        letterSpacing: 1.5,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  color: kPinkColor,
-                                  textColor: kWhiteColor,
-                                  padding: EdgeInsets.symmetric(vertical: 15.0),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  onPressed: () async {
-                                    try {
-                                      setState(() {
-                                        loading = true;
-                                      });
-                                      final user = await _auth
-                                          .signInWithEmailAndPassword(
-                                              email, password);
-                                      if (user != null) {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HistoryPage()));
+                            FadeIn(
+                              2.8,
+                              TweenAnimationBuilder(
+                                curve: _curve,
+                                tween: _scaleTween,
+                                duration: Duration(milliseconds: 1500),
+                                builder: (context, scale, child) {
+                                  return Transform.scale(
+                                    scale: scale,
+                                    child: child,
+                                  );
+                                },
+                                child: Container(
+                                  width: SizeConfig.blockSizeHorizontal * 80,
+                                  child: FlatButton(
+                                    splashColor: Colors.pinkAccent,
+                                    child: const Text(
+                                      'LOG IN',
+                                      style: TextStyle(
+                                          letterSpacing: 1.5,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    color: kPinkColor,
+                                    textColor: kWhiteColor,
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 15.0),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    onPressed: () async {
+                                      try {
                                         setState(() {
-                                          loading = false;
+                                          loading = true;
                                         });
+                                        final user = await _auth
+                                            .signInWithEmailAndPassword(
+                                                email, password);
+                                        if (user != null) {
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HistoryPage()));
+                                          setState(() {
+                                            loading = false;
+                                          });
+                                        }
+                                      } catch (e) {
+                                        print(e);
+                                        loading = false;
                                       }
-                                    } catch (e) {
-                                      print(e);
-                                      loading = false;
-                                    }
-                                  },
+                                    },
+                                  ),
                                 ),
                               ),
-                            ),),
+                            ),
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 5,
                             ),
@@ -247,70 +261,126 @@ class _LoginPageState extends State<LoginPage> {
                                     )),
                               ),
                             ]),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  icon: Icon(FontAwesomeIcons.google),
-                                  onPressed: () async {
-                                    final user = _auth.currentUser();
-                                    dynamic result =
-                                        await _auth.signInWithGoogle();
-                                    if (result != null) {
-                                      setState(() {
-                                        loading = true;
-                                      });
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HistoryPage()));
-                                    } else {
-                                      setState(() {
-                                        loading = false;
-                                      });
-                                    }
-                                  },
-                                  iconSize: 30,
-                                ),
-                                IconButton(
-                                  icon: Icon(
-                                      FontAwesomeIcons.solidQuestionCircle),
-                                  onPressed: () async {
-                                    dynamic result =
-                                        await _auth.signInAnonymously();
-                                    if (result == null) {
-                                      print('Error signing in');
-                                    } else {
-                                      print('Signed in');
-                                      print(
-                                          'This is the uid from the login page: $result.uid');
-                                      setState(() {
-                                        loading = true;
-                                      });
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HistoryPage()));
-                                    }
-                                    setState(() {
-                                      loading = false;
-                                    });
-                                  },
-                                  iconSize: 30,
-                                ),
-                                IconButton(
+                            Platform.isIOS
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(FontAwesomeIcons.google),
+                                        onPressed: () async {
+                                          final user = _auth.currentUser();
+                                          dynamic result =
+                                              await _auth.signInWithGoogle();
+                                          if (result != null) {
+                                            setState(() {
+                                              loading = true;
+                                            });
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HistoryPage()));
+                                          } else {
+                                            setState(() {
+                                              loading = false;
+                                            });
+                                          }
+                                        },
+                                        iconSize: 30,
+                                      ),
+                                      IconButton(
+                                        icon: Icon(FontAwesomeIcons
+                                            .solidQuestionCircle),
+                                        onPressed: () async {
+                                          dynamic result =
+                                              await _auth.signInAnonymously();
+                                          if (result == null) {
+                                            print('Error signing in');
+                                          } else {
+                                            print('Signed in');
+                                            print(
+                                                'This is the uid from the login page: $result.uid');
+                                            setState(() {
+                                              loading = true;
+                                            });
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HistoryPage()));
+                                          }
+                                          setState(() {
+                                            loading = false;
+                                          });
+                                        },
+                                        iconSize: 30,
+                                      ),
+                                      IconButton(
                                   icon: Icon(FontAwesomeIcons.apple),
                                   onPressed: () {},
                                   iconSize: 30,
                                 ),
-                              ],
-                            ),
+                                    ],
+                                  )
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(FontAwesomeIcons.google),
+                                        onPressed: () async {
+                                          final user = _auth.currentUser();
+                                          dynamic result =
+                                              await _auth.signInWithGoogle();
+                                          if (result != null) {
+                                            setState(() {
+                                              loading = true;
+                                            });
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HistoryPage()));
+                                          } else {
+                                            setState(() {
+                                              loading = false;
+                                            });
+                                          }
+                                        },
+                                        iconSize: 30,
+                                      ),
+                                      IconButton(
+                                        icon: Icon(FontAwesomeIcons
+                                            .solidQuestionCircle),
+                                        onPressed: () async {
+                                          dynamic result =
+                                              await _auth.signInAnonymously();
+                                          if (result == null) {
+                                            print('Error signing in');
+                                          } else {
+                                            print('Signed in');
+                                            print(
+                                                'This is the uid from the login page: $result.uid');
+                                            setState(() {
+                                              loading = true;
+                                            });
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HistoryPage()));
+                                          }
+                                          setState(() {
+                                            loading = false;
+                                          });
+                                        },
+                                        iconSize: 30,
+                                      ),
+                                    ],
+                                  ),
                             SizedBox(
                               height: 20,
                             ),
-                            Row(
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
@@ -322,7 +392,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: SizeConfig.blockSizeHorizontal * 2,
+                                  height: SizeConfig.blockSizeHorizontal * 3,
                                 ),
                                 GestureDetector(
                                   onTap: () {
@@ -337,32 +407,15 @@ class _LoginPageState extends State<LoginPage> {
                                     style: TextStyle(
                                       color: kPinkColor,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: kFontSizeXXS,
+                                      fontSize: kFontSizeXS,
                                       letterSpacing: 1.5,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => InputPage()));
-                              },
-                              child: const Text(
-                                'Skip Log In',
-                                style: TextStyle(
-                                  color: kLightGreyColor,
+                                SizedBox(
+                                  height: SizeConfig.blockSizeHorizontal * 5,
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8,
+                              ],
                             ),
                           ],
                         ),

@@ -6,6 +6,8 @@ import 'package:bmi_calculator_app/screens/onboarding_screen.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/user.dart';
 
+
+
 void main() => runApp(BMICalculator());
 
 class BMICalculator extends StatelessWidget {
@@ -13,6 +15,7 @@ class BMICalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Colors.black));
 
     return StreamProvider<User>.value(
       value: AuthService().user,
