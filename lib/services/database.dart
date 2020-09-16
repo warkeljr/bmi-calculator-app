@@ -7,12 +7,12 @@ class DatabaseService {
 
   // Collection reference
 
-  final CollectionReference bmiresults =
-      Firestore.instance.collection('BMIHistory');
+  final CollectionReference bmiResults =
+      Firestore.instance.collection('bmiHistory');
 
   Future updateUserData(
       String bmiResultText, String bmiResult, String bmiInterpretation) async {
-    return await bmiresults.document(uid).setData({
+    return await bmiResults.document(uid).setData({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
       'bmiInterpretation': bmiInterpretation
@@ -20,7 +20,7 @@ class DatabaseService {
   }
 
   // Get bmiresults stream
-  Stream<QuerySnapshot> get BMIHistory {
-    return bmiresults.snapshots();
+  Stream<QuerySnapshot> get bmiHistory {
+    return bmiResults.snapshots();
   }
 }

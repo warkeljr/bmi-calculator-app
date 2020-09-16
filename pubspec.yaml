@@ -26,6 +26,7 @@ dependencies:
   simple_animations: ^2.2.1
   supercharged: ^1.10.0
   delayed_display: ^1.0.3
+  fancy_on_boarding: ^1.6.0
 
 dev_dependencies:
   flutter_test:
