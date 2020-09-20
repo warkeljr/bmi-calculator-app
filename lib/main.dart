@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bmi_calculator_app/screens/onboarding_screen.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/user.dart';
+import 'package:bmi_calculator_app/screens/oboarding_page.dart';
 
 
 
@@ -25,7 +25,7 @@ class BMICalculator extends StatelessWidget {
           primaryColor: Color(0xFF0A0E21),
           scaffoldBackgroundColor: Color(0xFF0A0E21),
         ),
-        home: OnboardingScreen(),
+        home: OnboardingPage(),
       ),
     );
   }

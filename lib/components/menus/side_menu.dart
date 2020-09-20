@@ -1,4 +1,3 @@
-import 'package:bmi_calculator_app/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +8,7 @@ import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
 import 'package:bmi_calculator_app/models/user.dart';
+import 'package:bmi_calculator_app/screens/oboarding_page.dart';
 
 class Sidemenu extends StatelessWidget {
   final AuthBase _auth = AuthService();
@@ -107,7 +107,7 @@ class Sidemenu extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => OnboardingScreen()));
+                  MaterialPageRoute(builder: (context) => OnboardingPage()));
             },
           ),
           ListTile(
