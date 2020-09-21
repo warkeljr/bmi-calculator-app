@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/history_page.dart';
 import '../screens/login_page.dart';
 import '../constants/constants.dart';
 import '../components/cards/reusable_card.dart';
-import '../services/auth.dart';
 import '../models/size_config.dart';
 import '../models/user.dart';
 import '../components/animations/screenTitleAnimation.dart';
+import '../services/database.dart';
 
 class ResultsPage extends StatefulWidget {
   ResultsPage(
@@ -24,14 +23,6 @@ class ResultsPage extends StatefulWidget {
 }
 
 class _ResultsPageState extends State<ResultsPage> {
-  final AuthBase _auth = AuthService();
-
-  final _firestore = Firestore.instance;
-
-  Future<String> getCurrentUID() async {
-    return (await _auth.currentUser()).uid;
-  }
-
 
   Tween<double> _scaleTween =Tween<double>(begin: 0, end: 1);
   Duration _scaleDuration = Duration(milliseconds: 1500);
@@ -41,7 +32,12 @@ class _ResultsPageState extends State<ResultsPage> {
   Widget build(BuildContext context) {
 
     final user = Provider.of<User>(context);
-    print(user);
+    if (user != null) {
+      print('This is the logged in user from the menu ${user.uid}');
+    } else {
+      print('User is logged out');
+    }
+    
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -141,36 +137,53 @@ class _ResultsPageState extends State<ResultsPage> {
                               borderRadius: BorderRadius.circular(50.0),
                             ),
                             onPressed: () async {
-                              User loggedInUser;
                               try {
-                                final user = await _auth.currentUser();
                                 if (user != null) {
-                                  loggedInUser = user;
-                                  final uid = await getCurrentUID();
-                                  _firestore
-                                      .collection('userData')
-                                      .document(uid)
-                                      .collection('bmiResults')
-                                      .add({
-                                    'result': widget.bmiResult,
-                                    'result_text': widget.bmiResultText,
-                                    'user_email': loggedInUser.email,
-                                    'date': Timestamp.now(),
-                                    'interpretation': widget.bmiInterpretation,
-                                  });
-                                  Navigator.push(
+                                  await DatabaseService(uid: user.uid).updateUserData('BMI ok', '300', 'Heavy overweight');
+                                Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => HistoryPage()));
-                                } else {
-                                  Navigator.push(
+                              } else {
+                                Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => LoginPage()));
-                                }
-                              } catch (e) {
+                              }
+                              } catch(e) {
                                 print(e);
                               }
+                      
+                              
+                        
+                              // User loggedInUser;
+                              // try {
+                              //   final user = await _auth.currentUser();
+                              //   if (user != null) {
+                              //     loggedInUser = user;
+                              //     final uid = await getCurrentUID();
+                              //     _firestore
+                              //         .collection('bmiHistory')
+                              //         .document(uid).setData({
+                              //       'result': widget.bmiResult,
+                              //       'result_text': widget.bmiResultText,
+                              //       'user_email': loggedInUser.email,
+                              //       'date': Timestamp.now(),
+                              //       'interpretation': widget.bmiInterpretation,
+                              //     });
+                              //     Navigator.push(
+                              //         context,
+                              //         MaterialPageRoute(
+                              //             builder: (context) => HistoryPage()));
+                              //   } else {
+                              //     Navigator.push(
+                              //         context,
+                              //         MaterialPageRoute(
+                              //             builder: (context) => LoginPage()));
+                              //   }
+                              // } catch (e) {
+                              //   print(e);
+                              // }
                             },
                           ),
                         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+
+import 'package:bmi_calculator_app/models/bmi.dart';
 
 class BmiList extends StatefulWidget {
   @override
@@ -11,13 +12,14 @@ class _BmiListState extends State<BmiList> {
   @override
   Widget build(BuildContext context) {
 
-    final bmiHistory = Provider.of<QuerySnapshot>(context);
+    final bmiHistory = Provider.of<List<Bmi>>(context);
 
-    // print(bmiHistory.documents);
-
-    for (var doc in bmiHistory.documents) {
-      print(doc.data);
-    }
+    // bmiHistory.forEach((bmi) { 
+    //   // print(bmi.bmiResultText);
+    //   // print(bmi.bmiResult);
+    //   // print(bmi.bmiInterpretation);
+    // });
+    
 
     return Container(
       

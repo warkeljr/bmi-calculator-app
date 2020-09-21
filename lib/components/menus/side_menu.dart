@@ -17,6 +17,13 @@ class Sidemenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
+  // THIS PRINT IS FOR TESTING PURPOSE
+    if (user != null) {
+      print('This is the logged in user from the menu ${user.uid}');
+    } else {
+      print('User is logged out');
+    }
+    
     return Drawer(
       child: ListView(
         children: <Widget>[

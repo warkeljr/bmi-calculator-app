@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:bmi_calculator_app/models/bmi.dart';
 
 class DatabaseService {
   final String uid;
@@ -19,8 +20,19 @@ class DatabaseService {
     });
   }
 
+  // Bmi list from snapshot
+  List<Bmi> _bmiListFromSnapShot(QuerySnapshot snapShot) {
+    return snapShot.documents.map((doc) {
+      return Bmi(
+        bmiResultText: doc.data['bmiResultText'] ?? '',
+        bmiResult: doc.data['bmiResult'] ?? '',
+        bmiInterpretation: doc.data['bmiInterpretation'] ?? ''
+      );
+    }).toList();
+  }
+
   // Get bmiresults stream
-  Stream<QuerySnapshot> get bmiHistory {
-    return bmiResults.snapshots();
+  Stream<List<Bmi>> get bmiHistory {
+    return bmiResults.snapshots().map(_bmiListFromSnapShot);
   }
 }

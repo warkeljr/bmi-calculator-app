@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
 import '../models/user.dart';
 import '../screens/input_page.dart';
 import '../services/auth.dart';
-import '../constants/constants.dart';
-import '../models/size_config.dart';
 import '../services/database.dart';
 import '../components/list/bmi_list.dart';
+import '../models/bmi.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -43,7 +40,7 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<Bmi>>.value(
       value: DatabaseService().bmiHistory,
           child: WillPopScope(
         onWillPop: () => Future.value(false),

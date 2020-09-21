@@ -52,6 +52,9 @@ class AuthService implements AuthBase {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+
+      // create new document for the user with the uid
+      await DatabaseService(uid: user.uid).updateUserData('BMI ok', '200', 'Slightly underweight');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
