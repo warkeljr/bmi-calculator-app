@@ -268,7 +268,7 @@ class _LoginPageState extends State<LoginPage> {
                                       IconButton(
                                         icon: Icon(FontAwesomeIcons.google),
                                         onPressed: () async {
-                                          final user = _auth.currentUser();
+                                          // TODO -> probaly not usefull final user = _auth.currentUser();
                                           dynamic result =
                                               await _auth.signInWithGoogle();
                                           if (result != null) {

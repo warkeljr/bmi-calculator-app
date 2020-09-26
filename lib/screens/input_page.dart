@@ -50,21 +50,6 @@ class _InputPageState extends State<InputPage> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.print),
-            onPressed: () {
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
-              //!ALERT TESTING
-              showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (BuildContext context) {
-                    return Alert();
-                  });
-            },
-          ),
-        ],
         title: Text('BMI Calculator'),
       ),
       body: Column(
