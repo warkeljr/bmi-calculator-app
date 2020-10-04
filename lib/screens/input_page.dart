@@ -7,7 +7,6 @@ import '../components/cards/reusable_card.dart';
 import '../components/icons/icon_content.dart';
 import '../components/buttons/buttons.dart';
 import '../components/menus/side_menu.dart';
-import '../components/alert/login_register_alert.dart';
 import '../constants/constants.dart';
 import '../models/calculator_brain.dart';
 import '../models/size_config.dart';

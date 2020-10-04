@@ -14,11 +14,11 @@ class _BmiListState extends State<BmiList> {
 
     final bmiHistory = Provider.of<List<Bmi>>(context);
 
-    // bmiHistory.forEach((bmi) { 
-    //   // print(bmi.bmiResultText);
-    //   // print(bmi.bmiResult);
-    //   // print(bmi.bmiInterpretation);
-    // });
+    bmiHistory.forEach((bmi) { 
+      print(bmi.bmiResultText);
+      print(bmi.bmiResult);
+      print(bmi.bmiInterpretation);
+    });
     
 
     return Container(

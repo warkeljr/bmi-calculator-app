@@ -53,7 +53,7 @@ class Sidemenu extends StatelessWidget {
                       child: Center(
                         child: user != null
                             ? Text('Logged in')
-                            : Text('logged out'),
+                            : Text('Logged out'),
                       ),
                     ),
                   ],

@@ -8,6 +8,7 @@ import '../components/cards/reusable_card.dart';
 import '../models/size_config.dart';
 import '../models/user.dart';
 import '../components/animations/screenTitleAnimation.dart';
+import '../services/auth.dart';
 import '../services/database.dart';
 
 class ResultsPage extends StatefulWidget {
@@ -23,33 +24,29 @@ class ResultsPage extends StatefulWidget {
 }
 
 class _ResultsPageState extends State<ResultsPage> {
-
-  Tween<double> _scaleTween =Tween<double>(begin: 0, end: 1);
+  Tween<double> _scaleTween = Tween<double>(begin: 0, end: 1);
   Duration _scaleDuration = Duration(milliseconds: 1500);
   Curve _curve = Curves.elasticOut;
 
   @override
   Widget build(BuildContext context) {
-
     final user = Provider.of<User>(context);
-    if (user != null) {
-      print('This is the logged in user from the menu ${user.uid}');
-    } else {
-      print('User is logged out');
-    }
+    final AuthBase _auth = AuthService();
     
+
     SizeConfig().init(context);
+
     return Scaffold(
       appBar: AppBar(
 //        title: Text('BMI Calculator'),
-      ),
+          ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: ScreenTitle(text: 'Your Result'),
-            ),
+          ),
           Expanded(
             flex: 5,
             child: ReusableCard(
@@ -137,25 +134,39 @@ class _ResultsPageState extends State<ResultsPage> {
                               borderRadius: BorderRadius.circular(50.0),
                             ),
                             onPressed: () async {
+                              // final user1 = await _auth.currentUser();
+                              final User _user = await _auth.currentUser();
+                              final userid = _user.uid;
+                              final useremail =_user.email;
+
+                              print('This is the currentUser: $userid');
+                              print('This is the currentUser: $useremail');
                               try {
                                 if (user != null) {
-                                  await DatabaseService(uid: user.uid).updateUserData('BMI ok', '300', 'Heavy overweight');
-                                Navigator.push(
+                                  await DatabaseService(uid: user.uid)
+                                      .addUserData(
+                                          widget.bmiResult,
+                                          widget.bmiResultText,
+                                          widget.bmiInterpretation,
+                                         );
+                                  print(
+                                      'Results page loged in user: ${user.uid}');
+                                  Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HistoryPage()));
-                              } else {
-                                Navigator.push(
+                                          builder: (context) => HistoryPage())); 
+ 
+                                } else {
+                                  print('Results page loged in user: null');
+                                  Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => LoginPage()));
-                              }
-                              } catch(e) {
+                                }
+                              } catch (e) {
                                 print(e);
                               }
-                      
-                              
-                        
+
                               // User loggedInUser;
                               // try {
                               //   final user = await _auth.currentUser();

@@ -11,12 +11,21 @@ class DatabaseService {
   final CollectionReference bmiResults =
       Firestore.instance.collection('bmiHistory');
 
-  Future updateUserData(
-      String bmiResultText, String bmiResult, String bmiInterpretation) async {
-    return await bmiResults.document(uid).setData({
+  Future updateUserData(String bmiResultText, String bmiResult,
+      String bmiInterpretation) async {
+    return await bmiResults.document(uid).collection('results').add({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
-      'bmiInterpretation': bmiInterpretation
+      'bmiInterpretation': bmiInterpretation,
+    });
+  }
+
+  Future addUserData(String bmiResultText, String bmiResult,
+      String bmiInterpretation) async {
+    return bmiResults.document(uid).collection('results').add({
+      'bmiResultText': bmiResultText,
+      'bmiResult': bmiResult,
+      'bmiInterpretation': bmiInterpretation,
     });
   }
 
@@ -24,10 +33,9 @@ class DatabaseService {
   List<Bmi> _bmiListFromSnapShot(QuerySnapshot snapShot) {
     return snapShot.documents.map((doc) {
       return Bmi(
-        bmiResultText: doc.data['bmiResultText'] ?? '',
-        bmiResult: doc.data['bmiResult'] ?? '',
-        bmiInterpretation: doc.data['bmiInterpretation'] ?? ''
-      );
+          bmiResultText: doc.data['bmiResultText'] ?? '',
+          bmiResult: doc.data['bmiResult'] ?? '',
+          bmiInterpretation: doc.data['bmiInterpretation'] ?? '');
     }).toList();
   }
 
