@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -55,7 +54,7 @@ class AuthService implements AuthBase {
       FirebaseUser user = result.user;
 
       // create new document for the user with the uid
-      await DatabaseService(uid: user.uid).addUserData('BMI ok', '90', 'Slightly underweight');
+      await DatabaseService(uid: user.uid).addUserData('BMI ok', '90', 'Slightly underweight', 'warkel@mail.com', 'monday 10-12-2020');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -71,7 +70,7 @@ class AuthService implements AuthBase {
       FirebaseUser user = result.user;
 
       // create new document for the user with the uid
-      await DatabaseService(uid: user.uid).addUserData('BMI ok', '90', 'Slightly underweight');
+      await DatabaseService(uid: user.uid).addUserData('BMI ok', '90', 'Slightly underweight', 'warkel@mail.com', 'monday 10-12-2020');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());

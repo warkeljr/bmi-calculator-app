@@ -7,7 +7,6 @@ import 'package:bmi_calculator_app/models/user.dart';
 import 'package:bmi_calculator_app/screens/oboarding_page.dart';
 
 
-
 void main() => runApp(BMICalculator());
 
 class BMICalculator extends StatelessWidget {

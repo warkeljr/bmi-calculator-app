@@ -14,16 +14,13 @@ class Sidemenu extends StatelessWidget {
   final AuthBase _auth = AuthService();
 
   @override
+  
+
+  @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-
-  // THIS PRINT IS FOR TESTING PURPOSE
-    if (user != null) {
-      print('This is the logged in user from the menu ${user.uid}');
-    } else {
-      print('User is logged out');
-    }
     
+  
     return Drawer(
       child: ListView(
         children: <Widget>[
@@ -52,7 +49,7 @@ class Sidemenu extends StatelessWidget {
                       flex: 3,
                       child: Center(
                         child: user != null
-                            ? Text('Logged in')
+                            ? Text('Welcome back')
                             : Text('Logged out'),
                       ),
                     ),

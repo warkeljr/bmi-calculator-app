@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:delayed_display/delayed_display.dart';
 
 import '../screens/history_page.dart';
 import '../screens/register_page.dart';
@@ -9,7 +9,6 @@ import '../components/loading/loading_spinner.dart';
 import '../constants/constants.dart';
 import '../models/size_config.dart';
 import '../services/auth.dart';
-import '../components/animations/fadeInAnimation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,10 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   String password;
 
   bool loading = false;
-
-  Tween<double> _scaleTween = Tween<double>(begin: 0, end: 1);
-  Duration _scaleDuration = Duration(milliseconds: 1000);
-  Curve _curve = Curves.elasticOut;
 
   @override
   Widget build(BuildContext context) {
@@ -57,22 +52,25 @@ class _LoginPageState extends State<LoginPage> {
                       // SizedBox(
                       //   height: SizeConfig.blockSizeVertical * 5,
                       // ),
-                      FadeIn(
-                        1.0,
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 200),
+                              child: Text(
                                 'Welcome',
                                 style: kLabelTextStyleL,
                               ),
-                              Text(
+                            ),
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 300),
+                              child: Text(
                                 'Back',
                                 style: kLabelTextStyleL,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
@@ -81,9 +79,10 @@ class _LoginPageState extends State<LoginPage> {
                       Center(
                         child: Column(
                           children: <Widget>[
-                            FadeIn(
-                              1.5,
-                              Container(
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 400),
+                              slidingBeginOffset: Offset(0.35, 0.0),
+                              child: Container(
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       color: kWhiteColor, width: 1.0),
@@ -121,9 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: 20,
                             ),
-                            FadeIn(
-                              1.8,
-                              Container(
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 500),
+                              slidingBeginOffset: Offset(0.35, 0.0),
+                              child: Container(
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       color: kWhiteColor, width: 1.0),
@@ -161,9 +161,10 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: 10,
                             ),
-                            FadeIn(
-                              2.3,
-                              GestureDetector(
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 1200),
+                              slidingBeginOffset: Offset(0.35, 0.0),
+                              child: GestureDetector(
                                 onTap: () {
                                   // DO SOMETHING
                                 },
@@ -180,60 +181,49 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 3,
                             ),
-                            FadeIn(
-                              2.8,
-                              TweenAnimationBuilder(
-                                curve: _curve,
-                                tween: _scaleTween,
-                                duration: Duration(milliseconds: 1500),
-                                builder: (context, scale, child) {
-                                  return Transform.scale(
-                                    scale: scale,
-                                    child: child,
-                                  );
-                                },
-                                child: Container(
-                                  width: SizeConfig.blockSizeHorizontal * 80,
-                                  child: FlatButton(
-                                    splashColor: Colors.pinkAccent,
-                                    child: const Text(
-                                      'LOG IN',
-                                      style: TextStyle(
-                                          letterSpacing: 1.5,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    color: kPinkColor,
-                                    textColor: kWhiteColor,
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 15.0),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    onPressed: () async {
-                                      try {
-                                        setState(() {
-                                          loading = true;
-                                        });
-                                        final user = await _auth
-                                            .signInWithEmailAndPassword(
-                                                email, password);
-                                        if (user != null) {
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      HistoryPage()));
-                                          setState(() {
-                                            loading = false;
-                                          });
-                                        }
-                                      } catch (e) {
-                                        print(e);
-                                        loading = false;
-                                      }
-                                    },
+                            DelayedDisplay(
+                              delay: Duration(milliseconds: 1000),
+                              slidingCurve: Curves.elasticOut,
+                              child: Container(
+                                width: SizeConfig.blockSizeHorizontal * 80,
+                                child: FlatButton(
+                                  splashColor: Colors.pinkAccent,
+                                  child: const Text(
+                                    'LOG IN',
+                                    style: TextStyle(
+                                        letterSpacing: 1.5,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
                                   ),
+                                  color: kPinkColor,
+                                  textColor: kWhiteColor,
+                                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  onPressed: () async {
+                                    try {
+                                      setState(() {
+                                        loading = true;
+                                      });
+                                      final user = await _auth
+                                          .signInWithEmailAndPassword(
+                                              email, password);
+                                      if (user != null) {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HistoryPage()));
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                      }
+                                    } catch (e) {
+                                      print(e);
+                                      loading = false;
+                                    }
+                                  },
                                 ),
                               ),
                             ),
@@ -316,10 +306,10 @@ class _LoginPageState extends State<LoginPage> {
                                         iconSize: 30,
                                       ),
                                       IconButton(
-                                  icon: Icon(FontAwesomeIcons.apple),
-                                  onPressed: () {},
-                                  iconSize: 30,
-                                ),
+                                        icon: Icon(FontAwesomeIcons.apple),
+                                        onPressed: () {},
+                                        iconSize: 30,
+                                      ),
                                     ],
                                   )
                                 : Row(
@@ -328,7 +318,7 @@ class _LoginPageState extends State<LoginPage> {
                                       IconButton(
                                         icon: Icon(FontAwesomeIcons.google),
                                         onPressed: () async {
-                                          final user = _auth.currentUser();
+                                          //final user = _auth.currentUser();
                                           dynamic result =
                                               await _auth.signInWithGoogle();
                                           if (result != null) {

@@ -8,16 +8,17 @@ import '../components/cards/reusable_card.dart';
 import '../models/size_config.dart';
 import '../models/user.dart';
 import '../components/animations/screenTitleAnimation.dart';
-import '../services/auth.dart';
 import '../services/database.dart';
 
 class ResultsPage extends StatefulWidget {
   ResultsPage(
-      {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation});
+      {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation, this.date, this.userEmail});
 
   final String bmiResultText;
   final String bmiResult;
   final String bmiInterpretation;
+  final String date;
+  final String userEmail;
 
   @override
   _ResultsPageState createState() => _ResultsPageState();
@@ -31,8 +32,8 @@ class _ResultsPageState extends State<ResultsPage> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    final AuthBase _auth = AuthService();
-    
+
+   
 
     SizeConfig().init(context);
 
@@ -134,30 +135,21 @@ class _ResultsPageState extends State<ResultsPage> {
                               borderRadius: BorderRadius.circular(50.0),
                             ),
                             onPressed: () async {
-                              // final user1 = await _auth.currentUser();
-                              final User _user = await _auth.currentUser();
-                              final userid = _user.uid;
-                              final useremail =_user.email;
-
-                              print('This is the currentUser: $userid');
-                              print('This is the currentUser: $useremail');
                               try {
                                 if (user != null) {
                                   await DatabaseService(uid: user.uid)
                                       .addUserData(
-                                          widget.bmiResult,
-                                          widget.bmiResultText,
-                                          widget.bmiInterpretation,
-                                         );
-                                  print(
-                                      'Results page loged in user: ${user.uid}');
+                                    widget.bmiResult,
+                                    widget.bmiResultText,
+                                    widget.bmiInterpretation,
+                                    widget.date,
+                                    widget.userEmail
+                                  );
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HistoryPage())); 
- 
+                                          builder: (context) => HistoryPage()));
                                 } else {
-                                  print('Results page loged in user: null');
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

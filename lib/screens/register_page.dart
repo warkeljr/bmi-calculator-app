@@ -39,13 +39,15 @@ class _RegisterPageState extends State<RegisterPage> {
     return loading
         ? Loading()
         : Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: Platform.isIOS ? Icon(Icons.arrow_back_ios) : Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
-          ),
+            appBar: AppBar(
+              leading: IconButton(
+                  icon: Platform.isIOS
+                      ? Icon(Icons.arrow_back_ios)
+                      : Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ),
             body: GestureDetector(
               onTap: () {
                 FocusScope.of(context).requestFocus(new FocusNode());
