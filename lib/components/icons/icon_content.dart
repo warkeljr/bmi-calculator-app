@@ -21,14 +21,13 @@ class _IconContentState extends State<IconContent>
   void initState() {
     super.initState();
 
-    _controller =
-        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+    // _controller = AnimationController(vsync);
 
-    _controller.forward();
+    // _controller.forward();
 
-    _controller.addListener(() {
-      print(_controller.value);
-    });
+    // _controller.addListener(() {
+    //   print(_controller.value);
+    // });
   }
 
   @override
