@@ -22,6 +22,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  //final FirebaseAuth _auth = FirebaseAuth.instance;
+
   Gender selectedGender;
 
   int height = 180;

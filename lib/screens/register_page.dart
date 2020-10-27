@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:delayed_display/delayed_display.dart';
 
-import '../components/loading/loading_spinner.dart';
-import '../screens/login_page.dart';
-import '../screens/history_page.dart';
-import '../services/auth.dart';
-import '../constants/constants.dart';
-import '../models/size_config.dart';
+import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
+import 'package:bmi_calculator_app/screens/login_page.dart';
+import 'package:bmi_calculator_app/screens/history_page.dart';
+import 'package:bmi_calculator_app/services/auth.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -20,6 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //String username;
   String email;
+  String name;
   String password;
 
   bool loading = false;
@@ -87,6 +88,47 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: <Widget>[
                           SizedBox(
                             height: 30,
+                          ),
+                          DelayedDisplay(
+                            delay: Duration(milliseconds: 400),
+                            slidingBeginOffset: Offset(0.35, 0.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: kWhiteColor, width: 1.0),
+                                color: kActiveCardColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                              width: SizeConfig.blockSizeHorizontal * 80,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10.0,
+                                    top: 3.0,
+                                    bottom: 3.0,
+                                    right: 10.0),
+                                child: TextField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  onChanged: (value) {
+                                    name = value;
+                                  },
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Your Name',
+                                    hintStyle: TextStyle(letterSpacing: 1.5),
+                                    icon: Icon(Icons.mail),
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30
                           ),
                           DelayedDisplay(
                             delay: Duration(milliseconds: 400),
@@ -196,7 +238,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     setState(() => loading = true);
                                     dynamic newUser = await _auth
                                         .createUserWithEmailAndPassword(
-                                            email, password);
+                                            email, password, name);
                                     if (newUser != null) {
                                       Navigator.pushReplacement(
                                           context,

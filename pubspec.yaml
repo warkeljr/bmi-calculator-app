@@ -27,6 +27,7 @@ dependencies:
   delayed_display: ^1.0.3
   fancy_on_boarding: ^1.6.0
   intro_views_flutter: '^2.8.1'
+  
 
 dev_dependencies:
   flutter_test:

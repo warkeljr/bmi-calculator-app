@@ -2,14 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:bmi_calculator_app/models/user.dart';
-import 'package:bmi_calculator_app/services/database.dart';
+
 
 abstract class AuthBase {
   Future currentUser();
+  Future getCurrentUserInfo();
   Future signInAnonymously();
   Future signInWithEmailAndPassword(String email, String password);
-  Future createUserWithEmailAndPassword(String email, String password);
+  Future createUserWithEmailAndPassword(String email, String password, String name);
   Future signInWithGoogle();
+  Future singOutGoogle();
   Future signOut();
 }
 
@@ -18,13 +20,13 @@ class AuthService implements AuthBase {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // Create user obj for FirebaseUser
-
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
   }
-  
-  Stream<User> get user{
-     return _auth.onAuthStateChanged.map((FirebaseUser user) => _userFromFirebaseUser(user));
+
+  Stream<User> get user {
+    return _auth.onAuthStateChanged
+        .map((FirebaseUser user) => _userFromFirebaseUser(user));
   }
 
   @override
@@ -33,7 +35,11 @@ class AuthService implements AuthBase {
     return _userFromFirebaseUser(user);
   }
 
-  // Sign in anonymously
+  @override
+  Future getCurrentUserInfo() async {
+    return _auth.currentUser();
+  }
+
   @override
   Future signInAnonymously() async {
     try {
@@ -46,15 +52,12 @@ class AuthService implements AuthBase {
     }
   }
 
-  // Sign in with email & password
+  @override
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-
-      // create new document for the user with the uid
-      await DatabaseService(uid: user.uid).addUserData('BMI ok', '90', 'Slightly underweight', 'warkel@mail.com', 'monday 10-12-2020');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -62,15 +65,19 @@ class AuthService implements AuthBase {
     }
   }
 
-  // Register with email & password
-  Future createUserWithEmailAndPassword(String email, String password) async {
+  @override
+  Future createUserWithEmailAndPassword(String email, String password, String name) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
 
-      // create new document for the user with the uid
-      await DatabaseService(uid: user.uid).addUserData('BMI ok', '90', 'Slightly underweight', 'warkel@mail.com', 'monday 10-12-2020');
+      // Uodate the username
+      var userUpdateInfo = UserUpdateInfo();
+      userUpdateInfo.displayName = name;
+      await user.updateProfile(userUpdateInfo);
+      await user.reload();
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -78,10 +85,11 @@ class AuthService implements AuthBase {
     }
   }
 
-  // Sign in with google sign in
+  @override
   Future<String> signInWithGoogle() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleSignInAuthentication.accessToken,
@@ -100,7 +108,7 @@ class AuthService implements AuthBase {
     return 'signInWithGoogle succeeded: $user';
   }
 
-  // Sign out with Google
+  @override
   Future singOutGoogle() async {
     try {
       return await googleSignIn.signOut();
@@ -112,7 +120,7 @@ class AuthService implements AuthBase {
 
   // Sign in with apple
 
-  // Sign out
+  @override
   Future signOut() async {
     try {
       final googleSignIn = GoogleSignIn();

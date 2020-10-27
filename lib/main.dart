@@ -16,16 +16,19 @@ class BMICalculator extends StatelessWidget {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Colors.black));
 
-    return StreamProvider<User>.value(
-      value: AuthService().user,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          primaryColor: Color(0xFF0A0E21),
-          scaffoldBackgroundColor: Color(0xFF0A0E21),
+    return MultiProvider(
+      providers: [
+        StreamProvider<User>.value(value: AuthService().user),
+      ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark().copyWith(
+            primaryColor: Color(0xFF0A0E21),
+            scaffoldBackgroundColor: Color(0xFF0A0E21),
+          ),
+          home: OnboardingPage(),
         ),
-        home: OnboardingPage(),
-      ),
-    );
+      );
+    //
   }
 }

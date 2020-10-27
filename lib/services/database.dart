@@ -21,12 +21,11 @@ class DatabaseService {
   }
 
   Future addUserData(String bmiResultText, String bmiResult,
-      String bmiInterpretation, String userEmail, String date) async {
+      String bmiInterpretation, String date) async {
     return bmiResults.document(uid).collection('results').add({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
       'bmiInterpretation': bmiInterpretation,
-      'userEmail': userEmail,
       'date': Timestamp.now()
     });
   }

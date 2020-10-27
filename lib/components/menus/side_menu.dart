@@ -9,52 +9,50 @@ import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
 import 'package:bmi_calculator_app/models/user.dart';
 import 'package:bmi_calculator_app/screens/oboarding_page.dart';
+import 'package:bmi_calculator_app/screens/profile_page.dart';
 
-class Sidemenu extends StatelessWidget {
-  final AuthBase _auth = AuthService();
-
+class Sidemenu extends StatefulWidget {
   @override
+  _SidemenuState createState() => _SidemenuState();
+}
+
+class _SidemenuState extends State<Sidemenu> {
+
+  final AuthBase _auth = AuthService();
   
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    
-  
+
     return Drawer(
       child: ListView(
         children: <Widget>[
           Container(
             height: 100.0,
-            child: DrawerHeader(
-              decoration: BoxDecoration(
-                color: kPinkColor,
-              ),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('images/angela.png'),
-                      ),
-                      //decoration: kMyBoxDecoration(),
+            decoration: BoxDecoration(
+              color: kPinkColor,
+            ),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('images/angela.png'),
                     ),
-//                    SizedBox(
-//                      width: SizeConfig.blockSizeHorizontal * 5,
-//                    ),
-                    Flexible(
-                      flex: 3,
+                  ),
+                  Flexible(
+                    flex: 3,
+                    child: Center(
                       child: Center(
-                        child: user != null
-                            ? Text('Welcome back')
-                            : Text('Logged out'),
+                        child: user != null ? Text('Welcome back') : Text('Logged out'),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -67,13 +65,16 @@ class Sidemenu extends StatelessWidget {
                 'My Profile',
                 style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
               ),
-              onTap: () {},
+              onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
             ),
           ),
           DelayedDisplay(
             delay: Duration(milliseconds: 300),
             slidingBeginOffset: Offset(-0.35, 0.0),
-                      child: ListTile(
+            child: ListTile(
               leading: Icon(FontAwesomeIcons.history),
               title: Text(
                 'BMI History',

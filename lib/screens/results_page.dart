@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/history_page.dart';
-import '../screens/login_page.dart';
-import '../constants/constants.dart';
-import '../components/cards/reusable_card.dart';
-import '../models/size_config.dart';
-import '../models/user.dart';
-import '../components/animations/screenTitleAnimation.dart';
-import '../services/database.dart';
+import 'package:bmi_calculator_app/screens/history_page.dart';
+import 'package:bmi_calculator_app/screens/login_page.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
+import 'package:bmi_calculator_app/models/user.dart';
+import 'package:bmi_calculator_app/components/animations/screenTitleAnimation.dart';
+import 'package:bmi_calculator_app/services/database.dart';
 
 class ResultsPage extends StatefulWidget {
   ResultsPage(
-      {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation, this.date, this.userEmail});
+      {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation, this.date});
 
   final String bmiResultText;
   final String bmiResult;
   final String bmiInterpretation;
   final String date;
-  final String userEmail;
 
   @override
   _ResultsPageState createState() => _ResultsPageState();
@@ -143,7 +142,6 @@ class _ResultsPageState extends State<ResultsPage> {
                                     widget.bmiResultText,
                                     widget.bmiInterpretation,
                                     widget.date,
-                                    widget.userEmail
                                   );
                                   Navigator.push(
                                       context,
@@ -158,35 +156,6 @@ class _ResultsPageState extends State<ResultsPage> {
                               } catch (e) {
                                 print(e);
                               }
-
-                              // User loggedInUser;
-                              // try {
-                              //   final user = await _auth.currentUser();
-                              //   if (user != null) {
-                              //     loggedInUser = user;
-                              //     final uid = await getCurrentUID();
-                              //     _firestore
-                              //         .collection('bmiHistory')
-                              //         .document(uid).setData({
-                              //       'result': widget.bmiResult,
-                              //       'result_text': widget.bmiResultText,
-                              //       'user_email': loggedInUser.email,
-                              //       'date': Timestamp.now(),
-                              //       'interpretation': widget.bmiInterpretation,
-                              //     });
-                              //     Navigator.push(
-                              //         context,
-                              //         MaterialPageRoute(
-                              //             builder: (context) => HistoryPage()));
-                              //   } else {
-                              //     Navigator.push(
-                              //         context,
-                              //         MaterialPageRoute(
-                              //             builder: (context) => LoginPage()));
-                              //   }
-                              // } catch (e) {
-                              //   print(e);
-                              // }
                             },
                           ),
                         ),
