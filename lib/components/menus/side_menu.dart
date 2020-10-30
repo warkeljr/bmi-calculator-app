@@ -34,30 +34,34 @@ class _SidemenuState extends State<Sidemenu> {
               color: kPinkColor,
             ),
             child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('images/angela.png'),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 3,
-                    child: Center(
-                      child: Center(
-                        child: user != null ? Text('Welcome back') : Text('Logged out'),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('images/angela.png'),
                       ),
                     ),
-                  ),
-                ],
+                    Flexible(
+                      flex: 3,
+                      child: Center(
+                        child: Center(
+                          child: user != null ? Text('Welcome back') : Text('Logged out'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           DelayedDisplay(
-            delay: Duration(milliseconds: 100),
+            delay: Duration(milliseconds: 50),
             slidingBeginOffset: Offset(-0.35, 0.0),
             child: ListTile(
               leading: Icon(FontAwesomeIcons.user),
@@ -72,7 +76,7 @@ class _SidemenuState extends State<Sidemenu> {
             ),
           ),
           DelayedDisplay(
-            delay: Duration(milliseconds: 300),
+            delay: Duration(milliseconds: 150),
             slidingBeginOffset: Offset(-0.35, 0.0),
             child: ListTile(
               leading: Icon(FontAwesomeIcons.history),
@@ -84,7 +88,7 @@ class _SidemenuState extends State<Sidemenu> {
             ),
           ),
           SizedBox(
-            height: 40.0,
+            height: 10.0,
           ),
           Divider(
             indent: 10.0,
@@ -92,59 +96,79 @@ class _SidemenuState extends State<Sidemenu> {
             color: kPinkColor,
           ),
           SizedBox(
-            height: 40.0,
+            height: 10.0,
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.cog),
-            title: Text(
-              'Settings',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 250),
+            slidingBeginOffset: Offset(-0.35, 0.0),
+            child: ListTile(
+              leading: Icon(FontAwesomeIcons.cog),
+              title: Text(
+                'Settings',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            onTap: () {
-              Navigator.pop(context);
-            },
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.lifeRing),
-            title: Text(
-              'Help',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 350),
+            slidingBeginOffset: Offset(-0.35, 0.0),
+            child: ListTile(
+              leading: Icon(FontAwesomeIcons.lifeRing),
+              title: Text(
+                'Help',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OnboardingPage()));
+              },
             ),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => OnboardingPage()));
-            },
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.infoCircle),
-            title: Text(
-              'Info',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 450),
+            slidingBeginOffset: Offset(-0.35, 0.0),
+            child: ListTile(
+              leading: Icon(FontAwesomeIcons.infoCircle),
+              title: Text(
+                'Info',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BmiWeightStatus()));
+              },
             ),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BmiWeightStatus()));
-            },
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.home),
-            title: Text(
-              'Home',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 550),
+            slidingBeginOffset: Offset(-0.35, 0.0),
+            child: ListTile(
+              leading: Icon(FontAwesomeIcons.home),
+              title: Text(
+                'Home',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            onTap: () {
-              Navigator.pop(context);
-            },
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.signOutAlt),
-            title: Text(
-              'Sign Out',
-              style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 650),
+            slidingBeginOffset: Offset(0.0, 0.35),
+            child: ListTile(
+              leading: Icon(FontAwesomeIcons.signOutAlt),
+              title: Text(
+                'Sign Out',
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+              ),
+              onTap: () {
+                _auth.signOut();
+              },
             ),
-            onTap: () {
-              _auth.signOut();
-            },
           ),
         ],
       ),
