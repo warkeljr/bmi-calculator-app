@@ -26,18 +26,9 @@ class _HistoryPageState extends State<HistoryPage> {
             leading: IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => InputPage()));
                 }),
-            actions: <Widget>[
-              IconButton(
-                  icon: Icon(FontAwesomeIcons.signOutAlt),
-                  onPressed: () {
-                    _auth.signOut();
-
-                    Navigator.pop(context,
-                        MaterialPageRoute(builder: (context) => InputPage()));
-                  })
-            ],
             title: Text('BMI History'),
           ),
           body: Text('Hello'), // Hier moet BMi List komen

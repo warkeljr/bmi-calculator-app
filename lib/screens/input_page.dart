@@ -314,7 +314,7 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-      drawer: Sidemenu(),
+      drawer: SideMenu(),
     );
   }
 }
