@@ -45,6 +45,7 @@ class AuthService implements AuthBase {
     try {
       AuthResult result = await _auth.signInAnonymously();
       FirebaseUser user = result.user;
+      print('User is signed in anonymously');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -58,6 +59,7 @@ class AuthService implements AuthBase {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      print('User is signed in with email and password');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -104,6 +106,7 @@ class AuthService implements AuthBase {
 
     final FirebaseUser currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
+    print('User is signed in with a google account');
 
     return 'signInWithGoogle succeeded: $user';
   }
