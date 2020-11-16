@@ -7,12 +7,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
-import 'package:bmi_calculator_app/screens/bmi_weight_status.dart';
 import 'package:bmi_calculator_app/models/user.dart';
-import 'package:bmi_calculator_app/screens/onboarding_page.dart';
-import 'package:bmi_calculator_app/screens/profile_page.dart';
-import 'package:bmi_calculator_app/screens/history_page.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
+import 'package:bmi_calculator_app/views/bmi_weight_status.dart';
+import 'package:bmi_calculator_app/views/onboarding_page.dart';
+import 'package:bmi_calculator_app/views/profile_page.dart';
+import 'package:bmi_calculator_app/views/history_page.dart';
+import 'package:bmi_calculator_app/views/login_page.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -20,9 +20,8 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
-
   final AuthBase _auth = AuthService();
-  
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -52,26 +51,28 @@ class _SideMenuState extends State<SideMenu> {
                     Flexible(
                       flex: 3,
                       child: Center(
-                        child: FutureBuilder<dynamic>(
-                          future: _auth.getCurrentUserInfo(),
-                            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                              final userSnapshot = snapshot.data;
-                              if (snapshot.hasData) {
-                                if (snapshot != null) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(left: 20),
-                                    child: AutoSizeText('Welcome ${userSnapshot.displayName}', maxLines: 2,),
-                                  );
-                                } else {
-                                  return Text('Hello is null');
-                                }
-                              }
-                              else {
-                                return Text('Please Login');
-                              }
-                            }
-                        ),
-                      ),
+                          child: FutureBuilder<dynamic>(
+                                  future: _auth.getCurrentUserInfo(),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot<dynamic> snapshot) {
+                                    final userSnapshot = snapshot.data;
+                                    if (snapshot.hasData) {
+                                      if (snapshot != null) {
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
+                                          child: AutoSizeText(
+                                            'Welcome ${userSnapshot.displayName}',
+                                            maxLines: 2,
+                                          ),
+                                        );
+                                      } else {
+                                        return Text('Hello is null');
+                                      }
+                                    } else {
+                                      return Text('Please Login');
+                                    }
+                                  })),
                     ),
                   ],
                 ),
@@ -88,9 +89,9 @@ class _SideMenuState extends State<SideMenu> {
                 style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
               ),
               onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()));
-            },
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()));
+              },
             ),
           ),
           DelayedDisplay(
@@ -188,15 +189,17 @@ class _SideMenuState extends State<SideMenu> {
             child: ListTile(
               leading: Icon(FontAwesomeIcons.signOutAlt),
               title: Text(
-                user != null ? 'Sign Out' : ''
-                'Sign In',
+                user != null
+                    ? 'Sign Out'
+                    : ''
+                        'Sign In',
                 style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
               ),
               onTap: () {
                 if (user != null) {
-                 _auth.signOut();
-                 Navigator.pop(context);
-                 } else {
+                  _auth.signOut();
+                  Navigator.pop(context);
+                } else {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginPage()));
                 }
@@ -214,7 +217,5 @@ Widget ProfileInfo(context, snapshot) {
   final AuthBase _auth = AuthService();
   final userSnapshot = snapshot.data;
 
-  return Row(
-
-  );
+  return Row();
 }

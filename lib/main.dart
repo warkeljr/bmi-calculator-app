@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/models/user.dart';
-import 'package:bmi_calculator_app/screens/onboarding_page.dart';
+import 'package:bmi_calculator_app/views/onboarding_page.dart';
 
 
 void main() => runApp(BMICalculator());

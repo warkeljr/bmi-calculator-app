@@ -11,8 +11,8 @@ class DatabaseService {
   final CollectionReference bmiResults =
       Firestore.instance.collection('bmiHistory');
 
-  Future updateUserData(String bmiResultText, String bmiResult,
-      String bmiInterpretation) async {
+  Future updateUserData(
+      String bmiResultText, String bmiResult, String bmiInterpretation) async {
     return await bmiResults.document(uid).collection('results').add({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
@@ -22,7 +22,7 @@ class DatabaseService {
 
   Future addUserData(String bmiResultText, String bmiResult,
       String bmiInterpretation, String date) async {
-    return bmiResults.document(uid).collection('results').add({
+    return bmiResults.document(uid).setData({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
       'bmiInterpretation': bmiInterpretation,
@@ -31,6 +31,7 @@ class DatabaseService {
   }
 
   // Bmi list from snapshot
+
   List<Bmi> _bmiListFromSnapShot(QuerySnapshot snapShot) {
     return snapShot.documents.map((doc) {
       return Bmi(
@@ -40,7 +41,7 @@ class DatabaseService {
     }).toList();
   }
 
-  // Get bmiresults stream
+  // Get bmiResults stream
   Stream<List<Bmi>> get bmiHistory {
     return bmiResults.snapshots().map(_bmiListFromSnapShot);
   }

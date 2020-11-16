@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:delayed_display/delayed_display.dart';
 
-import '../screens/history_page.dart';
-import '../screens/register_page.dart';
-import '../components/loading/loading_spinner.dart';
-import '../constants/constants.dart';
-import '../models/size_config.dart';
-import '../services/auth.dart';
+import 'package:bmi_calculator_app/views//history_page.dart';
+import 'package:bmi_calculator_app/views//register_page.dart';
+import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
+import 'package:bmi_calculator_app/services/auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override

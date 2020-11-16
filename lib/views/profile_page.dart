@@ -9,8 +9,8 @@ import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/models/user.dart';
-import 'package:bmi_calculator_app/screens/input_page.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
+import 'package:bmi_calculator_app/views//input_page.dart';
+import 'package:bmi_calculator_app/views//login_page.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -107,7 +107,7 @@ Widget displayUserInformation(context, snapshot) {
                                       )
                                     : Icon(
                                         Icons.account_circle,
-                                        size: SizeConfig.blockSizeVertical * 14,
+                                        size: SizeConfig.blockSizeVertical * 15,
                                       ),
                               ),
                             ),
@@ -140,7 +140,7 @@ Widget displayUserInformation(context, snapshot) {
                                       style: TextStyle(
                                           fontSize:
                                               SizeConfig.blockSizeHorizontal *
-                                                  6,
+                                                  9,
                                           fontWeight: FontWeight.bold),
                                       maxLines: 2,
                                     ),
@@ -225,7 +225,7 @@ Widget displayUserInformation(context, snapshot) {
                                       style: TextStyle(
                                           fontSize:
                                               SizeConfig.blockSizeHorizontal *
-                                                  6,
+                                                  7,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bmi_calculator_app/screens/history_page.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
+import 'package:bmi_calculator_app/views/history_page.dart';
+import 'package:bmi_calculator_app/views/login_page.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';

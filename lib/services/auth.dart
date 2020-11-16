@@ -74,7 +74,7 @@ class AuthService implements AuthBase {
           email: email, password: password);
       FirebaseUser user = result.user;
 
-      // Uodate the username
+      // Update the username
       var userUpdateInfo = UserUpdateInfo();
       userUpdateInfo.displayName = name;
       await user.updateProfile(userUpdateInfo);

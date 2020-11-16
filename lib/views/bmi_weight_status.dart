@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 
-import '../constants/constants.dart';
-import '../components/cards/bmiReference_card.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/components/cards/bmiReference_card.dart';
 
 class BmiWeightStatus extends StatelessWidget {
   @override

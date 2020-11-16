@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
-import '../screens/input_page.dart';
-import '../constants/constants.dart';
+import 'package:bmi_calculator_app/views//input_page.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
 
 class OnboardingPage extends StatelessWidget {
   final pages = [

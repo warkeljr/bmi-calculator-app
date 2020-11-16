@@ -4,8 +4,8 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:delayed_display/delayed_display.dart';
 
 import 'package:bmi_calculator_app/components/loading/loading_spinner.dart';
-import 'package:bmi_calculator_app/screens/login_page.dart';
-import 'package:bmi_calculator_app/screens/history_page.dart';
+import 'package:bmi_calculator_app/views//login_page.dart';
+import 'package:bmi_calculator_app/views//history_page.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';

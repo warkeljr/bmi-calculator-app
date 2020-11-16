@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:bmi_calculator_app/models/bmi.dart';
+import 'package:bmi_calculator_app/components/list/bmi-tile.dart';
+
 
 class BmiList extends StatefulWidget {
   @override
@@ -14,15 +15,11 @@ class _BmiListState extends State<BmiList> {
 
     final bmiHistory = Provider.of<List<Bmi>>(context);
 
-    bmiHistory.forEach((bmi) { 
-      print(bmi.bmiResultText);
-      print(bmi.bmiResult);
-      print(bmi.bmiInterpretation);
-    });
-    
-
-    return Container(
-      
+    return ListView.builder(
+      itemCount: bmiHistory.length,
+      itemBuilder: (context, index) {
+        return BmiTile(bmi: bmiHistory[index]);
+      },
     );
   }
 }
