@@ -29,6 +29,7 @@ dependencies:
   intro_views_flutter: '^2.8.1'
   intl: ^0.16.1
   auto_size_text: ^2.1.0
+  device_info: ^0.4.1+4
 
 dev_dependencies:
   flutter_test:

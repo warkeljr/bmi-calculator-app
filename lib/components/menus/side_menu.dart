@@ -212,10 +212,10 @@ class _SideMenuState extends State<SideMenu> {
   }
 }
 
-Widget ProfileInfo(context, snapshot) {
-  final user = Provider.of<User>(context);
-  final AuthBase _auth = AuthService();
-  final userSnapshot = snapshot.data;
+// Widget ProfileInfo(context, snapshot) {
+//   final user = Provider.of<User>(context);
+//   final AuthBase _auth = AuthService();
+//   final userSnapshot = snapshot.data;
 
-  return Row();
-}
+//   return Row();
+// }

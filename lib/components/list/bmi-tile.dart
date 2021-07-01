@@ -14,10 +14,7 @@ class BmiTile extends StatelessWidget {
         child: ListTile(
           leading: Text(
             bmi.bmiResultText,
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.w900
-            ),
+            style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
           ),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -26,7 +23,6 @@ class BmiTile extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-
           subtitle: Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Text(bmi.bmiInterpretation),

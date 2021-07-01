@@ -301,12 +301,12 @@ class _LoginPageState extends State<LoginPage> {
                                             loading = false;
                                           });
                                         },
-                                        iconSize: 30,
+                                        iconSize: 30 ,
                                       ),
                                       IconButton(
                                         icon: Icon(FontAwesomeIcons.apple),
                                         onPressed: () {},
-                                        iconSize: 30,
+                                        iconSize: 35,
                                       ),
                                     ],
                                   )

@@ -12,6 +12,7 @@ abstract class AuthBase {
   Future createUserWithEmailAndPassword(String email, String password, String name);
   Future signInWithGoogle();
   Future singOutGoogle();
+  Future singInWithApple();
   Future signOut();
 }
 
@@ -122,6 +123,9 @@ class AuthService implements AuthBase {
   }
 
   // Sign in with apple
+  Future singInWithApple() async {
+    
+  }
 
   @override
   Future signOut() async {

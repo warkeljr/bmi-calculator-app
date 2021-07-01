@@ -28,7 +28,7 @@ class _InputPageState extends State<InputPage> {
 
   int height = 180;
   int weight = 60;
-  int age = 26;
+  int age = 25;
 
   void increaseWeight() {
     weight++;

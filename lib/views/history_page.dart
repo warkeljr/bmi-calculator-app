@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:bmi_calculator_app/views//input_page.dart';
-import 'package:bmi_calculator_app/services/auth.dart';
+// import 'package:bmi_calculator_app/services/auth.dart';
 import 'package:bmi_calculator_app/services/database.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
 import 'package:bmi_calculator_app/components/list/bmi_list.dart';
@@ -14,14 +14,15 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  final AuthBase _auth = AuthService();
+  // final AuthBase _auth = AuthService();
+
 
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Bmi>>.value(
       value: DatabaseService().bmiHistory,
-          initialData: List(),
-          child: WillPopScope(
+      initialData: List(),
+      child: WillPopScope(
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: AppBar(
@@ -39,3 +40,4 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 }
+
