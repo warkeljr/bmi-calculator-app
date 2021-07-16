@@ -10,7 +10,7 @@ class OnboardingPage extends StatelessWidget {
     PageViewModel(
         pageColor: const Color(0xFF007ECB),
         // iconImageAssetPath: 'assets/air-hostess.png',
-        bubble: Image.asset('images/bmi_part1_onboarding.png'),
+        //bubble: Image.asset('images/bmi_part1_onboarding.png'),
         body: Text(
           'BMI Calculator is easy to use to calculate your BMI',
         ),
@@ -28,7 +28,7 @@ class OnboardingPage extends StatelessWidget {
     PageViewModel(
         pageColor: const Color(0xFF24D678),
         // iconImageAssetPath: 'assets/air-hostess.png',
-        bubble: Image.asset('images/bmi_part2_onboarding.png'),
+        //bubble: Image.asset('images/bmi_part2_onboarding.png'),
         body: Text(
           'Just put in you weight, height and your lenght and find out the result',
         ),
@@ -46,7 +46,7 @@ class OnboardingPage extends StatelessWidget {
     PageViewModel(
         pageColor: const Color(0xFFFF9100),
         // iconImageAssetPath: 'assets/air-hostess.png',
-        bubble: Image.asset('images/bmi_part3_onboarding.png'),
+        //bubble: Image.asset('images/bmi_part3_onboarding.png'),
         body: Text(
           'Check your result. Register or log in to show your history',
         ),
