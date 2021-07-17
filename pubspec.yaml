@@ -25,7 +25,7 @@ dependencies:
   simple_animations: ^2.2.1
   supercharged: ^1.11.1
   delayed_display: ^1.1.0
-  fancy_on_boarding: ^1.6.0
+  fancy_on_boarding: ^1.7.0
   intro_views_flutter: '^2.9.0'
   intl: ^0.16.1
   auto_size_text: ^2.1.0
