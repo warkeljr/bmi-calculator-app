@@ -24,7 +24,7 @@ dependencies:
   animated_text_kit: ^2.5.4
   simple_animations: ^2.2.1
   supercharged: ^1.11.1
-  delayed_display: ^1.0.3
+  delayed_display: ^1.1.0
   fancy_on_boarding: ^1.6.0
   intro_views_flutter: '^2.9.0'
   intl: ^0.16.1
