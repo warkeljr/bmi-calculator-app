@@ -218,6 +218,23 @@ class _LoginPageState extends State<LoginPage> {
                                         setState(() {
                                           loading = false;
                                         });
+                                      } else {
+                                        showDialog(context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: new Text("Login failed"),
+                                            content: new Text("Email and/or Password is not filled in!"),
+                                            actions: <Widget>[
+                                              new FlatButton(
+                                                child: new Text("Try again"),
+                                                onPressed: () {
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                                                },
+                                              ),
+                                            ],
+                                            );
+                                          },
+                                        );
                                       }
                                     } catch (e) {
                                       print(e);
