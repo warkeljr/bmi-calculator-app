@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:delayed_display/delayed_display.dart';
@@ -203,9 +204,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   onPressed: () async {
                                     try {
-                                      setState(() {
-                                        loading = true;
-                                      });
+                                      setState(() => loading = true);
                                       final user = await _auth
                                           .signInWithEmailAndPassword(
                                               email, password);
@@ -219,22 +218,57 @@ class _LoginPageState extends State<LoginPage> {
                                           loading = false;
                                         });
                                       } else {
-                                        showDialog(context: context,
+
+                                      Platform.isIOS ? showDialog(context: context,
                                         builder: (BuildContext context) {
-                                          return AlertDialog(
+                                          return CupertinoAlertDialog(
+                                            // backgroundColor: kSoftRedColor,
                                             title: new Text("Login failed"),
-                                            content: new Text("Email and/or Password is not filled in!"),
+                                            content: new Text("Email and/or Password is not filled in correctly"),
+                                          insetAnimationDuration: Duration(milliseconds: 100),
                                             actions: <Widget>[
-                                              new FlatButton(
-                                                child: new Text("Try again"),
-                                                onPressed: () {
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-                                                },
-                                              ),
-                                            ],
+                                              CupertinoDialogAction(child: Text("Try Again"),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },)
+                                            ]
+                                            // actions: <Widget>[
+                                            //   new FlatButton(
+                                            //     child: new Text("Try again"),
+                                            //     onPressed: () {
+                                            //       Navigator.of(context).pop();
+                                            //     },
+                                            //   ),
+                                            // ],
+                                            );
+                                          },
+                                        ): showDialog(context: context,
+                                        builder: (BuildContext context) {
+                                          return CupertinoAlertDialog(
+                                            // backgroundColor: kSoftRedColor,
+                                            title: new Text("Login failed"),
+                                            content: new Text("Email and/or Password is not filled in correctly"),
+                                          insetAnimationDuration: Duration(milliseconds: 100),
+                                            actions: <Widget>[
+                                              CupertinoDialogAction(child: Text("Try Again"),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },)
+                                            ]
+                                            // actions: <Widget>[
+                                            //   new FlatButton(
+                                            //     child: new Text("Try again"),
+                                            //     onPressed: () {
+                                            //       Navigator.of(context).pop();
+                                            //     },
+                                            //   ),
+                                            // ],
                                             );
                                           },
                                         );
+                                        setState(() {
+                                          loading = false;
+                                        });
                                       }
                                     } catch (e) {
                                       print(e);
