@@ -217,8 +217,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             slidingCurve: Curves.elasticOut,
                             child: Container(
                               width: SizeConfig.blockSizeHorizontal * 80,
-                              child: FlatButton(
-                                splashColor: Colors.pinkAccent,
+                              child: TextButton(style: TextButton.styleFrom(
+                                primary: kWhiteColor,
+                                backgroundColor: kPinkColor,
+                                padding: EdgeInsets.symmetric(vertical: 15.0),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),
+                              ),
                                 child: Text(
                                   'REGISTER',
                                   style: TextStyle(
@@ -226,12 +230,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                       fontSize:
                                           SizeConfig.blockSizeVertical * 2.5,
                                       fontWeight: FontWeight.bold),
-                                ),
-                                color: kPinkColor,
-                                textColor: kWhiteColor,
-                                padding: EdgeInsets.symmetric(vertical: 15.0),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 onPressed: () async {
                                   try {

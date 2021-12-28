@@ -25,7 +25,7 @@ class Loading extends StatelessWidget {
               style: TextStyle(fontSize: 15.0, color: kWhiteColor),
             ),
             SizedBox(height: 20),
-            FlatButton(
+            TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },

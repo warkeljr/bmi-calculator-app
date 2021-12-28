@@ -13,7 +13,7 @@ class Alert extends StatelessWidget {
       // ),
       title: Text('Hello Alert'),
       actions: [
-        FlatButton(
+        TextButton(
           child: Text('Ok'),
           onPressed: () {
             Navigator.of(context).pop();

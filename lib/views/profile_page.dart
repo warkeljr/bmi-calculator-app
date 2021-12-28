@@ -46,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 Widget displayUserInformation(context, snapshot) {
-  final user = Provider.of<User>(context);
+  final user = Provider.of<UserMod>(context);
   final AuthBase _auth = AuthService();
   final userSnapshot = snapshot.data;
 

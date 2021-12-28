@@ -12,7 +12,7 @@ abstract class AuthBase {
   Future createUserWithEmailAndPassword(String email, String password, String name);
   Future signInWithGoogle();
   Future singOutGoogle();
-  Future singInWithApple();
+  // Future singInWithApple();
   Future signOut();
 }
 
@@ -21,18 +21,18 @@ class AuthService implements AuthBase {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // Create user obj for FirebaseUser
-  User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+  UserMod _userFromFirebaseUser(User user) {
+    return user != null ? UserMod(uid: user.uid) : null;
   }
 
-  Stream<User> get user {
-    return _auth.onAuthStateChanged
-        .map((FirebaseUser user) => _userFromFirebaseUser(user));
+  Stream<UserMod> get user {
+    return _auth.authStateChanges()
+        .map((User user) => _userFromFirebaseUser(user));
   }
 
   @override
   Future currentUser() async {
-    final user = await _auth.currentUser();
+    final user = _auth.currentUser;
     return _userFromFirebaseUser(user);
   }
 
@@ -44,8 +44,8 @@ class AuthService implements AuthBase {
   @override
   Future signInAnonymously() async {
     try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
+      UserCredential result = await _auth.signInAnonymously();
+      User user = result.user;
       print('User is signed in anonymously');
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -57,9 +57,9 @@ class AuthService implements AuthBase {
   @override
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      User user = result.user;
       print('User is signed in with email and password');
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -71,9 +71,9 @@ class AuthService implements AuthBase {
   @override
   Future createUserWithEmailAndPassword(String email, String password, String name) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      User user = result.user;
 
       // Update the username
       var userUpdateInfo = UserUpdateInfo();
@@ -94,18 +94,18 @@ class AuthService implements AuthBase {
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
       idToken: googleSignInAuthentication.idToken,
     );
 
-    final AuthResult authResult = await _auth.signInWithCredential(credential);
-    final FirebaseUser user = authResult.user;
+    final UserCredential authResult = await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
 
     assert(!user.isAnonymous);
     assert(await user.getIdToken() != null);
 
-    final FirebaseUser currentUser = await _auth.currentUser();
+    final User currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
     print('User is signed in with a google account');
 
@@ -123,9 +123,9 @@ class AuthService implements AuthBase {
   }
 
   // Sign in with apple
-  Future singInWithApple() async {
+  // Future singInWithApple() async {
     
-  }
+  // }
 
   @override
   Future signOut() async {

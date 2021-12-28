@@ -187,20 +187,18 @@ class _LoginPageState extends State<LoginPage> {
                               slidingCurve: Curves.elasticOut,
                               child: Container(
                                 width: SizeConfig.blockSizeHorizontal * 80,
-                                child: FlatButton(
-                                  splashColor: Colors.pinkAccent,
+                                child: TextButton(style: TextButton.styleFrom(
+                                  primary: kWhiteColor,
+                                  backgroundColor: kPinkColor,
+                                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),
+                                ),
                                   child: const Text(
                                     'LOG IN',
                                     style: TextStyle(
                                         letterSpacing: 1.5,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
-                                  ),
-                                  color: kPinkColor,
-                                  textColor: kWhiteColor,
-                                  padding: EdgeInsets.symmetric(vertical: 15.0),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   onPressed: () async {
                                     try {

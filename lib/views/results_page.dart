@@ -30,7 +30,7 @@ class _ResultsPageState extends State<ResultsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<UserMod>(context);
 
    
 
@@ -117,21 +117,18 @@ class _ResultsPageState extends State<ResultsPage> {
                           builder: (context, scale, child) {
                             return Transform.scale(scale: scale, child: child);
                           },
-                          child: FlatButton(
-                            hoverColor: Colors.yellow,
-                            splashColor: Colors.lightBlueAccent,
+                          child: TextButton(style: TextButton.styleFrom(
+                            primary: kWhiteColor,
+                            backgroundColor: Colors.blue,
+                            padding: EdgeInsets.symmetric(vertical: 13.0),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0),),
+                          ),
                             child: const Text(
                               'SAVE RESULT',
                               style: TextStyle(
                                   letterSpacing: 1.5,
                                   fontSize: kFontSizeXS,
                                   fontWeight: FontWeight.bold),
-                            ),
-                            color: Colors.blue,
-                            textColor: kWhiteColor,
-                            padding: EdgeInsets.symmetric(vertical: 13.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50.0),
                             ),
                             onPressed: () async {
                               try {
