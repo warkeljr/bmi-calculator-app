@@ -105,7 +105,7 @@ class AuthService implements AuthBase {
     assert(!user.isAnonymous);
     assert(await user.getIdToken() != null);
 
-    final User currentUser = await _auth.currentUser();
+    final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);
     print('User is signed in with a google account');
 
