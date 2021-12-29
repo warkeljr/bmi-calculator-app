@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
 
 class DatabaseService {
-  final String uid;
+  final String? uid;
 
   DatabaseService({this.uid});
 
