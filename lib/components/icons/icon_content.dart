@@ -6,8 +6,8 @@ import 'package:bmi_calculator_app/models/size_config.dart';
 class IconContent extends StatefulWidget {
   IconContent({@required this.icon, this.label});
 
-  final IconData icon;
-  final String label;
+  final IconData? icon;
+  final String? label;
 
   @override
   _IconContentState createState() => _IconContentState();
@@ -36,7 +36,7 @@ class _IconContentState extends State<IconContent>
           height: kSizeBoxedHeightM,
         ),
         Text(
-          widget.label,
+          widget.label!,
           style: kLabelTextStyleXS,
         ),
       ],
