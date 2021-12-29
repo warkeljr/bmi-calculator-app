@@ -8,7 +8,7 @@ abstract class AuthBase {
   Future currentUser();
   Future getCurrentUserInfo();
   Future signInAnonymously();
-  Future signInWithEmailAndPassword(String email, String password);
+  Future signInWithEmailAndPassword(String? email, String? password);
   Future createUserWithEmailAndPassword(String email, String password, String name);
   Future signInWithGoogle();
   Future singOutGoogle();

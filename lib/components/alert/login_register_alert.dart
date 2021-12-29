@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
 
 class Alert extends StatelessWidget {
-  const Alert({Key key}) : super(key: key);
+  const Alert({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

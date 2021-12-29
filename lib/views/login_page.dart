@@ -19,8 +19,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final AuthBase _auth = AuthService();
 
-  String email;
-  String password;
+  String? email;
+  String? password;
 
   bool loading = false;
 
