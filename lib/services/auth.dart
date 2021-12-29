@@ -9,7 +9,8 @@ abstract class AuthBase {
   Future getCurrentUserInfo();
   Future signInAnonymously();
   Future signInWithEmailAndPassword(String? email, String? password);
-  Future createUserWithEmailAndPassword(String? email, String? password, String? name);
+  Future createUserWithEmailAndPassword(String? email, String? password, String?
+   name);
   Future signInWithGoogle();
   Future singOutGoogle();
   // Future singInWithApple();
@@ -21,8 +22,8 @@ class AuthService implements AuthBase {
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // Create user obj for FirebaseUser
-  UserMod _userFromFirebaseUser(User user) {
-    return user != null ? UserMod(uid: user.uid) : null;
+  UserMod? _userFromFirebaseUser(User user) {
+    return UserMod(uid: user.uid);
   }
 
   Stream<UserMod> get user {

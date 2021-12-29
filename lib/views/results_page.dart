@@ -63,7 +63,7 @@ class _ResultsPageState extends State<ResultsPage> {
                       return Transform.scale(scale: scale, child: child);
                     },
                     child: Text(
-                      widget.bmiResultText.toUpperCase(),
+                      widget.bmiResultText!.toUpperCase(),
                       style: kResultTextStyleGreen,
                     ),
                   ),
@@ -75,7 +75,7 @@ class _ResultsPageState extends State<ResultsPage> {
                       return Transform.scale(scale: scale, child: child);
                     },
                     child: Text(
-                      widget.bmiResult.toUpperCase(),
+                      widget.bmiResult!.toUpperCase(),
                       style: kResultTextStyleBigNumber,
                     ),
                   ),
@@ -96,7 +96,7 @@ class _ResultsPageState extends State<ResultsPage> {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          widget.bmiInterpretation,
+                          widget.bmiInterpretation!,
                           style: kLabelTextStyleM,
                           textAlign: TextAlign.center,
                         ),
