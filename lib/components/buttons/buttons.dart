@@ -7,9 +7,9 @@ class RoundIconButton extends StatelessWidget {
 
   RoundIconButton({this.icon, this.onPressed, this.onLongPressed});
 
-  final IconData icon;
-  final Function onPressed;
-  final Function onLongPressed;
+  final IconData? icon;
+  final Function()? onPressed;
+  final Function()? onLongPressed;
 
   @override
   Widget build(BuildContext context) {

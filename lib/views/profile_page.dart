@@ -30,11 +30,12 @@ class _ProfilePageState extends State<ProfilePage> {
         future: _auth.getCurrentUserInfo(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
-            if (snapshot != null) {
-              return displayUserInformation(context, snapshot);
-            } else {
-              return Text('No info available');
-            }
+            // if (snapshot != null) {
+            //   return displayUserInformation(context, snapshot);
+            // } else {
+            //   return Text('No info available');
+            // }
+            return Text('No info available');
           } else {
             return displayUserInformation(context, snapshot);
 //              Text('No user logged in!');

@@ -14,10 +14,10 @@ class ResultsPage extends StatefulWidget {
   ResultsPage(
       {@required this.bmiResult, this.bmiResultText, this.bmiInterpretation, this.date});
 
-  final String bmiResultText;
-  final String bmiResult;
-  final String bmiInterpretation;
-  final String date;
+  final String? bmiResultText;
+  final String? bmiResult;
+  final String? bmiInterpretation;
+  final String? date;
 
   @override
   _ResultsPageState createState() => _ResultsPageState();
