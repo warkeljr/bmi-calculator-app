@@ -5,9 +5,9 @@ class BmiReferenceCard extends StatelessWidget {
   const BmiReferenceCard(
       {@required this.colour, this.indicator, this.explanation});
 
-  final Color colour;
-  final String indicator;
-  final String explanation;
+  final Color? colour;
+  final String? indicator;
+  final String? explanation;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class BmiReferenceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            indicator,
+            indicator!,
             style: TextStyle(
                 fontSize: SizeConfig.blockSizeVertical * 4.0,
                 fontWeight: FontWeight.w900),
@@ -33,7 +33,7 @@ class BmiReferenceCard extends StatelessWidget {
             height: 10,
           ),
           Text(
-            explanation,
+            explanation!,
             style: TextStyle(
                 fontSize: SizeConfig.blockSizeVertical * 2.3,
                 fontWeight: FontWeight.bold),
