@@ -38,7 +38,7 @@ class AuthService implements AuthBase {
 
   @override
   Future getCurrentUserInfo() async {
-    return _auth.currentUser();
+    return _auth.currentUser;
   }
 
   @override
