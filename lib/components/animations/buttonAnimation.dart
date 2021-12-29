@@ -8,11 +8,11 @@ class ButtonAnimation extends StatelessWidget {
         duration: Duration(milliseconds: 500),
         builder: (
           BuildContext context,
-          double _val,
-          Widget child,
+          double? _val,
+          Widget? child,
         ) {
           return Opacity(
-            opacity: _val,
+            opacity: _val!,
             child: child,
           );
         });
