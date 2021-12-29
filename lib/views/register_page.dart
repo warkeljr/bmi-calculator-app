@@ -19,9 +19,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthBase _auth = AuthService();
 
   //String username;
-  String email;
-  String name;
-  String password;
+  String? email;
+  String? name;
+  String? password;
 
   bool loading = false;
 
