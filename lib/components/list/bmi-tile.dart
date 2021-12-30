@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
 
 class BmiTile extends StatelessWidget {
-  final Bmi bmi;
+  final Bmi? bmi;
   BmiTile({this.bmi});
 
   @override
@@ -13,19 +13,19 @@ class BmiTile extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
         child: ListTile(
           leading: Text(
-            bmi.bmiResultText,
+            bmi!.bmiResultText!,
             style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
           ),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
             child: Text(
-              bmi.bmiResult,
+              bmi!.bmiResult!,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(bmi.bmiInterpretation),
+            child: Text(bmi!.bmiInterpretation!),
           ),
         ),
       ),
