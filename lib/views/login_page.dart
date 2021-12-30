@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       SizedBox(
-                        height: SizeConfig.blockSizeVertical * 7,
+                        height: SizeConfig.blockSizeVertical! * 7,
                       ),
                       Center(
                         child: Column(
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Radius.circular(10.0),
                                   ),
                                 ),
-                                width: SizeConfig.blockSizeHorizontal * 80,
+                                width: SizeConfig.blockSizeHorizontal! * 80,
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                       left: 10.0,
@@ -133,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Radius.circular(10.0),
                                   ),
                                 ),
-                                width: SizeConfig.blockSizeHorizontal * 80,
+                                width: SizeConfig.blockSizeHorizontal! * 80,
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                       left: 10.0,
@@ -180,13 +180,13 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(
-                              height: SizeConfig.blockSizeVertical * 3,
+                              height: SizeConfig.blockSizeVertical! * 3,
                             ),
                             DelayedDisplay(
                               delay: Duration(milliseconds: 1000),
                               slidingCurve: Curves.elasticOut,
                               child: Container(
-                                width: SizeConfig.blockSizeHorizontal * 80,
+                                width: SizeConfig.blockSizeHorizontal! * 80,
                                 child: TextButton(style: TextButton.styleFrom(
                                   primary: kWhiteColor,
                                   backgroundColor: kPinkColor,
@@ -277,7 +277,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(
-                              height: SizeConfig.blockSizeVertical * 5,
+                              height: SizeConfig.blockSizeVertical! * 5,
                             ),
                             Row(children: <Widget>[
                               Expanded(
@@ -426,7 +426,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: SizeConfig.blockSizeHorizontal * 3,
+                                  height: SizeConfig.blockSizeHorizontal! * 3,
                                 ),
                                 GestureDetector(
                                   onTap: () {
@@ -447,7 +447,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: SizeConfig.blockSizeHorizontal * 5,
+                                  height: SizeConfig.blockSizeHorizontal! * 5,
                                 ),
                               ],
                             ),

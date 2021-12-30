@@ -81,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     SizedBox(
-                      height: SizeConfig.blockSizeVertical * 5,
+                      height: SizeConfig.blockSizeVertical! * 5,
                     ),
                     Center(
                       child: Column(
@@ -101,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   Radius.circular(10.0),
                                 ),
                               ),
-                              width: SizeConfig.blockSizeHorizontal * 80,
+                              width: SizeConfig.blockSizeHorizontal! * 80,
                               child: Padding(
                                 padding: EdgeInsets.only(
                                     left: 10.0,
@@ -142,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   Radius.circular(10.0),
                                 ),
                               ),
-                              width: SizeConfig.blockSizeHorizontal * 80,
+                              width: SizeConfig.blockSizeHorizontal! * 80,
                               child: Padding(
                                 padding: EdgeInsets.only(
                                     left: 10.0,
@@ -183,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   Radius.circular(10.0),
                                 ),
                               ),
-                              width: SizeConfig.blockSizeHorizontal * 80,
+                              width: SizeConfig.blockSizeHorizontal! * 80,
                               child: Padding(
                                 padding: EdgeInsets.only(
                                     left: 10.0,
@@ -216,7 +216,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             delay: Duration(milliseconds: 1000),
                             slidingCurve: Curves.elasticOut,
                             child: Container(
-                              width: SizeConfig.blockSizeHorizontal * 80,
+                              width: SizeConfig.blockSizeHorizontal! * 80,
                               child: TextButton(style: TextButton.styleFrom(
                                 primary: kWhiteColor,
                                 backgroundColor: kPinkColor,
@@ -228,7 +228,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   style: TextStyle(
                                       letterSpacing: 1.5,
                                       fontSize:
-                                          SizeConfig.blockSizeVertical * 2.5,
+                                          SizeConfig.blockSizeVertical! * 2.5,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 onPressed: () async {
@@ -294,7 +294,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           SizedBox(
-                            height: SizeConfig.blockSizeVertical * 1,
+                            height: SizeConfig.blockSizeVertical! * 1,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -317,7 +317,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           SizedBox(
-                            height: SizeConfig.blockSizeVertical * 8,
+                            height: SizeConfig.blockSizeVertical! * 8,
                           ),
                         ],
                       ),

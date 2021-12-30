@@ -104,12 +104,12 @@ class _ResultsPageState extends State<ResultsPage> {
                     ),
                   ),
                   SizedBox(
-                    height: SizeConfig.blockSizeVertical * 5,
+                    height: SizeConfig.blockSizeVertical! * 5,
                   ),
                   Column(
                     children: <Widget>[
                       Container(
-                        width: SizeConfig.blockSizeHorizontal * 50,
+                        width: SizeConfig.blockSizeHorizontal! * 50,
                         child: TweenAnimationBuilder(
                           curve: _curve,
                           tween: _scaleTween,
@@ -158,7 +158,7 @@ class _ResultsPageState extends State<ResultsPage> {
                         ),
                       ),
                       SizedBox(
-                        height: SizeConfig.blockSizeVertical * 1,
+                        height: SizeConfig.blockSizeVertical! * 1,
                       ),
                       Container(
                         child: const Text(
@@ -191,7 +191,7 @@ class _ResultsPageState extends State<ResultsPage> {
                 ),
               ),
               width: double.infinity,
-              height: SizeConfig.blockSizeVertical * 10,
+              height: SizeConfig.blockSizeVertical! * 10,
             ),
           ),
         ],

@@ -63,8 +63,8 @@ class _InputPageState extends State<InputPage> {
                 delay: Duration(milliseconds: 200),
                 slidingBeginOffset: Offset(-0.35, -0.0),
                 child: Container(
-                  width: SizeConfig.blockSizeHorizontal * 50,
-                  height: SizeConfig.blockSizeVertical * 25,
+                  width: SizeConfig.blockSizeHorizontal! * 50,
+                  height: SizeConfig.blockSizeVertical! * 25,
                   child: ReusableCard(
                     onPress: () {
                       setState(() {
@@ -85,8 +85,8 @@ class _InputPageState extends State<InputPage> {
                 delay: Duration(milliseconds: 200),
                 slidingBeginOffset: Offset(0.35, 0.0),
                 child: Container(
-                  width: SizeConfig.blockSizeHorizontal * 50,
-                  height: SizeConfig.blockSizeVertical * 25,
+                  width: SizeConfig.blockSizeHorizontal! * 50,
+                  height: SizeConfig.blockSizeVertical! * 25,
                   child: ReusableCard(
                     onPress: () {
                       setState(() {
@@ -126,7 +126,7 @@ class _InputPageState extends State<InputPage> {
                         Text(
                           height.toString(),
                           style: TextStyle(
-                            fontSize: SizeConfig.blockSizeVertical * 8,
+                            fontSize: SizeConfig.blockSizeVertical! * 8,
                             fontWeight: FontWeight.bold,
                             //fontWeight: FontWeight.bold,
                           ),
@@ -144,9 +144,9 @@ class _InputPageState extends State<InputPage> {
                       data: SliderTheme.of(context).copyWith(
                         thumbShape: RoundSliderThumbShape(
                             enabledThumbRadius:
-                                SizeConfig.blockSizeVertical * 2.5),
+                                SizeConfig.blockSizeVertical! * 2.5),
                         overlayShape: RoundSliderOverlayShape(
-                            overlayRadius: SizeConfig.blockSizeVertical * 4.5),
+                            overlayRadius: SizeConfig.blockSizeVertical! * 4.5),
                         overlayColor: kPinkOverlayColor,
                         thumbColor: kPinkColor,
                         activeTrackColor: kWhiteColor,
@@ -187,12 +187,12 @@ class _InputPageState extends State<InputPage> {
                           Text(
                             weight.toString(),
                             style: TextStyle(
-                              fontSize: SizeConfig.blockSizeVertical * 6,
+                              fontSize: SizeConfig.blockSizeVertical! * 6,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           SizedBox(
-                            height: SizeConfig.blockSizeVertical * 1.5,
+                            height: SizeConfig.blockSizeVertical! * 1.5,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -239,12 +239,12 @@ class _InputPageState extends State<InputPage> {
                           Text(
                             age.toString(),
                             style: TextStyle(
-                              fontSize: SizeConfig.blockSizeVertical * 6,
+                              fontSize: SizeConfig.blockSizeVertical! * 6,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           SizedBox(
-                            height: SizeConfig.blockSizeVertical * 1,
+                            height: SizeConfig.blockSizeVertical! * 1,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -308,7 +308,7 @@ class _InputPageState extends State<InputPage> {
                 ),
                 width: double.infinity,
                 //height: kBottomContainerHeight,
-                height: SizeConfig.blockSizeVertical * 10,
+                height: SizeConfig.blockSizeVertical! * 10,
               ),
             ),
           ),

@@ -12,7 +12,7 @@ class BmiReferenceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.blockSizeVertical * 14,
+      height: SizeConfig.blockSizeVertical! * 14,
       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
       padding: EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: BoxDecoration(
@@ -26,7 +26,7 @@ class BmiReferenceCard extends StatelessWidget {
           Text(
             indicator!,
             style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 4.0,
+                fontSize: SizeConfig.blockSizeVertical! * 4.0,
                 fontWeight: FontWeight.w900),
           ),
           SizedBox(
@@ -35,7 +35,7 @@ class BmiReferenceCard extends StatelessWidget {
           Text(
             explanation!,
             style: TextStyle(
-                fontSize: SizeConfig.blockSizeVertical * 2.3,
+                fontSize: SizeConfig.blockSizeVertical! * 2.3,
                 fontWeight: FontWeight.bold),
           ),
         ],

@@ -102,13 +102,13 @@ Widget displayUserInformation(context, snapshot) {
                                 child: userSnapshot != null
                                     ? CircleAvatar(
                                         radius:
-                                            SizeConfig.blockSizeHorizontal * 15,
+                                            SizeConfig.blockSizeHorizontal! * 15,
                                         backgroundImage:
                                             AssetImage('images/angela.png'),
                                       )
                                     : Icon(
                                         Icons.account_circle,
-                                        size: SizeConfig.blockSizeVertical * 15,
+                                        size: SizeConfig.blockSizeVertical! * 15,
                                       ),
                               ),
                             ),
@@ -140,7 +140,7 @@ Widget displayUserInformation(context, snapshot) {
                                           : '...',
                                       style: TextStyle(
                                           fontSize:
-                                              SizeConfig.blockSizeHorizontal *
+                                              SizeConfig.blockSizeHorizontal! *
                                                   9,
                                           fontWeight: FontWeight.bold),
                                       maxLines: 2,
@@ -225,7 +225,7 @@ Widget displayUserInformation(context, snapshot) {
                                           : '...',
                                       style: TextStyle(
                                           fontSize:
-                                              SizeConfig.blockSizeHorizontal *
+                                              SizeConfig.blockSizeHorizontal! *
                                                   7,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -293,7 +293,7 @@ Widget displayUserInformation(context, snapshot) {
                             ),
                           )),
                 width: double.infinity,
-                height: SizeConfig.blockSizeVertical * 10,
+                height: SizeConfig.blockSizeVertical! * 10,
               ),
             ),
           ),

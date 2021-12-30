@@ -86,7 +86,7 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(FontAwesomeIcons.user),
               title: Text(
                 'My Profile',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 Navigator.push(context,
@@ -101,7 +101,7 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(FontAwesomeIcons.history),
               title: Text(
                 'BMI History',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 if (user != null) {
@@ -132,7 +132,7 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(FontAwesomeIcons.cog),
               title: Text(
                 'Settings',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -146,7 +146,7 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(FontAwesomeIcons.lifeRing),
               title: Text(
                 'Help',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 Navigator.push(context,
@@ -161,7 +161,7 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(FontAwesomeIcons.infoCircle),
               title: Text(
                 'Info',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 Navigator.push(context,
@@ -176,7 +176,7 @@ class _SideMenuState extends State<SideMenu> {
               leading: Icon(FontAwesomeIcons.home),
               title: Text(
                 'Home',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -193,7 +193,7 @@ class _SideMenuState extends State<SideMenu> {
                     ? 'Sign Out'
                     : ''
                         'Sign In',
-                style: TextStyle(fontSize: SizeConfig.blockSizeVertical * 2),
+                style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
                 if (user != null) {
