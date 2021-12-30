@@ -24,7 +24,7 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserMod>(context);
+    final user = Provider.of<UserMod?>(context);
 
     return Drawer(
       child: ListView(
@@ -57,8 +57,7 @@ class _SideMenuState extends State<SideMenu> {
                                       AsyncSnapshot<dynamic> snapshot) {
                                     final userSnapshot = snapshot.data;
                                     if (snapshot.hasData) {
-                                      if (snapshot != null) {
-                                        return Padding(
+                                      return Padding(
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: AutoSizeText(
@@ -66,9 +65,6 @@ class _SideMenuState extends State<SideMenu> {
                                             maxLines: 2,
                                           ),
                                         );
-                                      } else {
-                                        return Text('Hello is null');
-                                      }
                                     } else {
                                       return Text('Please Login');
                                     }
