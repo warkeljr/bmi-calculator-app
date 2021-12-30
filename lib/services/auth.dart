@@ -26,15 +26,15 @@ class AuthService implements AuthBase {
     return UserMod(uid: user.uid);
   }
 
-  Stream<UserMod> get user {
+  Stream<UserMod?> get user {
     return _auth.authStateChanges()
-        .map((User user) => _userFromFirebaseUser(user));
+        .map((User? user) => _userFromFirebaseUser(user!));
   }
 
   @override
   Future currentUser() async {
     final user = _auth.currentUser;
-    return _userFromFirebaseUser(user);
+    return _userFromFirebaseUser(user!);
   }
 
   @override
@@ -46,7 +46,7 @@ class AuthService implements AuthBase {
   Future signInAnonymously() async {
     try {
       UserCredential result = await _auth.signInAnonymously();
-      User user = result.user;
+      User user = result.user!;
       print('User is signed in anonymously');
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -56,11 +56,11 @@ class AuthService implements AuthBase {
   }
 
   @override
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future signInWithEmailAndPassword(String? email, String? password) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      User user = result.user;
+          email: email!, password: password!);
+      User user = result.user!;
       print('User is signed in with email and password');
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -70,11 +70,11 @@ class AuthService implements AuthBase {
   }
 
   @override
-  Future createUserWithEmailAndPassword(String email, String password, String name) async {
+  Future createUserWithEmailAndPassword(String? email, String? password, String? name) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      User user = result.user;
+          email: email!, password: password!);
+      User user = result.user!;
 
       // Update the username
       var userUpdateInfo = UserUpdateInfo();
@@ -91,9 +91,9 @@ class AuthService implements AuthBase {
 
   @override
   Future<String> signInWithGoogle() async {
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+        await googleSignInAccount!.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
@@ -101,12 +101,12 @@ class AuthService implements AuthBase {
     );
 
     final UserCredential authResult = await _auth.signInWithCredential(credential);
-    final User user = authResult.user;
+    final User user = authResult.user!;
 
     assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
+    // assert(await user.getIdToken() != null);
 
-    final User currentUser = _auth.currentUser;
+    final User currentUser = _auth.currentUser!;
     assert(user.uid == currentUser.uid);
     print('User is signed in with a google account');
 

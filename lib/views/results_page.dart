@@ -55,7 +55,7 @@ class _ResultsPageState extends State<ResultsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  TweenAnimationBuilder(
+                  TweenAnimationBuilder<double>(
                     curve: _curve,
                     tween: _scaleTween,
                     duration: _scaleDuration,
@@ -67,7 +67,7 @@ class _ResultsPageState extends State<ResultsPage> {
                       style: kResultTextStyleGreen,
                     ),
                   ),
-                  TweenAnimationBuilder(
+                  TweenAnimationBuilder<double>(
                     curve: _curve,
                     tween: _scaleTween,
                     duration: _scaleDuration,
@@ -110,7 +110,7 @@ class _ResultsPageState extends State<ResultsPage> {
                     children: <Widget>[
                       Container(
                         width: SizeConfig.blockSizeHorizontal! * 50,
-                        child: TweenAnimationBuilder(
+                        child: TweenAnimationBuilder<double>(
                           curve: _curve,
                           tween: _scaleTween,
                           duration: _scaleDuration,
