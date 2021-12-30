@@ -30,11 +30,6 @@ class _ProfilePageState extends State<ProfilePage> {
         future: _auth.getCurrentUserInfo(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
-            // if (snapshot != null) {
-            //   return displayUserInformation(context, snapshot);
-            // } else {
-            //   return Text('No info available');
-            // }
             return Text('No info available');
           } else {
             return displayUserInformation(context, snapshot);
@@ -47,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 Widget displayUserInformation(context, snapshot) {
-  final user = Provider.of<UserMod>(context);
+  final user = Provider.of<UserMod?>(context);
   final AuthBase _auth = AuthService();
   final userSnapshot = snapshot.data;
 
