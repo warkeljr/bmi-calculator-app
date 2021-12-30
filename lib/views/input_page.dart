@@ -66,11 +66,11 @@ class _InputPageState extends State<InputPage> {
                   width: SizeConfig.blockSizeHorizontal! * 50,
                   height: SizeConfig.blockSizeVertical! * 25,
                   child: ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.male;
-                      });
-                    },
+                    // onPress: () {
+                    //   setState(() {
+                    //     selectedGender = Gender.male;
+                    //   });
+                    // },
                     colour: selectedGender == Gender.male
                         ? kActiveCardColor
                         : kInactiveCardColor,
@@ -88,11 +88,11 @@ class _InputPageState extends State<InputPage> {
                   width: SizeConfig.blockSizeHorizontal! * 50,
                   height: SizeConfig.blockSizeVertical! * 25,
                   child: ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
+                    // onPress: () {
+                    //   setState(() {
+                    //     selectedGender = Gender.female;
+                    //   });
+                    // },
                     colour: selectedGender == Gender.female
                         ? kActiveCardColor
                         : kInactiveCardColor,

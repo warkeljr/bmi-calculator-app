@@ -76,11 +76,11 @@ class AuthService implements AuthBase {
           email: email!, password: password!);
       User user = result.user!;
 
-      // Update the username
-      var userUpdateInfo = UserUpdateInfo();
-      userUpdateInfo.displayName = name;
-      await user.updateProfile(userUpdateInfo);
-      await user.reload();
+      // // Update the username
+      // var userUpdateInfo = UserUpdateInfo();
+      // userUpdateInfo.displayName = name;
+      // await user.updateProfile(userUpdateInfo);
+      // await user.reload();
 
       return _userFromFirebaseUser(user);
     } catch (e) {
