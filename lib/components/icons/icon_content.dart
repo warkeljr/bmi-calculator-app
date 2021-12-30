@@ -30,7 +30,7 @@ class _IconContentState extends State<IconContent>
       children: <Widget>[
         Icon(
           widget.icon,
-          size: SizeConfig.blockSizeVertical * 10,
+          size: SizeConfig.blockSizeVertical! * 10,
         ),
         SizedBox(
           height: kSizeBoxedHeightM,
