@@ -25,7 +25,7 @@ class BMICalculator extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        StreamProvider<UserMod?>.value(value: AuthService().user,initialData: null,),
+        StreamProvider<UserMod?>.value(value: AuthService().user,initialData: null,catchError: (_, __) => null,),
 
       ],
         child: MaterialApp(
