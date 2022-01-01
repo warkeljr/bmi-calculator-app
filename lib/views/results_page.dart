@@ -30,7 +30,7 @@ class _ResultsPageState extends State<ResultsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserMod>(context);
+    final user = Provider.of<UserMod?>(context);
 
    
 
