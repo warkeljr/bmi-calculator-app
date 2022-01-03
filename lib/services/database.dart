@@ -19,8 +19,8 @@ class DatabaseService {
     });
   }
 
-  Future addUserData(String bmiResultText, String bmiResult,
-      String bmiInterpretation, String date) async {
+  Future addUserData(String? bmiResultText, String? bmiResult,
+      String? bmiInterpretation, String? date) async {
     return await bmiResults.doc(uid).collection('results').add({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,

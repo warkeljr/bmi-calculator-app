@@ -136,10 +136,10 @@ class _ResultsPageState extends State<ResultsPage> {
                                 if (user != null) {
                                   await DatabaseService(uid: user.uid)
                                       .addUserData(
-                                    widget.bmiResult!,
-                                    widget.bmiResultText!,
-                                    widget.bmiInterpretation!,
-                                    widget.date!,
+                                    widget.bmiResult,
+                                    widget.bmiResultText,
+                                    widget.bmiInterpretation,
+                                    widget.date,
                                   );
                                   Navigator.push(
                                       context,
