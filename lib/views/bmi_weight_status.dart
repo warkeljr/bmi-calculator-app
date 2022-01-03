@@ -9,7 +9,8 @@ class BmiWeightStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BMI CALCULATOR"),
+        //title: Text("BMI CALCULATOR"),
+        backgroundColor: kAppbarBackgroundColor,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

@@ -64,6 +64,9 @@ const kIconSize = 80.0;
 
 // Icon colors
 
+// Appbar background color
+const kAppbarBackgroundColor = Color(0xFF0A0E21);
+
 
 
 // Colors

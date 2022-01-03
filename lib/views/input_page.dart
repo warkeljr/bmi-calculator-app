@@ -52,6 +52,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'),
+        backgroundColor: kAppbarBackgroundColor,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

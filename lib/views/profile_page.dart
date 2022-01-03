@@ -25,7 +25,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: kAppbarBackgroundColor,
+      ),
       body: FutureBuilder<dynamic>(
         future: _auth.getCurrentUserInfo(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {

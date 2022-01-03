@@ -41,6 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ? Loading()
         : Scaffold(
             appBar: AppBar(
+              backgroundColor: kAppbarBackgroundColor,
               leading: IconButton(
                   icon: Platform.isIOS
                       ? Icon(Icons.arrow_back_ios)

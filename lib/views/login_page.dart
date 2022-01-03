@@ -31,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
         ? Loading()
         : Scaffold(
             appBar: AppBar(
+              backgroundColor: kAppbarBackgroundColor,
               leading: IconButton(
                   icon: Platform.isIOS
                       ? Icon(Icons.arrow_back_ios)
