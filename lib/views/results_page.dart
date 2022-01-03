@@ -38,8 +38,8 @@ class _ResultsPageState extends State<ResultsPage> {
 
     return Scaffold(
       appBar: AppBar(
-//        title: Text('BMI Calculator'),
-          backgroundColor: kAppbarBackgroundColor,
+        backgroundColor: kAppbarBackgroundColor,
+
           ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
