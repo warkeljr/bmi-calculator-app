@@ -76,6 +76,8 @@ class AuthService implements AuthBase {
           email: email!, password: password!);
       User user = result.user!;
 
+    
+
       // // Update the username
       // var userUpdateInfo = UserUpdateInfo();
       // userUpdateInfo.displayName = name;

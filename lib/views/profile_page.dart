@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
         future: _auth.getCurrentUserInfo(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
-            return Text('No info available');
+            return displayUserInformation(context, snapshot);
           } else {
             return displayUserInformation(context, snapshot);
 //              Text('No user logged in!');
@@ -238,8 +238,32 @@ Widget displayUserInformation(context, snapshot) {
                           child: ReusableCard(
                             colour: kActiveCardColor,
                             cardChild: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Center(child: Text('...')),
+                              padding: const EdgeInsets.only(left: 8.0,top: 20.0, right: 8.0, bottom: 20.0),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      'Name',
+                                      style: kLabelTextStyleXS,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    AutoSizeText(
+                                      userSnapshot != null
+                                          ? '${userSnapshot.displayName}'
+                                          : '...',
+                                      style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal! *
+                                                  9,
+                                          fontWeight: FontWeight.bold),
+                                      maxLines: 2,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -274,14 +298,14 @@ Widget displayUserInformation(context, snapshot) {
                 child: Center(
                     child: user != null
                         ? Text(
-                            'Log out',
+                            'Sign Out',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
                             ),
                           )
                         : Text(
-                            'Login',
+                            'Sign',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,

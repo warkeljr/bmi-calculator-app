@@ -66,7 +66,7 @@ class _SideMenuState extends State<SideMenu> {
                                           ),
                                         );
                                     } else {
-                                      return Text('Please Login');
+                                      return Text('Please Sign In');
                                     }
                                   })),
                     ),
