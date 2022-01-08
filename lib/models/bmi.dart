@@ -1,7 +1,8 @@
+import 'package:meta/meta.dart';
 
 class Bmi {
 
-  Bmi( {this.bmiResultText, this. bmiResult, this.bmiInterpretation} );
+  Bmi( {@required this.bmiResultText, @required this. bmiResult, @required this.bmiInterpretation} );
 
   final String? bmiResultText;
   final String? bmiResult;
@@ -15,3 +16,4 @@ class Bmi {
     };
   }
 }
+
