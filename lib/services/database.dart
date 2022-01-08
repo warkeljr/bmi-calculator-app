@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class DatabaseService {
   final String? uid;
@@ -27,6 +28,12 @@ class DatabaseService {
       'bmiInterpretation': bmiInterpretation,
       'date': Timestamp.now()
     });
+  }
+
+  Future<void>createBmi(Bmi bmi) async {
+    final path = '';
+    final documentReference = FirebaseFirestore.instance.doc(path);
+    await documentReference.set(bmi.toMap());
   }
 
 

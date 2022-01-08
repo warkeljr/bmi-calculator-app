@@ -8,7 +8,7 @@ class Bmi {
   final String? bmiResult;
   final String? bmiInterpretation;
   
-  Map<String, dynamic>? toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
