@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:bmi_calculator_app/services/api_path.dart';
+//import 'package:flutter/material.dart';
+//import 'package:meta/meta.dart';
+
 
 class DatabaseService {
   final String? uid;
