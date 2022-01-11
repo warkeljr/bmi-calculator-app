@@ -6,6 +6,7 @@ import 'package:bmi_calculator_app/views//input_page.dart';
 import 'package:bmi_calculator_app/services/database.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
 import 'package:bmi_calculator_app/components/list/bmi_list.dart';
+import 'package:bmi_calculator_app/constants/constants.dart';
 
 
 class HistoryPage extends StatefulWidget {
@@ -26,6 +27,7 @@ class _HistoryPageState extends State<HistoryPage> {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: kAppbarBackgroundColor,
             leading: IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {

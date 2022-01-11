@@ -8,6 +8,7 @@ import 'package:bmi_calculator_app/models/user.dart';
 import 'package:bmi_calculator_app/views/onboarding_page.dart';
 
 
+
 // void main() async => runApp(BMICalculator());
 
 void main() async {
@@ -26,7 +27,7 @@ class BMICalculator extends StatelessWidget {
     return MultiProvider(
       providers: [
         StreamProvider<UserMod?>.value(value: AuthService().user,initialData: null,catchError: (_, __) => null,),
-
+        
       ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -9,8 +9,7 @@ abstract class AuthBase {
   Future getCurrentUserInfo();
   Future signInAnonymously();
   Future signInWithEmailAndPassword(String? email, String? password);
-  Future createUserWithEmailAndPassword(String? email, String? password, String?
-   name);
+  Future createUserWithEmailAndPassword(String? email, String? password, String? name);
   Future signInWithGoogle();
   Future singOutGoogle();
   // Future singInWithApple();
@@ -75,8 +74,8 @@ class AuthService implements AuthBase {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email!, password: password!);
       User user = result.user!;
+      return _userFromFirebaseUser(user);
 
-    
 
       // // Update the username
       // var userUpdateInfo = UserUpdateInfo();
@@ -84,7 +83,7 @@ class AuthService implements AuthBase {
       // await user.updateProfile(userUpdateInfo);
       // await user.reload();
 
-      return _userFromFirebaseUser(user);
+      // return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;

@@ -217,7 +217,6 @@ class _LoginPageState extends State<LoginPage> {
                                           loading = false;
                                         });
                                       } else {
-
                                       Platform.isIOS ? showDialog(context: context,
                                         builder: (BuildContext context) {
                                           return CupertinoAlertDialog(
@@ -231,14 +230,6 @@ class _LoginPageState extends State<LoginPage> {
                                                 Navigator.of(context).pop();
                                               },)
                                             ]
-                                            // actions: <Widget>[
-                                            //   new FlatButton(
-                                            //     child: new Text("Try again"),
-                                            //     onPressed: () {
-                                            //       Navigator.of(context).pop();
-                                            //     },
-                                            //   ),
-                                            // ],
                                             );
                                           },
                                         ): showDialog(context: context,
@@ -254,14 +245,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 Navigator.of(context).pop();
                                               },)
                                             ]
-                                            // actions: <Widget>[
-                                            //   new FlatButton(
-                                            //     child: new Text("Try again"),
-                                            //     onPressed: () {
-                                            //       Navigator.of(context).pop();
-                                            //     },
-                                            //   ),
-                                            // ],
+
                                             );
                                           },
                                         );

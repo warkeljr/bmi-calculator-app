@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
             return displayUserInformation(context, snapshot);
           } else {
             return displayUserInformation(context, snapshot);
-//              Text('No user logged in!');
+//              Text('No user signed in!');
           }
         },
       ),
@@ -132,8 +133,8 @@ Widget displayUserInformation(context, snapshot) {
                                       height: 10,
                                     ),
                                     AutoSizeText(
-                                      userSnapshot != null
-                                          ? '${userSnapshot.displayName}'
+                                      snapshot!= null
+                                          ? '${snapshot.data.displayName}'
                                           : '...',
                                       style: TextStyle(
                                           fontSize:
@@ -307,7 +308,7 @@ Widget displayUserInformation(context, snapshot) {
                             ),
                           )
                         : Text(
-                            'Sign',
+                            'Sign In',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,

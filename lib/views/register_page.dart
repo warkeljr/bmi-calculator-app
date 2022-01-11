@@ -110,7 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     bottom: 3.0,
                                     right: 10.0),
                                 child: TextField(
-                                  keyboardType: TextInputType.emailAddress,
+                                  keyboardType: TextInputType.name,
                                   onChanged: (value) {
                                     name = value;
                                   },
@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     border: InputBorder.none,
                                     hintText: 'Your Name',
                                     hintStyle: TextStyle(letterSpacing: 1.5),
-                                    icon: Icon(Icons.mail),
+                                    icon: Icon(Icons.account_circle),
                                   ),
                                   style: TextStyle(
                                     fontSize: 20,
@@ -224,21 +224,20 @@ class _RegisterPageState extends State<RegisterPage> {
                                 padding: EdgeInsets.symmetric(vertical: 15.0),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),
                               ),
-                                child: Text(
+                                child: const Text(
                                   'REGISTER',
                                   style: TextStyle(
                                       letterSpacing: 1.5,
-                                      fontSize:
-                                          SizeConfig.blockSizeVertical! * 2.5,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 onPressed: () async {
                                   try {
                                     setState(() => loading = true);
-                                    dynamic newUser = await _auth
+                                    dynamic user = await _auth
                                         .createUserWithEmailAndPassword(
                                             email, password, name);
-                                    if (newUser != null) {
+                                    if (user != null) {
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
