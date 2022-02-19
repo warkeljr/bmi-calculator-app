@@ -236,13 +236,42 @@ class _RegisterPageState extends State<RegisterPage> {
                                     setState(() => loading = true);
                                     dynamic user = await _auth
                                         .createUserWithEmailAndPassword(
-                                            email, password, name);
+                                            email, password);
                                     if (user != null) {
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   HistoryPage()));
+                                    } else {
+                                      Alert(
+                                      context: context,
+                                      type: AlertType.error,
+                                      style: alertStyle,
+                                      title: 'registration failed',
+                                      desc:
+                                          'This e-mail is already used, try again with another e-mail ',
+                                      buttons: [
+                                        DialogButton(
+                                          child: const Text(
+                                            'Try again',
+                                            style: TextStyle(
+                                                color: kWhiteColor,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        RegisterPage()));
+                                          },
+                                          //radius: BorderRadius.circular(50.0),
+                                          color: kPinkColor,
+                                        ),
+                                      ],
+                                    ).show();
+                                    loading = false;
                                     }
                                   } catch (e) {
                                     Alert(

@@ -1,39 +1,38 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:bmi_calculator_app/models/bmi.dart';
-//import 'package:firebase_core/firebase_core.dart';
-import 'package:bmi_calculator_app/services/api_path.dart';
 import 'package:meta/meta.dart';
-//import 'package:flutter/material.dart';
-//import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+
+import 'package:bmi_calculator_app/models/bmi.dart';
+import 'package:bmi_calculator_app/services/api_path.dart';
+
+
 
 
 abstract class Database {
-
+  Future updateUserData(String bmiResultText, String bmiResult, String bmiInterpretation);
+  Future addUserData(String bmiResultText, String bmiResult, String bmiInterpretation, String date);
+  // Future deleteUserData();
 }
 
-class FirestoreDatabase implements Database {
-   FirestoreDatabase({@required this.uid});
+class DatabaseService implements Database {
+   DatabaseService({@required this.uid});
    final String? uid;
-}
 
-class DatabaseService {
-  final String? uid;
-
-  DatabaseService({this.uid});
-
-  // Collection reference
-  final CollectionReference bmiResults =
+   final CollectionReference bmiResults =
       FirebaseFirestore.instance.collection('bmiHistory');
 
+  @override
   Future updateUserData(
       String bmiResultText, String bmiResult, String bmiInterpretation) async {
     return await bmiResults.doc(uid).collection('results').add({
       'bmiResultText': bmiResultText,
       'bmiResult': bmiResult,
       'bmiInterpretation': bmiInterpretation,
+      'date': Timestamp.now()
     });
   }
 
+  @override
   Future addUserData(String? bmiResultText, String? bmiResult,
       String? bmiInterpretation, String? date) async {
     return await bmiResults.doc(uid).collection('results').add({
@@ -43,6 +42,8 @@ class DatabaseService {
       'date': Timestamp.now()
     });
   }
+
+  // Future deleteUserData() {}
 
   Future<void>createBmi(Bmi bmi) async {
     final path = APIPath.bmi(uid!);
@@ -66,3 +67,4 @@ class DatabaseService {
     return bmiResults.snapshots().map(_bmiListFromSnapShot);
   }
 }
+

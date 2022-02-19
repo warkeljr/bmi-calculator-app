@@ -1,16 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-
 import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
 import 'package:bmi_calculator_app/constants/constants.dart';
 import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:bmi_calculator_app/models/user.dart';
 import 'package:bmi_calculator_app/views//input_page.dart';
+import 'package:bmi_calculator_app/views/register_page.dart';
 import 'package:bmi_calculator_app/views//login_page.dart';
 import 'package:bmi_calculator_app/services/auth.dart';
 
@@ -21,7 +21,6 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final AuthBase _auth = AuthService();
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +34,32 @@ class _ProfilePageState extends State<ProfilePage> {
           if (snapshot.hasData) {
             return displayUserInformation(context, snapshot);
           } else {
-            return displayUserInformation(context, snapshot);
-//              Text('No user signed in!');
+            return CupertinoAlertDialog(
+                // backgroundColor: kSoftRedColor,
+                title: new Text("Profile not available"),
+                content: new Text(
+                    "Try to Sign In with your account or Register an account"),
+                insetAnimationDuration: Duration(milliseconds: 100),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text("Sign In"),
+                    onPressed: () {
+                       Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginPage()));
+                    },
+                  ),
+                  CupertinoDialogAction(
+                    child: Text("Register"),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()));
+                    },
+                  )
+                ]);
           }
         },
       ),
@@ -100,13 +123,15 @@ Widget displayUserInformation(context, snapshot) {
                                 child: userSnapshot != null
                                     ? CircleAvatar(
                                         radius:
-                                            SizeConfig.blockSizeHorizontal! * 15,
+                                            SizeConfig.blockSizeHorizontal! *
+                                                15,
                                         backgroundImage:
                                             AssetImage('images/angela.png'),
                                       )
                                     : Icon(
                                         Icons.account_circle,
-                                        size: SizeConfig.blockSizeVertical! * 15,
+                                        size:
+                                            SizeConfig.blockSizeVertical! * 15,
                                       ),
                               ),
                             ),
@@ -120,10 +145,15 @@ Widget displayUserInformation(context, snapshot) {
                           child: ReusableCard(
                             colour: kActiveCardColor,
                             cardChild: Padding(
-                              padding: const EdgeInsets.only(left: 8.0,top: 20.0, right: 8.0, bottom: 20.0),
+                              padding: const EdgeInsets.only(
+                                  left: 8.0,
+                                  top: 20.0,
+                                  right: 8.0,
+                                  bottom: 20.0),
                               child: Center(
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       'Name',
@@ -133,7 +163,7 @@ Widget displayUserInformation(context, snapshot) {
                                       height: 10,
                                     ),
                                     AutoSizeText(
-                                      snapshot!= null
+                                      snapshot != null
                                           ? '${snapshot.data.displayName}'
                                           : '...',
                                       style: TextStyle(
@@ -163,10 +193,15 @@ Widget displayUserInformation(context, snapshot) {
                           child: ReusableCard(
                             colour: kActiveCardColor,
                             cardChild: Padding(
-                              padding: const EdgeInsets.only(left: 8.0,top: 20.0, right: 8.0, bottom: 20.0),
+                              padding: const EdgeInsets.only(
+                                  left: 8.0,
+                                  top: 20.0,
+                                  right: 8.0,
+                                  bottom: 20.0),
                               child: Center(
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       'Email',
@@ -205,10 +240,15 @@ Widget displayUserInformation(context, snapshot) {
                           child: ReusableCard(
                             colour: kActiveCardColor,
                             cardChild: Padding(
-                              padding: const EdgeInsets.only(left: 8.0,top: 20.0, right: 8.0, bottom: 20.0),
+                              padding: const EdgeInsets.only(
+                                  left: 8.0,
+                                  top: 20.0,
+                                  right: 8.0,
+                                  bottom: 20.0),
                               child: Center(
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       'Created',
@@ -241,10 +281,15 @@ Widget displayUserInformation(context, snapshot) {
                           child: ReusableCard(
                             colour: kActiveCardColor,
                             cardChild: Padding(
-                              padding: const EdgeInsets.only(left: 8.0,top: 20.0, right: 8.0, bottom: 20.0),
+                              padding: const EdgeInsets.only(
+                                  left: 8.0,
+                                  top: 20.0,
+                                  right: 8.0,
+                                  bottom: 20.0),
                               child: Center(
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       'Name',

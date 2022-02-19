@@ -9,7 +9,7 @@ abstract class AuthBase {
   Future getCurrentUserInfo();
   Future signInAnonymously();
   Future signInWithEmailAndPassword(String? email, String? password);
-  Future createUserWithEmailAndPassword(String? email, String? password, String? name);
+  Future createUserWithEmailAndPassword(String? email, String? password);
   Future signInWithGoogle();
   Future singOutGoogle();
   // Future singInWithApple();
@@ -19,6 +19,7 @@ abstract class AuthBase {
 class AuthService implements AuthBase {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+
 
   // Create user obj for FirebaseUser
   UserMod? _userFromFirebaseUser(User user) {
@@ -46,7 +47,6 @@ class AuthService implements AuthBase {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User user = result.user!;
-      print('User is signed in anonymously');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -60,7 +60,6 @@ class AuthService implements AuthBase {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email!, password: password!);
       User user = result.user!;
-      print('User is signed in with email and password');
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -69,25 +68,19 @@ class AuthService implements AuthBase {
   }
 
   @override
-  Future createUserWithEmailAndPassword(String? email, String? password, String? name) async {
+  Future createUserWithEmailAndPassword(String? email, String? password) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email!, password: password!);
       User user = result.user!;
+      
+      print(user);
       return _userFromFirebaseUser(user);
-
-
-      // // Update the username
-      // var userUpdateInfo = UserUpdateInfo();
-      // userUpdateInfo.displayName = name;
-      // await user.updateProfile(userUpdateInfo);
-      // await user.reload();
-
-      // return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;
     }
+    
   }
 
   @override
@@ -109,7 +102,6 @@ class AuthService implements AuthBase {
 
     final User currentUser = _auth.currentUser!;
     assert(user.uid == currentUser.uid);
-    print('User is signed in with a google account');
 
     return 'signInWithGoogle succeeded: $user';
   }

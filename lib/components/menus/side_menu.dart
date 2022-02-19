@@ -131,7 +131,16 @@ class _SideMenuState extends State<SideMenu> {
                 style: TextStyle(fontSize: SizeConfig.blockSizeVertical! * 2),
               ),
               onTap: () {
-                Navigator.pop(context);
+                try {
+                  if (user != null) {
+                    final userinInfo = _auth.currentUser();
+                    print(userinInfo);
+                  } else {
+                  }
+                } catch (e) {
+                  print(e); 
+                }
+                // Navigator.pop(context);
               },
             ),
           ),

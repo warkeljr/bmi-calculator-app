@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,7 @@ class ResultsPage extends StatefulWidget {
 }
 
 class _ResultsPageState extends State<ResultsPage> {
+
   Tween<double> _scaleTween = Tween<double>(begin: 0, end: 1);
   Duration _scaleDuration = Duration(milliseconds: 1500);
   Curve _curve = Curves.elasticOut;
@@ -31,8 +33,6 @@ class _ResultsPageState extends State<ResultsPage> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserMod?>(context);
-
-   
 
     SizeConfig().init(context);
 

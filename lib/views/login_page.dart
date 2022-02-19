@@ -170,13 +170,18 @@ class _LoginPageState extends State<LoginPage> {
                                 onTap: () {
                                   // DO SOMETHING
                                 },
-                                child: const Text(
-                                  'Forgot password?',
-                                  style: TextStyle(
-                                    color: kLightGreyColor,
-                                    fontSize: kFontSizeXXS,
-                                    letterSpacing: 0.5,
-                                  ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'Forgot password?',
+                                      style: TextStyle(
+                                        color: kLightGreyColor,
+                                        fontSize: kFontSizeXXS,
+                                        letterSpacing: 0.5,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

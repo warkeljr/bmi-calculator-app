@@ -21,7 +21,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Bmi>>.value(
-      value: DatabaseService().bmiHistory,
+      value: DatabaseService(uid: '').bmiHistory,
       initialData: List.empty(),
       child: WillPopScope(
         onWillPop: () => Future.value(false),
