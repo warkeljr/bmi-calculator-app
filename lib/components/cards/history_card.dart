@@ -1,3 +1,5 @@
+import 'package:bmi_calculator_app/constants/constants.dart';
+import 'package:bmi_calculator_app/models/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app/models/bmi.dart';
 
@@ -11,6 +13,7 @@ class BmiHistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: kActiveCardColor,
       margin: EdgeInsets.all(10.0),
       child: Padding(padding: EdgeInsets.all(0.0),
       child: Slidable(
@@ -36,18 +39,23 @@ class BmiHistoryCard extends StatelessWidget {
                 children: [
                   Padding(padding: EdgeInsets.only(bottom: 0.0)),
                   Text('${_bmi.bmiResultText}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),
-                  Spacer(),
-                  Text('${_bmi.bmiResult}'),
+                  SizedBox(
+                        width: SizeConfig.blockSizeHorizontal! * 5,
+                      ),
+                  Text('${_bmi.bmiResult}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: kBmiRed),),
                 ],
               ),
+              SizedBox(
+                        height: SizeConfig.blockSizeVertical! * 2,
+                      ),
               Row(
                 children: [
                   Padding(padding: EdgeInsets.only(bottom: 0.0)),
                   Flexible(
                     child: Text('${_bmi.bmiInterpretation}',
-                    maxLines: 1,
-                    overflow: TextOverflow.fade,
-                    softWrap: false,),
+                    maxLines: 2,
+                    overflow: TextOverflow.visible,
+                    softWrap: true,),
                   ),
                 ],
               ),
