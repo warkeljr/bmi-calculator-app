@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:bmi_calculator_app/models/user.dart';
@@ -7,6 +8,7 @@ import 'package:bmi_calculator_app/models/user.dart';
 abstract class AuthBase {
   Future currentUser();
   Future getCurrentUserInfo();
+  Future<User?> getUserData();
   Future signInAnonymously();
   Future signInWithEmailAndPassword(String? email, String? password);
   Future createUserWithEmailAndPassword(String? email, String? password);
@@ -19,6 +21,7 @@ abstract class AuthBase {
 class AuthService implements AuthBase {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  User? get currentUserData => _auth.currentUser;
 
 
   // Create user obj for FirebaseUser
@@ -39,7 +42,12 @@ class AuthService implements AuthBase {
 
   @override
   Future getCurrentUserInfo() async {
-    return _auth.currentUser;
+    return _auth.currentUser?.uid;
+  }
+
+  @override
+  Future<User?> getUserData() async {
+    return currentUserData;
   }
 
   @override

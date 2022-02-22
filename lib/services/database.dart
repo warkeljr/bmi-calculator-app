@@ -9,6 +9,7 @@ import 'package:bmi_calculator_app/services/api_path.dart';
 
 
 abstract class Database {
+  // Future deleteData();
   Future updateUserData(String bmiResultText, String bmiResult, String bmiInterpretation);
   Future addUserData(String bmiResultText, String bmiResult, String bmiInterpretation, String date);
   // Future deleteUserData();
@@ -48,7 +49,7 @@ class DatabaseService implements Database {
   Future<void>createBmi(Bmi bmi) async {
     final path = APIPath.bmi(uid!);
     final documentReference = FirebaseFirestore.instance.doc(path!);
-    await documentReference.set(bmi.toMap());
+    await documentReference.set(bmi.toJson());
   }
 
 

@@ -21,6 +21,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final AuthBase _auth = AuthService();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,10 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: kAppbarBackgroundColor,
       ),
       body: FutureBuilder<dynamic>(
-        future: _auth.getCurrentUserInfo(),
+        future: _auth.getUserData(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
+
             return displayUserInformation(context, snapshot);
           } else {
             return CupertinoAlertDialog(
@@ -164,7 +166,7 @@ Widget displayUserInformation(context, snapshot) {
                                     ),
                                     AutoSizeText(
                                       snapshot != null
-                                          ? '${snapshot.data.displayName}'
+                                          ? '${AuthService().currentUserData?.displayName}'
                                           : '...',
                                       style: TextStyle(
                                           fontSize:
@@ -212,7 +214,7 @@ Widget displayUserInformation(context, snapshot) {
                                     ),
                                     AutoSizeText(
                                       userSnapshot != null
-                                          ? '${userSnapshot.email}'
+                                          ? '${AuthService().currentUserData?.email}'
                                           : '...',
                                       style: TextStyle(
                                           fontSize: 30,
@@ -257,16 +259,16 @@ Widget displayUserInformation(context, snapshot) {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Text(
-                                      userSnapshot != null
-                                          ? '${DateFormat('MM-dd-yy').format(userSnapshot.metadata.creationTime)}'
-                                          : '...',
-                                      style: TextStyle(
-                                          fontSize:
-                                              SizeConfig.blockSizeHorizontal! *
-                                                  7,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                    // Text(
+                                    //   userSnapshot != null
+                                    //       ? '${DateFormat('MM-dd-yy').format(userSnapshot.metadata.creationTime)}'
+                                    //       : '...',
+                                    //   style: TextStyle(
+                                    //       fontSize:
+                                    //           SizeConfig.blockSizeHorizontal! *
+                                    //               7,
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
                                   ],
                                 ),
                               ),
@@ -300,7 +302,7 @@ Widget displayUserInformation(context, snapshot) {
                                     ),
                                     AutoSizeText(
                                       userSnapshot != null
-                                          ? '${userSnapshot.displayName}'
+                                          ? '${null}'
                                           : '...',
                                       style: TextStyle(
                                           fontSize:

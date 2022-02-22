@@ -14,6 +14,7 @@ import 'package:bmi_calculator_app/views/onboarding_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await AuthService().getUserData();
   runApp(BMICalculator());
 }
 

@@ -217,7 +217,7 @@ class _LoginPageState extends State<LoginPage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HistoryPage()));
+                                                    BmiHistory()));
                                         setState(() {
                                           loading = false;
                                         });
@@ -307,7 +307,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HistoryPage()));
+                                                        BmiHistory()));
                                           } else {
                                             setState(() {
                                               loading = false;
@@ -333,7 +333,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HistoryPage()));
+                                                        BmiHistory()));
                                           }
                                           setState(() {
                                             loading = false;
@@ -365,7 +365,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HistoryPage()));
+                                                        BmiHistory()));
                                           } else {
                                             setState(() {
                                               loading = false;
@@ -391,7 +391,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HistoryPage()));
+                                                        BmiHistory()));
                                           }
                                           setState(() {
                                             loading = false;

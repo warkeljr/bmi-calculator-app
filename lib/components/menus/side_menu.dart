@@ -55,13 +55,12 @@ class _SideMenuState extends State<SideMenu> {
                                   future: _auth.getCurrentUserInfo(),
                                   builder: (BuildContext context,
                                       AsyncSnapshot<dynamic> snapshot) {
-                                    final userSnapshot = snapshot.data;
                                     if (snapshot.hasData) {
                                       return Padding(
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: AutoSizeText(
-                                            'Welcome ${userSnapshot.displayName}',
+                                            'Welcome ${AuthService().currentUserData?.email}',
                                             maxLines: 2,
                                           ),
                                         );
@@ -102,7 +101,7 @@ class _SideMenuState extends State<SideMenu> {
               onTap: () {
                 if (user != null) {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HistoryPage()));
+                      MaterialPageRoute(builder: (context) => BmiHistory()));
                 } else {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginPage()));

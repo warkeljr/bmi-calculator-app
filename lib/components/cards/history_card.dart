@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator_app/models/bmi.dart';
 
-class HistoryCard extends StatelessWidget {
+class BmiHistoryCard extends StatelessWidget {
+  final Bmi _bmi;
 
-  const HistoryCard(this.bmiResultText, this.bmiResult, this.bmiDate);
-
-  final String bmiResultText;
-  final String bmiResult;
-  final String bmiDate;
+  BmiHistoryCard(this._bmi);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(bmiResultText),
-              SizedBox(),
-              Text(''),
-            ],
-          ),
-          Text(bmiDate),
-        ],
+    return Container(
+      child: Card(
+        margin: EdgeInsets.all(10.0),
+        child: Padding(padding: EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                Text('${_bmi.bmiResultText}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),
+                Spacer(),
+                Text('${_bmi.bmiResult}'),
+              ],
+            ),
+            Row(
+              children: [
+                Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                Flexible(
+                  child: Text('${_bmi.bmiInterpretation}',
+                  maxLines: 1,
+                  overflow: TextOverflow.fade,
+                  softWrap: false,),
+                ),
+              ],
+            ),
+          ],
+        ),
+        ),
       ),
     );
   }
 }
-

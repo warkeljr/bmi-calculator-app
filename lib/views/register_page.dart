@@ -242,7 +242,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  HistoryPage()));
+                                                  BmiHistory()));
                                     } else {
                                       Alert(
                                       context: context,

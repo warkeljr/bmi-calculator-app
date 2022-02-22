@@ -144,7 +144,7 @@ class _ResultsPageState extends State<ResultsPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HistoryPage()));
+                                          builder: (context) => BmiHistory()));
                                 } else {
                                   Navigator.push(
                                       context,

@@ -8,12 +8,15 @@ class Bmi {
   final String? bmiResult;
   final String? bmiInterpretation;
   
-  Map<String, dynamic> toMap() {
-    return {
-      'bmiResultText': bmiResultText,
-      'bmiResult': bmiResult,
-      'bmiInterpretation': bmiInterpretation,
-    };
-  }
+  Map<String, dynamic> toJson() => {
+    'bmiResultText': bmiResultText,
+    'bmiResult': bmiResult,
+    'bmiInterpretation': bmiInterpretation,
+  };
+
+  Bmi.fromSnapshot(snapshot)
+    : bmiResultText = snapshot.data()['bmiResultText'],
+      bmiResult = snapshot.data()['bmiResult'],
+      bmiInterpretation = snapshot.data()['bmiInterpretation'];
 }
 
