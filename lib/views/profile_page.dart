@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:bmi_calculator_app/components/cards/reusable_card.dart';
