@@ -10,32 +10,26 @@ class BmiHistoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Card(
-        margin: EdgeInsets.all(10.0),
-        child: Padding(padding: EdgeInsets.all(20.0),
-        child: Slidable(
-          key: ValueKey(0),
-          endActionPane: ActionPane(
-            motion: DrawerMotion(),
-            dismissible: DismissiblePane(onDismissed: () {}),
-            children: [
-               SlidableAction(
-        onPressed: null,
-        backgroundColor: Color(0xFFFE4A49),
-        foregroundColor: Colors.white,
-        icon: Icons.delete,
-        label: 'Delete',
-      ),
-      SlidableAction(
-        onPressed: null,
-        backgroundColor: Color(0xFF21B7CA),
-        foregroundColor: Colors.white,
-        icon: Icons.share,
-        label: 'Share',
-      ),
-            ],
-          ),
+    return Card(
+      margin: EdgeInsets.all(10.0),
+      child: Padding(padding: EdgeInsets.all(0.0),
+      child: Slidable(
+        key: ValueKey(0),
+        endActionPane: ActionPane(
+          motion: DrawerMotion(),
+          dismissible: DismissiblePane(onDismissed: () {}),
+          children: [
+             SlidableAction(
+      onPressed: null,
+      backgroundColor: Color(0xFFFE4A49),
+      foregroundColor: Colors.white,
+      icon: Icons.delete,
+      label: 'Delete',
+    ),
+          ],
+        ),
+        child: Container(
+          padding: EdgeInsets.all(20.0),
           child: Column(
             children: [
               Row(
@@ -60,7 +54,7 @@ class BmiHistoryCard extends StatelessWidget {
             ],
           ),
         ),
-        ),
+      ),
       ),
     );
   }
