@@ -8,9 +8,6 @@ import 'package:bmi_calculator_app/models/user.dart';
 import 'package:bmi_calculator_app/views/onboarding_page.dart';
 
 
-
-// void main() async => runApp(BMICalculator());
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
