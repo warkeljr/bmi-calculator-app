@@ -60,6 +60,7 @@ const kResultTextStyleBigNumber = TextStyle(
 
 // Icon sizes
 const kIconSize = 80.0;
+const kIconSizeL = 100.0;
 
 
 // Icon colors
