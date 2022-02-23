@@ -37,7 +37,7 @@ class _BmiHistoryState extends State<BmiHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI History'),
+        title: Text('BMI History Page'),
         backgroundColor: kAppbarBackgroundColor,
       ),
       body: SafeArea(
