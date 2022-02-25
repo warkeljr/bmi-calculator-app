@@ -11,7 +11,7 @@ import 'package:bmi_calculator_app/services/api_path.dart';
 abstract class Database {
   // Future deleteData();
   Future updateUserData(String bmiResultText, String bmiResult, String bmiInterpretation);
-  Future addUserData(String bmiResultText, String bmiResult, String bmiInterpretation, String date);
+  Future createUserData(String bmiResultText, String bmiResult, String bmiInterpretation, String date);
   // Future deleteUserData();
 }
 
@@ -34,7 +34,7 @@ class DatabaseService implements Database {
   }
 
   @override
-  Future addUserData(String? bmiResultText, String? bmiResult,
+  Future createUserData(String? bmiResultText, String? bmiResult,
       String? bmiInterpretation, String? date) async {
     return await bmiResults.doc(uid).collection('results').add({
       'bmiResultText': bmiResultText,

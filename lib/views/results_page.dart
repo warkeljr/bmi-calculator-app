@@ -135,7 +135,7 @@ class _ResultsPageState extends State<ResultsPage> {
                               try {
                                 if (user != null) {
                                   await DatabaseService(uid: user.uid)
-                                      .addUserData(
+                                      .createUserData(
                                     widget.bmiResult,
                                     widget.bmiResultText,
                                     widget.bmiInterpretation,
