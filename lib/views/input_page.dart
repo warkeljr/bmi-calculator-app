@@ -200,11 +200,16 @@ class _InputPageState extends State<InputPage> {
                             children: <Widget>[
                               RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
-                                onPressed: () {
+                                onLongPressed: () => {
                                   setState(() {
                                     decreaseWeight();
-                                  });
+                                  })
                                 },
+                                // onPressed: () {
+                                //   setState(() {
+                                //     decreaseWeight();
+                                //   });
+                                // },
                               ),
                               SizedBox(
                                 width: 10.0,
