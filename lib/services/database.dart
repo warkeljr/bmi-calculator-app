@@ -9,18 +9,21 @@ import 'package:bmi_calculator_app/services/api_path.dart';
 
 
 abstract class Database {
-  // Future deleteData();
-  Future updateUserData(String bmiResultText, String bmiResult, String bmiInterpretation);
+
   Future createUserData(String bmiResultText, String bmiResult, String bmiInterpretation, String date);
+  Future updateUserData(String bmiResultText, String bmiResult, String bmiInterpretation);
   // Future deleteUserData();
 }
 
 class DatabaseService implements Database {
+
    DatabaseService({@required this.uid});
-   final String? uid;
+   final String? uid; 
 
    final CollectionReference bmiResults =
       FirebaseFirestore.instance.collection('bmiHistory');
+
+// CRUD OPERATIONS      
 
   @override
   Future updateUserData(
@@ -46,26 +49,26 @@ class DatabaseService implements Database {
 
   // Future deleteUserData() {}
 
-  Future<void>createBmi(Bmi bmi) async {
-    final path = APIPath.bmi(uid!);
-    final documentReference = FirebaseFirestore.instance.doc(path!);
-    await documentReference.set(bmi.toJson());
-  }
+  // Future<void>createBmi(Bmi bmi) async {
+  //   final path = APIPath.bmi(uid!);
+  //   final documentReference = FirebaseFirestore.instance.doc(path!);
+  //   await documentReference.set(bmi.toJson());
+  // }
 
 
-   //Bmi list from snapshot
-  List<Bmi> _bmiListFromSnapShot(QuerySnapshot snapShot) {
-    return snapShot.docs.map((doc) {
-      return Bmi(
-          bmiResultText: doc['bmiResultText'] ?? '',
-          bmiResult: doc['bmiResult'] ?? '',
-          bmiInterpretation: doc['bmiInterpretation'] ?? '');
-    }).toList();
-  }
+  //  //Bmi list from snapshot
+  // List<Bmi> _bmiListFromSnapShot(QuerySnapshot snapShot) {
+  //   return snapShot.docs.map((doc) {
+  //     return Bmi(
+  //         bmiResultText: doc['bmiResultText'] ?? '',
+  //         bmiResult: doc['bmiResult'] ?? '',
+  //         bmiInterpretation: doc['bmiInterpretation'] ?? '');
+  //   }).toList();
+  // }
 
-  // Get bmiResults stream
-  Stream<List<Bmi>> get bmiHistory {
-    return bmiResults.snapshots().map(_bmiListFromSnapShot);
-  }
+  // // Get bmiResults stream
+  // Stream<List<Bmi>> get bmiHistory {
+  //   return bmiResults.snapshots().map(_bmiListFromSnapShot);
+  // }
 }
 
