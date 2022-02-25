@@ -63,6 +63,7 @@ const kIconSize = 80.0;
 const kIconSizeL = 100.0;
 
 
+
 // Icon colors
 
 // Appbar background color
@@ -86,7 +87,7 @@ const kSoftGreenColor = Color(0xFF1de9b6);
 const kSoftAmberColor = Color(0xFFffc400);
 
 
-// BMI indication colors
+// BMI indication colorsf
 const kBmiBlueDark = Color(0xFF007ECB);
 const kBmiBlueMiddle = Color(0xFF00B0FF);
 const kBmiBlueLight = Color(0xFF80D8FF);
