@@ -31,7 +31,9 @@ class _InputPageState extends State<InputPage> {
   int age = 25;
 
   void increaseWeight() {
-    weight++;
+    setState(() {
+      weight++;
+    });
   }
 
   void decreaseWeight() {
@@ -67,6 +69,7 @@ class _InputPageState extends State<InputPage> {
                   width: SizeConfig.blockSizeHorizontal! * 50,
                   height: SizeConfig.blockSizeVertical! * 25,
                   child: ReusableCard(
+                    
                     // onPress: () {
                     //   setState(() {
                     //     selectedGender = Gender.male;
@@ -200,16 +203,11 @@ class _InputPageState extends State<InputPage> {
                             children: <Widget>[
                               RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
-                                onLongPressed: () => {
+                                onPressed: () {
                                   setState(() {
                                     decreaseWeight();
-                                  })
+                                  });
                                 },
-                                // onPressed: () {
-                                //   setState(() {
-                                //     decreaseWeight();
-                                //   });
-                                // },
                               ),
                               SizedBox(
                                 width: 10.0,
