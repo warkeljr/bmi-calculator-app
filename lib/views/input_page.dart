@@ -205,11 +205,11 @@ class _InputPageState extends State<InputPage> {
                                     decreaseWeight();
                                   })
                                 },
-                                // onPressed: () {
-                                //   setState(() {
-                                //     decreaseWeight();
-                                //   });
-                                // },
+                                onPressed: () {
+                                  setState(() {
+                                    decreaseWeight();
+                                  });
+                                },
                               ),
                               SizedBox(
                                 width: 10.0,
